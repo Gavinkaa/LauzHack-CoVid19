@@ -1,0 +1,1563 @@
+[
+    {
+        "type": "Viande",
+        "elements": [
+            {
+                "name": "Agneau",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Poulet",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Bacon",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Canard",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Chorizo",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Cordon bleu",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Dinde",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Foie gras",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Jambon",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Lapin",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Lardons",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Porc",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Poulet",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Saucisses",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Veau",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            }
+        ]
+    },
+    {
+        "type": "Légumes",
+        "elements": [
+            {
+                "name": "Ail",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Artichaut",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Asperges",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Aubergine",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Avocat",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Betterave",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Blette",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Brocolis",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Carotte",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Céleri",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Champignons",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Champignons",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Chou chinois",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Chou de Bruxelles",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Chou-fleur",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Chou-rouge",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Ciboulette",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Citrouille",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Coeur de palmier",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Concombre",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Cornichons",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Courge",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Courgette",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Cresson",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Echalotte",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Endive",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Epinards",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Fenouil",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Flageolets",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Gingembre",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Haricot",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Lentilles",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Mâche",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Maïs",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Menthe",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Navet",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Oignons",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Persil",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Petits pois",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Poireau",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Poivron",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Pomme de terre",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Potimarron",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Radis",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Salade laitue",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Salsifis",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Tomate",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            }
+        ]
+    },
+    {
+        "type": "Fruits",
+        "elements": [
+            {
+                "name": "Abricots",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Ananas",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Bananes",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Brunon",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Cassis",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Cerises",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Citrons",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Clémentine",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Figue",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Fraises",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Framboise",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Fruit de la passion",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Grenade",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Groseille",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Kaki",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Kiwis",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Litchi",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Mandarines",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Mangue",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Melons",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Mirabelle",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Mûre",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Myrtille",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Nectarine",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Oranges",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Panplemousses",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Pastèque",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Pêches",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Poires",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Pommes",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Prunes",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Raisin",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Rhubarbe",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            }
+        ]
+    },
+    {
+        "type": "Poisson",
+        "elements": [
+            {
+                "name": "Bigorneaux",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Cabillaud",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Colin",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Coquille St-Jacques",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Crabe",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Crevettes",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Ecrevisses",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Homard",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Huîtres",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Langoustine",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Maquereaux",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Moules",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Poissons panés",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Poulpe",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Sardines",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Saumon",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Saumon fumé",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Surimi",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            }
+        ]
+    },
+    {
+        "type": "Epicerie",
+        "elements": [
+            {
+                "name": "Blé",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Bouillonaa",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Boulgour",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Canelle",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Chepelure",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Coriandre",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Curry",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Farine",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Graines de tournesol",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Haricot blanc",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Haricot rouges",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Herbes de provence",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Huile",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Huile d'olive",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Ketchup",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Lentilles",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Levure",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Maïzena",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Mayonaise",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Moutarde",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Olives",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Orge",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Origan",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Paprika",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Pâtes ",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Pâtes chinoise",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Pois cassés",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Pois chiches",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Poivre",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Polenta",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Purée",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Quinoa",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Riz",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Sauce de soja",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Sel",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Semoule",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Vinaigre",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            }
+        ]
+    },
+    {
+        "type": "Produits laitiers",
+        "elements": [
+            {
+                "name": "",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            }
+        ]
+    },
+    {
+        "type": "Cosmétiques",
+        "elements": [
+            {
+                "name": "Après rasage",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Coton à démaquiller",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Coton tige",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Couche/ Hygiène bébé",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Démaquillant",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Mousse à raser",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Rasoirs",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Brosses à dents",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Dentifrice",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Déodorant",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Fil dentaire",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Gel-spray",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Gel tube",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Crème main",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Savon main",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Shampooing",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Après shampooing",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "gel-douche",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Cire épilation",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Ouate",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Pensements",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Papier toilette",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Produit lentilles",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Protection intime",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            }
+        ]
+    },
+    {
+        "type": "Produits ménagers",
+        "elements": [
+            {
+                "name": "Allume barbecue",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Alumettes",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Anti-calcaire",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Assouplissant",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Bougies",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Cirage",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Cure dents",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Désodorisant",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Détachant",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Eau de javel",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Eponge",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Essuie-tout",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Film plastique",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Filtre à café",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Gants de ménage",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Insecticide",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Lessive",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Mouchoirs",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Nettoyant salle de bain",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Nettoyant WC",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Papier aluminium",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Papier sulfurisé",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Piles",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Produit à sol",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Liquide vaisselle",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Produit vitre",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Produits dégraissant",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Sacs aspirateur",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Sacs congélation",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Sacs poubelles",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Savon",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Sel machine",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Serviettes papier",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            }
+        ]
+    },
+    {
+        "type": "Boissons",
+        "elements": [
+            {
+                "name": "Eau",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            }
+        ]
+    },
+    {
+        "type": "Papèterie",
+        "elements": [
+            {
+                "name": "Bloc note",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Chemises carton",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Ciseau à papier",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Colle",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Crayons à papier",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Crayons de couleur",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Encre Imprimante",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Enveloppes",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Etiquettes",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Ficelle",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Gomme",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Papier à lettre",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Papier cadeau",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Papier imprimante",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Scotch",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Souris de correction",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Stylo bille",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Surligneur",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Taille-crayon",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Timbres",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Trombones",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            }
+        ]
+    },
+    {
+        "type": "Petit-déjeuner",
+        "elements": [
+            {
+                "name": "Biscottes",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Biscuits",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Brioche",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Cacao",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Café",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Céréales",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Confiture",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Crêpes",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Pancakes",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Croissant",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Muffins",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Madeleines",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Gauffres",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Miel",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Pain au chocolat",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Pain d'épice",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Pain de mie",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Pâte à tartiner",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            },
+            {
+                "name": "Ricoré",
+                "comment": "",
+                "quantity": "",
+                "icon-url": ""
+            }
+        ]
+    }
+]

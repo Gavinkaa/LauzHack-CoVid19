@@ -1,48 +1,71 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'dart:async';
+import 'dart:convert';
 
-class ItemsList extends StatefulWidget {
-  ItemsList({Key key}) : super(key: key);
+import 'Articles.dart';
+
+class ItemsListPage extends StatefulWidget {
+  ItemsListPage({Key key}) : super(key: key);
 
   @override
-  _ItemsListState createState() => _ItemsListState();
+  _ItemsListPageState createState() => _ItemsListPageState();
 }
 
-class _ItemsListState extends State<ItemsList> {
-  final List<String> _articles = [
-    "Pain",
-    "Oeufs",
-    "Fromage",
-    "Yaourts",
-    "Steaks hachés",
-    "Pâtes",
-    "Riz",
-    "Poisson",
-    "Farine",
-    "Lait",
-    "Shampoing",
-    "Gel douche",
-    "Biscuits"
-  ]; // A changer pour aller chercher en JSON directement
+class _ItemsListPageState extends State<ItemsListPage> {
+  List<Article> _articles;
 
-  final _biggerFont = const TextStyle(fontSize: 18.0);
-  final Set<String> _saved = Set<String>();
-
-  Widget _buildArticles() {
-    _articles.sort((a, b) => a.toString().compareTo(b.toString()));
-    return ListView.builder(
-      padding: const EdgeInsets.all(16.0),
-      itemCount: _articles.length,
-      itemBuilder: (context, i) {
-        return _buildRow(_articles[i]);
-      },
-    );
+  Future<void> loadArticlesfromJson() async {
+    var jsonData = await rootBundle.loadString('assets/articles.json');
+    setState(() {
+      _articles = Article.dataToSortedList(json.decode(jsonData));
+    });
   }
 
-  Widget _buildRow(String article) {
+  @override
+  void initState() {
+    loadArticlesfromJson();
+    super.initState();
+  }
+
+  // final List<String> _articles = [
+  //   "Pain",
+  //   "Oeufs",
+  //   "Fromage",
+  //   "Yaourts",
+  //   "Steaks hachés",
+  //   "Pâtes",
+  //   "Riz",
+  //   "Poisson",
+  //   "Farine",
+  //   "Lait",
+  //   "Shampoing",
+  //   "Gel douche",
+  //   "Biscuits"
+  // ]; // A changer pour aller chercher en JSON directement
+
+  final _biggerFont = const TextStyle(fontSize: 18.0);
+  final Set<Article> _saved = Set<Article>();
+
+  Widget _buildArticles() {
+    if (_articles != null) {
+      return ListView.builder(
+        padding: const EdgeInsets.all(16.0),
+        itemCount: _articles.length,
+        itemBuilder: (context, i) {
+          return _buildRow(_articles[i]);
+        },
+      );
+    } else {
+      return CircularProgressIndicator();
+    }
+  }
+
+  Widget _buildRow(Article article) {
     final bool alreadySaved = _saved.contains(article);
     return ListTile(
         title: Text(
-          article,
+          article.getName(),
           style: _biggerFont,
         ),
         trailing: Icon(
@@ -69,7 +92,10 @@ class _ItemsListState extends State<ItemsList> {
           IconButton(icon: Icon(Icons.list), onPressed: _pushSaved),
         ],
       ),
-      body: _buildArticles(),
+      body: Container(
+        child: _buildArticles(),
+        alignment: Alignment.center,
+      ),
     );
   }
 
@@ -79,10 +105,10 @@ class _ItemsListState extends State<ItemsList> {
         // Add 20 lines from here...
         builder: (BuildContext context) {
           final Iterable<ListTile> tiles = _saved.map(
-            (String article) {
+            (Article article) {
               return ListTile(
                 title: Text(
-                  article,
+                  article.getName(),
                   style: _biggerFont,
                 ),
               );
