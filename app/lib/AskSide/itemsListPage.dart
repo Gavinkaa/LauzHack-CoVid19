@@ -13,12 +13,14 @@ class ItemsListPage extends StatefulWidget {
 }
 
 class _ItemsListPageState extends State<ItemsListPage> {
-  List<Article> _articles;
+  Map<ArticleType, List<Article>> _articlesByType;
 
   Future<void> loadArticlesfromJson() async {
     var jsonData = await rootBundle.loadString('assets/articles.json');
     setState(() {
-      _articles = Article.dataToSortedList(json.decode(jsonData));
+      _articlesByType = json.decode(jsonData);
+      // Map<String, List<Map<String, String>>>
+      print(_articlesByType);
     });
   }
 
@@ -28,7 +30,7 @@ class _ItemsListPageState extends State<ItemsListPage> {
     super.initState();
   }
 
-  // final List<String> _articles = [
+  // final List<String> _articlesByType = [
   //   "Pain",
   //   "Oeufs",
   //   "Fromage",
@@ -48,12 +50,12 @@ class _ItemsListPageState extends State<ItemsListPage> {
   final Set<Article> _saved = Set<Article>();
 
   Widget _buildArticles() {
-    if (_articles != null) {
+    if (_articlesByType != null) {
       return ListView.builder(
         padding: const EdgeInsets.all(16.0),
-        itemCount: _articles.length,
+        itemCount: _articlesByType.length,
         itemBuilder: (context, i) {
-          return _buildRow(_articles[i]);
+          return _buildRow(_articlesByType[i]);
         },
       );
     } else {
