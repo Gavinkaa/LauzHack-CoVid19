@@ -3,42 +3,16 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async';
 import 'dart:convert';
 
-class Article implements Comparable {
-  String _name, _comment;
+import 'Articles.dart';
 
-  Article(String name, String comment) {
-    this._name = name;
-    this._comment = comment;
-  }
-
-  static List<Article> dataToList(List<dynamic> data) {
-    List<Article> l = [];
-    for (int i = 0; i < data.length; i++) {
-      l.add(Article(data[i]["name"], data[i]["comment"]));
-    }
-    return l;
-  }
-
-  static List<Article> dataToSortedList(List<dynamic> data) {
-    List<Article> l = dataToList(data);
-    l.sort();
-    return l;
-  }
+class ItemsListPage extends StatefulWidget {
+  ItemsListPage({Key key}) : super(key: key);
 
   @override
-  int compareTo(other) {
-    return _name.compareTo(other._name);
-  }
+  _ItemsListPageState createState() => _ItemsListPageState();
 }
 
-class ItemsList extends StatefulWidget {
-  ItemsList({Key key}) : super(key: key);
-
-  @override
-  _ItemsListState createState() => _ItemsListState();
-}
-
-class _ItemsListState extends State<ItemsList> {
+class _ItemsListPageState extends State<ItemsListPage> {
   List<Article> _articles;
 
   Future<void> loadArticlesfromJson() async {
@@ -91,7 +65,7 @@ class _ItemsListState extends State<ItemsList> {
     final bool alreadySaved = _saved.contains(article);
     return ListTile(
         title: Text(
-          article._name,
+          article.getName(),
           style: _biggerFont,
         ),
         trailing: Icon(
@@ -134,7 +108,7 @@ class _ItemsListState extends State<ItemsList> {
             (Article article) {
               return ListTile(
                 title: Text(
-                  article._name,
+                  article.getName(),
                   style: _biggerFont,
                 ),
               );
