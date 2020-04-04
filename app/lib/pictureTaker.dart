@@ -34,19 +34,24 @@ class _PictureTakerState extends State<PictureTaker> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Choose"),
+          title: Text("Select mage's source"),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
                 GestureDetector(
-                  child: Text("Gallery"),
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Text("Gallery"),
+                  ),
                   onTap: () {
                     _openGallery(context);
                   },
                 ),
-                Padding(padding: EdgeInsets.all(5.0)),
                 GestureDetector(
-                  child: Text("Camera"),
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Text("Camera"),
+                  ),
                   onTap: () {
                     _openCamera(context);
                   },
@@ -65,7 +70,10 @@ class _PictureTakerState extends State<PictureTaker> {
         image,
       );
     } else {
-      return Text("No image is selected");
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text("No image is selected"),
+      );
     }
   }
 

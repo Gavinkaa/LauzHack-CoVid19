@@ -18,12 +18,15 @@ class _AskHelpState extends State<AskHelp> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Choose"),
+          title: Text("Choose how to do the list"),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
                 GestureDetector(
-                  child: Text("Make a list"),
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Text("Write a list"),
+                  ),
                   onTap: () {
                     Navigator.of(context).pop();
                     Navigator.push(
@@ -32,16 +35,18 @@ class _AskHelpState extends State<AskHelp> {
                     );
                   },
                 ),
-                Padding(padding: EdgeInsets.all(5.0)),
-                GestureDetector(
-                  child: Text("Add a picture"),
-                  onTap: () {
-                    Navigator.of(context).pop();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => PictureTaker()),
-                    );
-                  },
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: GestureDetector(
+                    child: Text("Take a picture"),
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => PictureTaker()),
+                      );
+                    },
+                  ),
                 )
               ],
             ),
