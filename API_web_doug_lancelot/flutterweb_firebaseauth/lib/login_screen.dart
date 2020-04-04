@@ -20,6 +20,10 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
+  bool hasMatch(String input) {
+    return false;
+  }
+
   String validateEmail(String value) {
     Pattern pattern =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
@@ -88,8 +92,8 @@ class _LoginPageState extends State<LoginPage> {
                             InkWell(
                                 onTap: () {
                                   if (checkFields()) {
-                                    AuthService().signIn(email, password);
-                                    //AuthService().register_in(email, password);
+                                    AuthService().sign_in_with_error(
+                                        email, password, context);
                                   }
                                 },
                                 child: Container(
@@ -198,7 +202,8 @@ class SecondRoute extends StatelessWidget {
                               onTap: () {
                                 if (checkFields()) {
                                   //AuthService().signIn(email, password);
-                                  AuthService().register_in(email, password);
+                                  AuthService().register_in_with_error(
+                                      email, password, context);
                                 }
                               },
                               child: Container(
