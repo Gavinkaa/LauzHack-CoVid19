@@ -1,18 +1,19 @@
+import 'package:app/AskSide/pictureTakerPage.dart';
 import 'package:flutter/foundation.dart';
-import 'package:app/itemsList.dart';
-import 'package:app/pictureTaker.dart';
 import 'package:flutter/material.dart';
 
-class AskHelp extends StatefulWidget {
-  AskHelp({Key key}) : super(key: key);
+import 'itemsListPage.dart';
+
+class AskHelpPage extends StatefulWidget {
+  AskHelpPage({Key key}) : super(key: key);
 
   final String title = 'Ask Help';
 
   @override
-  _AskHelpState createState() => _AskHelpState();
+  _AskHelpPageState createState() => _AskHelpPageState();
 }
 
-class _AskHelpState extends State<AskHelp> {
+class _AskHelpPageState extends State<AskHelpPage> {
   Future<void> _showDialogToSelectShopMode(BuildContext context) {
     return showDialog(
       context: context,
@@ -31,7 +32,7 @@ class _AskHelpState extends State<AskHelp> {
                     Navigator.of(context).pop();
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => ItemsList()),
+                      MaterialPageRoute(builder: (context) => ItemsListPage()),
                     );
                   },
                 ),
@@ -43,7 +44,8 @@ class _AskHelpState extends State<AskHelp> {
                       Navigator.of(context).pop();
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => PictureTaker()),
+                        MaterialPageRoute(
+                            builder: (context) => PictureTakerPage()),
                       );
                     },
                   ),
@@ -75,7 +77,7 @@ class _AskHelpState extends State<AskHelp> {
                   } else {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => ItemsList()),
+                      MaterialPageRoute(builder: (context) => ItemsListPage()),
                     );
                   }
                 },
