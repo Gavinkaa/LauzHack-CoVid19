@@ -12,12 +12,13 @@ class _AfterLogInScreenState extends State<AfterLogInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.red,
-        body: Center(
-          child: FlatButton(
-            onPressed: () => AuthServ.logout(context),
-            child: Text("Logout"),
-          ),
-        ));
+      backgroundColor: Colors.red,
+      body: Center(
+        child: FlatButton(
+          onPressed: () => AuthServ.logout(context),
+          child: Text("Logout"),
+        ),
+      ),
+    );
   }
 }
