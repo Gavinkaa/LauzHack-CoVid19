@@ -42,7 +42,7 @@ class _ItemsListState extends State<ItemsList> {
   List<Article> _articles;
 
   Future<void> loadArticlesfromJson() async {
-    var jsonData = await rootBundle.loadString('asset/articles.json');
+    var jsonData = await rootBundle.loadString('assets/articles.json');
     setState(() {
       _articles = Article.dataToSortedList(json.decode(jsonData));
     });
