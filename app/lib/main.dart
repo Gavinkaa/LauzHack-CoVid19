@@ -1,4 +1,7 @@
+import 'package:app/askHelp.dart';
 import 'package:flutter/material.dart';
+
+import 'offerHelp.dart';
 
 void main() {
   runApp(HelpYourNeighbors());
@@ -10,14 +13,14 @@ class HelpYourNeighbors extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Help Your Neighbors',
-      home: _MyHomePage(title: 'Help Your Neighbors Home page'),
+      home: MyHomePage(title: 'Help Your Neighbors Home page'),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class _MyHomePage extends StatefulWidget {
-  _MyHomePage({Key key, this.title}) : super(key: key);
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
 
   final String title;
 
@@ -25,15 +28,7 @@ class _MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<_MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,21 +43,25 @@ class _MyHomePageState extends State<_MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+            FlatButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AskHelp()),
+                  );
+                },
+                child: Text('Ask help')),
+            FlatButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => OfferHelp()),
+                  );
+                },
+                child: Text('Offer help')),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
