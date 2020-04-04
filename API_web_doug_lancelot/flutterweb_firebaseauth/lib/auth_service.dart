@@ -12,7 +12,9 @@ class AuthService {
         if (snapshot.hasData) {
           return HomePage();
         } else {
+          //modified for :
           return LoginPage();
+          //return FirstRoute();
         }
       },
     );
