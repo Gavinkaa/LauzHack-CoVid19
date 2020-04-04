@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:app/itemsList.dart';
 import 'package:app/pictureTaker.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,6 @@ class _AskHelpState extends State<AskHelp> {
                   child: Text("Make a list"),
                   onTap: () {
                     Navigator.of(context).pop();
-
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => ItemsList()),
@@ -37,7 +37,6 @@ class _AskHelpState extends State<AskHelp> {
                   child: Text("Add a picture"),
                   onTap: () {
                     Navigator.of(context).pop();
-
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => PictureTaker()),
@@ -66,7 +65,14 @@ class _AskHelpState extends State<AskHelp> {
           children: <Widget>[
             RaisedButton(
                 onPressed: () {
-                  _showDialogToSelectShopMode(context);
+                  if (!kIsWeb) {
+                    _showDialogToSelectShopMode(context);
+                  } else {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ItemsList()),
+                    );
+                  }
                 },
                 child: Text('Items list')),
           ],
