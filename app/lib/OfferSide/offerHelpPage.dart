@@ -1,17 +1,16 @@
+import 'package:app/AskSide/Articles.dart';
 import 'package:flutter/material.dart';
 
-import 'AskSide/Articles.dart';
-
-class OfferHelp extends StatefulWidget {
-  OfferHelp({Key key}) : super(key: key);
+class OfferHelpPage extends StatefulWidget {
+  OfferHelpPage({Key key}) : super(key: key);
 
   final String title = 'Offer Help';
 
   @override
-  _OfferHelpState createState() => _OfferHelpState();
+  _OfferHelpPageState createState() => _OfferHelpPageState();
 }
 
-class _OfferHelpState extends State<OfferHelp> {
+class _OfferHelpPageState extends State<OfferHelpPage> {
   List<_HelpRequest> _requests;
   @override
   void initState() {
@@ -74,8 +73,7 @@ class _OfferHelpState extends State<OfferHelp> {
                       size: 30.0,
                     ),
                   ),
-                )
-              ),
+                )),
           ),
         ),
       ),

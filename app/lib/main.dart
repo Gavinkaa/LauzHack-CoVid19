@@ -1,7 +1,7 @@
+import 'package:app/OfferSide/offerHelpPage.dart';
 import 'package:flutter/material.dart';
 
 import 'AskSide/askHelpPage.dart';
-import 'offerHelp.dart';
 
 void main() {
   runApp(HelpYourNeighbors());
@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => OfferHelp()),
+                    MaterialPageRoute(builder: (context) => OfferHelpPage()),
                   );
                 },
                 child: Text('Offer help')),
