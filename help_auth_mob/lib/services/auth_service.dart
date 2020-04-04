@@ -22,7 +22,24 @@ class AuthServ {
             context, AfterLogInScreen.id); // not to be able to come back
       }
     } catch (e) {
-      print(e);
+      Widget okBut = FlatButton(
+        child: Text("OK"),
+        onPressed: () => Navigator.of(context).pop(),
+      );
+
+      AlertDialog alert = AlertDialog(
+        title: Text("Error"),
+        content: Text("Email already used"),
+        actions: [
+          okBut,
+        ],
+      );
+
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return alert;
+          });
     }
   }
 
@@ -31,7 +48,12 @@ class AuthServ {
     Navigator.pushReplacementNamed(context, LoginScreen.id);
   }
 
-  static void login(BuildContext context, String email, String password) {
-    _auth.signInWithEmailAndPassword(email: email, password: password);
+  static Future<bool> login(String email, String password) async {
+    try {
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+    } catch (e) {
+      return false;
+    }
+    return true;
   }
 }
