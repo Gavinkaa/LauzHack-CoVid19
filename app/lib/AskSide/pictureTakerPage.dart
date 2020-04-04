@@ -3,14 +3,14 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-class PictureTaker extends StatefulWidget {
-  PictureTaker({Key key}) : super(key: key);
+class PictureTakerPage extends StatefulWidget {
+  PictureTakerPage({Key key}) : super(key: key);
 
   @override
-  _PictureTakerState createState() => _PictureTakerState();
+  _PictureTakerPageState createState() => _PictureTakerPageState();
 }
 
-class _PictureTakerState extends State<PictureTaker> {
+class _PictureTakerPageState extends State<PictureTakerPage> {
   File image;
   _openGallery(BuildContext context) async {
     var selectedImage =
