@@ -13,6 +13,9 @@ class HelpYourNeighbors extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Help Your Neighbors',
+      theme: ThemeData(
+        primaryColor: Colors.white,
+      ),
       home: MyHomePage(),
       debugShowCheckedModeBanner: false,
     );
