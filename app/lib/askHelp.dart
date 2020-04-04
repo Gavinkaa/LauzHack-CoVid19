@@ -12,11 +12,9 @@ class AskHelp extends StatefulWidget {
 class _AskHelpState extends State<AskHelp> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
       ),
     );
   }

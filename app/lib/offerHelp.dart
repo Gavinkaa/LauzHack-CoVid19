@@ -12,11 +12,9 @@ class OfferHelp extends StatefulWidget {
 class _OfferHelpState extends State<OfferHelp> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
       ),
     );
   }
