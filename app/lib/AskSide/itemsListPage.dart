@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async';
 import 'dart:convert';
-
 import 'Articles.dart';
 
 class ItemsListPage extends StatefulWidget {
@@ -18,9 +17,8 @@ class _ItemsListPageState extends State<ItemsListPage> {
   Future<void> loadArticlesfromJson() async {
     var jsonData = await rootBundle.loadString('assets/articles.json');
     setState(() {
-      _articlesByType = json.decode(jsonData);
+      _articlesByType = Article.dataToMap(json.decode(jsonData));
       // Map<String, List<Map<String, String>>>
-      print(_articlesByType);
     });
   }
 
@@ -29,22 +27,6 @@ class _ItemsListPageState extends State<ItemsListPage> {
     loadArticlesfromJson();
     super.initState();
   }
-
-  // final List<String> _articlesByType = [
-  //   "Pain",
-  //   "Oeufs",
-  //   "Fromage",
-  //   "Yaourts",
-  //   "Steaks hachés",
-  //   "Pâtes",
-  //   "Riz",
-  //   "Poisson",
-  //   "Farine",
-  //   "Lait",
-  //   "Shampoing",
-  //   "Gel douche",
-  //   "Biscuits"
-  // ]; // A changer pour aller chercher en JSON directement
 
   final _biggerFont = const TextStyle(fontSize: 18.0);
   final Set<Article> _saved = Set<Article>();
