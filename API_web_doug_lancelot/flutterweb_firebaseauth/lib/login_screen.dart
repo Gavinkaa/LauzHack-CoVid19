@@ -103,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                           //navigator.push -> pas de go cack
                         )),
                     RaisedButton(
-                      child: Text('Je ne possède pas de compte'),
+                      child: Text('I want to register'),
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -212,7 +212,7 @@ class SecondRoute extends StatelessWidget {
                         //navigator.push -> pas de go cack
                       )),
                   RaisedButton(
-                    child: Text('Open route'),
+                    child: Text('Go back to login'),
                     onPressed: () {
                       Navigator.push(
                         context,
