@@ -13,16 +13,16 @@ class HelpYourNeighbors extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Help Your Neighbors',
-      home: MyHomePage(title: 'Help Your Neighbors Home page'),
+      home: MyHomePage(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key key}) : super(key: key);
 
-  final String title;
+  final String title = 'Home page';
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -33,8 +33,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
       body: Center(
