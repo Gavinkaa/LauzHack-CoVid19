@@ -64,19 +64,31 @@ class _LoginScreenState extends State<LoginScreen> {
               key: _formKey,
               child: Column(
                 children: <Widget>[
-                  TextFormField(
-                    decoration: InputDecoration(labelText: 'Email'),
-                    validator: (input) => !input.contains('@')
-                        ? 'Please Enter valid email'
-                        : null,
-                    onSaved: (input) => _email = input,
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 30.0,
+                      vertical: 10.0,
+                    ),
+                    child: TextFormField(
+                      decoration: InputDecoration(labelText: 'Email'),
+                      validator: (input) => !input.contains('@')
+                          ? 'Please Enter valid email'
+                          : null,
+                      onSaved: (input) => _email = input,
+                    ),
                   ),
-                  TextFormField(
-                    decoration: InputDecoration(labelText: 'Password'),
-                    validator: (input) =>
-                        input.length < 6 ? 'Must be at least 6 chars' : null,
-                    onSaved: (input) => _password = input,
-                    obscureText: true,
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 30.0,
+                      vertical: 10.0,
+                    ),
+                    child: TextFormField(
+                      decoration: InputDecoration(labelText: 'Password'),
+                      validator: (input) =>
+                          input.length < 6 ? 'Must be at least 6 chars' : null,
+                      onSaved: (input) => _password = input,
+                      obscureText: true,
+                    ),
                   ),
                   SizedBox(
                     height: 20.0,
