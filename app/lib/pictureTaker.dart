@@ -31,30 +31,32 @@ class _PictureTakerState extends State<PictureTaker> {
 
   Future<void> _showChoiceDialog(BuildContext context) {
     return showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-              title: Text("Choose"),
-              content: SingleChildScrollView(
-                child: ListBody(
-                  children: <Widget>[
-                    GestureDetector(
-                      child: Text("Gallery"),
-                      onTap: () {
-                        _openGallery(context);
-                      },
-                    ),
-                    Padding(padding: EdgeInsets.all(5.0)),
-                    GestureDetector(
-                      child: Text("Camera"),
-                      onTap: () {
-                        _openCamera(context);
-                      },
-                    )
-                  ],
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Choose"),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                GestureDetector(
+                  child: Text("Gallery"),
+                  onTap: () {
+                    _openGallery(context);
+                  },
                 ),
-              ));
-        });
+                Padding(padding: EdgeInsets.all(5.0)),
+                GestureDetector(
+                  child: Text("Camera"),
+                  onTap: () {
+                    _openCamera(context);
+                  },
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 
   Widget _displayedImage() {

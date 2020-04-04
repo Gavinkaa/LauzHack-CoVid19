@@ -12,6 +12,46 @@ class AskHelp extends StatefulWidget {
 }
 
 class _AskHelpState extends State<AskHelp> {
+  Future<void> _showDialogToSelectShopMode(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Choose"),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                GestureDetector(
+                  child: Text("Make a list"),
+                  onTap: () {
+                    Navigator.of(context).pop();
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ItemsList()),
+                    );
+                  },
+                ),
+                Padding(padding: EdgeInsets.all(5.0)),
+                GestureDetector(
+                  child: Text("Add a picture"),
+                  onTap: () {
+                    Navigator.of(context).pop();
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => PictureTaker()),
+                    );
+                  },
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,20 +66,9 @@ class _AskHelpState extends State<AskHelp> {
           children: <Widget>[
             RaisedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ItemsList()),
-                  );
+                  _showDialogToSelectShopMode(context);
                 },
                 child: Text('Items list')),
-            RaisedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => PictureTaker()),
-                  );
-                },
-                child: Text('Picture taker')),
           ],
         ),
       ),
