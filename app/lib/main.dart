@@ -1,6 +1,6 @@
-import 'package:app/askHelp.dart';
 import 'package:flutter/material.dart';
 
+import 'AskSide/askHelpPage.dart';
 import 'offerHelp.dart';
 
 void main() {
@@ -48,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => AskHelp()),
+                    MaterialPageRoute(builder: (context) => AskHelpPage()),
                   );
                 },
                 child: Text('Ask help')),
