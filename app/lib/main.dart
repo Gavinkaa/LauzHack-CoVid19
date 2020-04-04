@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            FlatButton(
+            RaisedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 },
                 child: Text('Ask help')),
-            FlatButton(
+            RaisedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
