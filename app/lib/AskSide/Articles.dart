@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 enum _Type {
@@ -110,6 +112,11 @@ class ArticleType {
   }
 
   @override
+  String toString() {
+    return this._str;
+  }
+
+  @override
   int get hashCode => hashValues(_type, _str);
 
   @override
@@ -148,11 +155,22 @@ class Article implements Comparable {
     return elementsByType;
   }
 
-  // static List<Article> dataToSortedList(List<dynamic> data) {
-  //   List<Article> l = dataToList(data);
-  //   l.sort();
-  //   return l;
-  // }
+  static String toJSON(Map<ArticleType, List<Article>> mapToConvert) {
+    Map<String, List<Map<String, String>>> articles = {};
+    mapToConvert.forEach((k, v) => articles.putIfAbsent(
+          k.toString(),
+          () => v
+              .map((i) => {
+                    "name": i._name,
+                    "comment": i._comment,
+                    "quantity": i._quantity,
+                    "icon-url": i._iconUrl
+                  })
+              .toList(),
+        ));
+
+    return jsonEncode(articles);
+  }
 
   String getName() {
     return this._name;
