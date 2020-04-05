@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firewebauth/home_screen.dart';
 import 'package:firewebauth/login_screen.dart';
+import 'package:firewebauth/after_login_HomePage.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:firebase/firebase.dart';
@@ -117,16 +119,17 @@ class AuthService {
       String email, String password, BuildContext context) async {
     try {
       AuthResult authRes = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email, password: password);
+          .signInWithEmailAndPassword(
+              email: 'debug@epfl.ch', password: '123456');
       FirebaseUser signedInUser = authRes.user;
+      Navigator.pushReplacementNamed(context, after_login_HomePage.id);
+
       //if (signedInUser != null) {
       //  _firestore
       //      .collection('/users')
       //      .document(signedInUser.uid)
       //      .setData({'name': name, 'email': email});
-      //  Navigator.pushReplacementNamed(
-      //      context, AfterLogInScreen.id); // not to be able to come back
-      //}
+      //  }
     } catch (e) {
       Widget okBut = FlatButton(
         child: Text("OK"),
