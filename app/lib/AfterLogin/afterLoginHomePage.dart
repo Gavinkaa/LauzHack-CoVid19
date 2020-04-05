@@ -1,7 +1,6 @@
 import 'package:app/AfterLogin/OfferSide/offerHelpPage.dart';
 import 'package:app/BeforeLogin/services/auth_service.dart';
 import 'package:flutter/material.dart';
-
 import 'AskSide/askHelpPage.dart';
 
 class AfterLoginHomePage extends StatefulWidget {
@@ -19,7 +18,21 @@ class _AfterLoginHomePageState extends State<AfterLoginHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        title: Text(
+          widget.title,
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w200),
+        ),
+        actions: <Widget>[
+          IconButton(
+              onPressed: () => AuthServ.logout(context),
+              icon: Icon(
+                Icons.power_settings_new,
+                color: Colors.red,
+                size: 32.0,
+              )),
+        ],
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -75,10 +88,6 @@ class _AfterLoginHomePageState extends State<AfterLoginHomePage> {
                 child: const Text("Offrir son aide",
                     style: TextStyle(fontSize: 20)),
               ),
-            ),
-            FlatButton(
-              onPressed: () => AuthServ.logout(context),
-              child: Text("Logout"),
             ),
           ],
         ),
