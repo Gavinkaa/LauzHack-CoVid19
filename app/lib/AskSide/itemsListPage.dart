@@ -1,3 +1,4 @@
+import 'package:app/AskSide/ItemsListSummaryPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async';
@@ -102,7 +103,7 @@ class _ItemsListPageState extends State<ItemsListPage> {
           IconButton(
               icon: Icon(
                 Icons.shopping_cart,
-                color: Colors.deepOrange,
+                color: Colors.green,
                 size: 30.0,
               ),
               onPressed: _pushSaved),
@@ -116,37 +117,12 @@ class _ItemsListPageState extends State<ItemsListPage> {
   }
 
   void _pushSaved() {
-    Navigator.of(context).push(
-      MaterialPageRoute<void>(
-        builder: (BuildContext context) {
-          Iterable<ListTile> tiles = _saved.map(
-            (Article article) {
-              return ListTile(
-                title: Text(
-                  article.getName(),
-                  style: _fontArticles,
-                ),
-                trailing: GestureDetector(
-                    onTap: () {
-                      _saved.remove(article.getName());
-                    },
-                    child: Icon(Icons.remove_shopping_cart, color: Colors.red)),
-              );
-            },
-          );
-          final List<Widget> divided = ListTile.divideTiles(
-            context: context,
-            tiles: tiles,
-          ).toList();
-
-          return Scaffold(
-            appBar: AppBar(
-              title: Text('Articles enregistrés :'),
-            ),
-            body: ListView(children: divided),
-          );
-        },
-      ),
-    );
+    Navigator.of(context)
+        .push(
+          MaterialPageRoute<void>(
+            builder: (BuildContext context) => ItemsListSummaryPage(_saved),
+          ),
+        )
+        .then((value) => setState(() {}));
   }
 }
