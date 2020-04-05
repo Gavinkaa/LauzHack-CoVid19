@@ -2,6 +2,7 @@ import 'package:app/AskSide/Articles.dart';
 import 'package:app/Contact.dart';
 import 'package:flutter/material.dart';
 import '../Request.dart';
+import '../RequestPage.dart';
 
 class OfferHelpPage extends StatefulWidget {
   OfferHelpPage({Key key}) : super(key: key);
@@ -71,7 +72,12 @@ class _OfferHelpPageState extends State<OfferHelpPage> {
         itemBuilder: (BuildContext context, int index) => Padding(
           padding: EdgeInsets.all(5.0),
           child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => RequestPage(_requests[index])));
+            },
             child: _requests[index].widget(),
           ),
         ),
