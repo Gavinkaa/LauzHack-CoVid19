@@ -6,29 +6,34 @@
 </head>
 <body>
 
-  <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
-  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+<div class = "main-form">
+  <h3>Firebase firestore</h3>
+  <p>Welcome to the login page</p>
+  <input type="text" placeholder="email" id ="first_name_field">
+  <input type="text" placeholder="Last name" id ="last_name_field">
+  <input type="text" placeholder="Email" id ="email_field">
+  <input type="text" placeholder="Password" id ="password_field">
+  <input type="text" placeholder="Telephone" id ="telephone_field">
+  <input type="text" placeholder="Type : Helper/victim" id ="type_field">
+  <input type="text" placeholder="Street" id ="street_field">
+  <input type="text" placeholder="Apt/floor" id ="apt_floor_field">
+  <input type="text" placeholder="Postal code" id ="pcode_field">
+  <input type="text" placeholder="City" id ="city_field">
 
+
+
+  <button id="login_button" onclick="storeData()">Proceed</button>
+</div>
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>
 
-  
-  <!-- Add Firebase products that you want to use -->
-  <script src="/__/firebase/7.13.2/firebase-auth.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
 
-    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
-
-  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-  <script src="/__/firebase/7.13.2/firebase-analytics.js"></script>
-
-  <!-- Add Firebase products that you want to use -->
-  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-auth.js"></script>
-  
-  
-  <!-- Load the Firebase SDKs before loading this file -->
-  
-  
   <script>
     // Your web app's Firebase configuration
     var firebaseConfig = {
@@ -41,18 +46,14 @@
       appId: "1:261992976571:web:f2478a36ba5320d0b5999e",
       measurementId: "G-QZJXSH7S8F"
     };
-
-//var db = firebase.firestore();
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
   </script>
-  <script src="main.dart.js" type="application/javascript"></script>
-  
-  <!-- Other firebase SDKs/config here -->
-  <script src="main.dart.js"></script>
-  <script src="/__/firebase/init.js"></script>
-  
+
+  <script src="main.dart"></script>
+
+
   
 </body>
 </html>
