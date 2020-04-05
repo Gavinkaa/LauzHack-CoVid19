@@ -40,53 +40,57 @@ class _AfterLoginHomePageState extends State<AfterLoginHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            RaisedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AskHelpPage()),
-                );
-              },
-              textColor: Colors.white,
-              padding: const EdgeInsets.all(0.0),
-              child: Container(
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: <Color>[
-                      Color(0xFF0D47A1),
-                      Color(0xFF1976D2),
-                      Color(0xFF42A5F5),
-                    ],
+            Expanded(
+              child: RaisedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AskHelpPage()),
+                  );
+                },
+                textColor: Colors.white,
+                padding: const EdgeInsets.all(0.0),
+                child: Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: <Color>[
+                        Color(0xFF0D47A1),
+                        Color(0xFF1976D2),
+                        Color(0xFF42A5F5),
+                      ],
+                    ),
                   ),
+                  alignment: Alignment.center,
+                  child: const Text("Demander de l'aide",
+                      style: TextStyle(fontSize: 40)),
                 ),
-                padding: const EdgeInsets.all(10.0),
-                child: const Text("Demander de l'aide",
-                    style: TextStyle(fontSize: 20)),
               ),
             ),
-            const SizedBox(height: 30),
-            RaisedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => OfferHelpPage()),
-                );
-              },
-              textColor: Colors.white,
-              padding: const EdgeInsets.all(0.0),
-              child: Container(
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: <Color>[
-                      Color(0xFF0D47A1),
-                      Color(0xFF1976D2),
-                      Color(0xFF42A5F5),
-                    ],
+            const SizedBox(height: 10),
+            Expanded(
+              child: RaisedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => OfferHelpPage()),
+                  );
+                },
+                textColor: Colors.white,
+                padding: const EdgeInsets.all(0.0),
+                child: Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: <Color>[
+                        Color(0xFF0D47A1),
+                        Color(0xFF1976D2),
+                        Color(0xFF42A5F5),
+                      ],
+                    ),
                   ),
+                  alignment: Alignment.center,
+                  child: const Text("Offrir son aide",
+                      style: TextStyle(fontSize: 40)),
                 ),
-                padding: const EdgeInsets.all(10.0),
-                child: const Text("Offrir son aide",
-                    style: TextStyle(fontSize: 20)),
               ),
             ),
           ],
