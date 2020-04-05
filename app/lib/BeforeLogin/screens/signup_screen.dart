@@ -58,18 +58,19 @@ class _SignupScreenState extends State<SignupScreen> {
                   horizontal: 30.0,
                   vertical: 5.0,
                 ),
-                child: Card(
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(10.0),
-                        labelText: 'First Name'),
-                    initialValue: _firstName,
-                    validator: (input) =>
-                        input.trim().isEmpty ? 'Please Enter valid name' : null,
-                    onChanged: (input) => setState(() {
-                      _firstName = input;
-                    }),
-                  ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: 'First Name',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  initialValue: _firstName,
+                  validator: (input) =>
+                      input.trim().isEmpty ? 'Please Enter valid name' : null,
+                  onChanged: (input) => setState(() {
+                    _firstName = input;
+                  }),
                 ),
               ),
               Padding(
@@ -77,18 +78,19 @@ class _SignupScreenState extends State<SignupScreen> {
                   horizontal: 30.0,
                   vertical: 5.0,
                 ),
-                child: Card(
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(10.0),
-                        labelText: 'Last Name'),
-                    initialValue: _lastName,
-                    validator: (input) =>
-                        input.trim().isEmpty ? 'Please Enter valid name' : null,
-                    onChanged: (input) => setState(() {
-                      _lastName = input;
-                    }),
-                  ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: 'Last Name',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  initialValue: _lastName,
+                  validator: (input) =>
+                      input.trim().isEmpty ? 'Please Enter valid name' : null,
+                  onChanged: (input) => setState(() {
+                    _lastName = input;
+                  }),
                 ),
               ),
               Padding(
@@ -96,19 +98,19 @@ class _SignupScreenState extends State<SignupScreen> {
                   horizontal: 30.0,
                   vertical: 5.0,
                 ),
-                child: Card(
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(10.0),
-                        labelText: 'Email'),
-                    initialValue: _email,
-                    validator: (input) => !input.contains('@')
-                        ? 'Please Enter valid email'
-                        : null,
-                    onChanged: (input) => setState(() {
-                      _email = input;
-                    }),
-                  ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: 'Email',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  initialValue: _email,
+                  validator: (input) =>
+                      !input.contains('@') ? 'Please Enter valid email' : null,
+                  onChanged: (input) => setState(() {
+                    _email = input;
+                  }),
                 ),
               ),
               Padding(
@@ -116,19 +118,20 @@ class _SignupScreenState extends State<SignupScreen> {
                   horizontal: 30.0,
                   vertical: 5.0,
                 ),
-                child: Card(
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(10.0),
-                        labelText: 'Password'),
-                    initialValue: _password,
-                    validator: (input) =>
-                        input.length < 6 ? 'Must be at least 6 chars' : null,
-                    onChanged: (input) => setState(() {
-                      _password = input;
-                    }),
-                    obscureText: true,
-                  ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: 'Password',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  initialValue: _password,
+                  validator: (input) =>
+                      input.length < 6 ? 'Must be at least 6 chars' : null,
+                  onChanged: (input) => setState(() {
+                    _password = input;
+                  }),
+                  obscureText: true,
                 ),
               ),
               Padding(
@@ -136,19 +139,19 @@ class _SignupScreenState extends State<SignupScreen> {
                   horizontal: 30.0,
                   vertical: 5.0,
                 ),
-                child: Card(
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(10.0),
-                        labelText: 'Telephone'),
-                    initialValue: _telephone,
-                    validator: (input) => input.trim().isEmpty
-                        ? 'Please Enter valid number'
-                        : null,
-                    onChanged: (input) => setState(() {
-                      _telephone = input;
-                    }),
-                  ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: 'Telephone',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  initialValue: _telephone,
+                  validator: (input) =>
+                      input.trim().isEmpty ? 'Please Enter valid number' : null,
+                  onChanged: (input) => setState(() {
+                    _telephone = input;
+                  }),
                 ),
               ),
               Padding(
@@ -156,20 +159,21 @@ class _SignupScreenState extends State<SignupScreen> {
                   horizontal: 30.0,
                   vertical: 5.0,
                 ),
-                child: Card(
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(10.0),
-                        labelText: 'Type: Helper/Asker'),
-                    initialValue: _type,
-                    validator: (input) =>
-                        !(input.trim() == "Asker" || input.trim() == "Helper")
-                            ? 'Please type Helper or Asker'
-                            : null,
-                    onChanged: (input) => setState(() {
-                      _type = input;
-                    }),
-                  ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: 'Type: Helper/Asker',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  initialValue: _type,
+                  validator: (input) =>
+                      !(input.trim() == "Asker" || input.trim() == "Helper")
+                          ? 'Please type Helper or Asker'
+                          : null,
+                  onChanged: (input) => setState(() {
+                    _type = input;
+                  }),
                 ),
               ),
               Padding(
@@ -177,18 +181,19 @@ class _SignupScreenState extends State<SignupScreen> {
                   horizontal: 30.0,
                   vertical: 5.0,
                 ),
-                child: Card(
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(10.0),
-                        labelText: 'Street'),
-                    initialValue: _street,
-                    validator: (input) =>
-                        input.trim().isEmpty ? 'Please Enter valid name' : null,
-                    onChanged: (input) => setState(() {
-                      _street = input;
-                    }),
-                  ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: 'Street',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  initialValue: _street,
+                  validator: (input) =>
+                      input.trim().isEmpty ? 'Please Enter valid name' : null,
+                  onChanged: (input) => setState(() {
+                    _street = input;
+                  }),
                 ),
               ),
               Padding(
@@ -196,18 +201,19 @@ class _SignupScreenState extends State<SignupScreen> {
                   horizontal: 30.0,
                   vertical: 5.0,
                 ),
-                child: Card(
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(10.0),
-                        labelText: 'Apt/floor'),
-                    initialValue: _aptfloor,
-                    validator: (input) =>
-                        input.trim().isEmpty ? 'Please Enter valid name' : null,
-                    onChanged: (input) => setState(() {
-                      _aptfloor = input;
-                    }),
-                  ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: 'Apt/floor',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  initialValue: _aptfloor,
+                  validator: (input) =>
+                      input.trim().isEmpty ? 'Please Enter valid name' : null,
+                  onChanged: (input) => setState(() {
+                    _aptfloor = input;
+                  }),
                 ),
               ),
               Padding(
@@ -215,18 +221,19 @@ class _SignupScreenState extends State<SignupScreen> {
                   horizontal: 30.0,
                   vertical: 5.0,
                 ),
-                child: Card(
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(10.0),
-                        labelText: 'Postal Code'),
-                    initialValue: _pcode,
-                    validator: (input) =>
-                        input.trim().isEmpty ? 'Please Enter valid name' : null,
-                    onChanged: (input) => setState(() {
-                      _pcode = input;
-                    }),
-                  ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: 'Postal Code',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  initialValue: _pcode,
+                  validator: (input) =>
+                      input.trim().isEmpty ? 'Please Enter valid name' : null,
+                  onChanged: (input) => setState(() {
+                    _pcode = input;
+                  }),
                 ),
               ),
               Padding(
@@ -234,18 +241,19 @@ class _SignupScreenState extends State<SignupScreen> {
                   horizontal: 30.0,
                   vertical: 5.0,
                 ),
-                child: Card(
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(10.0),
-                        labelText: 'City'),
-                    initialValue: _city,
-                    validator: (input) =>
-                        input.trim().isEmpty ? 'Please Enter valid name' : null,
-                    onChanged: (input) => setState(() {
-                      _city = input;
-                    }),
-                  ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: 'City',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  initialValue: _city,
+                  validator: (input) =>
+                      input.trim().isEmpty ? 'Please Enter valid name' : null,
+                  onChanged: (input) => setState(() {
+                    _city = input;
+                  }),
                 ),
               ),
               SizedBox(
