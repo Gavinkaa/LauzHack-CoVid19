@@ -61,6 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
               style: TextStyle(fontSize: 50.0, fontWeight: FontWeight.w200),
             ),
             Form(
+              autovalidate: true,
               key: _formKey,
               child: Column(
                 children: <Widget>[

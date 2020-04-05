@@ -38,6 +38,7 @@ class _SignupScreenState extends State<SignupScreen> {
     return Scaffold(
       body: Center(
         child: Form(
+          autovalidate: true,
           key: _formKey,
           child: ListView(
             children: <Widget>[
@@ -62,9 +63,12 @@ class _SignupScreenState extends State<SignupScreen> {
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10.0),
                         labelText: 'First Name'),
+                    initialValue: _firstName,
                     validator: (input) =>
                         input.trim().isEmpty ? 'Please Enter valid name' : null,
-                    onSaved: (input) => _firstName = input,
+                    onChanged: (input) => setState(() {
+                      _firstName = input;
+                    }),
                   ),
                 ),
               ),
@@ -78,9 +82,12 @@ class _SignupScreenState extends State<SignupScreen> {
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10.0),
                         labelText: 'Last Name'),
+                    initialValue: _lastName,
                     validator: (input) =>
                         input.trim().isEmpty ? 'Please Enter valid name' : null,
-                    onSaved: (input) => _lastName = input,
+                    onChanged: (input) => setState(() {
+                      _lastName = input;
+                    }),
                   ),
                 ),
               ),
@@ -94,10 +101,13 @@ class _SignupScreenState extends State<SignupScreen> {
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10.0),
                         labelText: 'Email'),
+                    initialValue: _email,
                     validator: (input) => !input.contains('@')
                         ? 'Please Enter valid email'
                         : null,
-                    onSaved: (input) => _email = input,
+                    onChanged: (input) => setState(() {
+                      _email = input;
+                    }),
                   ),
                 ),
               ),
@@ -111,9 +121,12 @@ class _SignupScreenState extends State<SignupScreen> {
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10.0),
                         labelText: 'Password'),
+                    initialValue: _password,
                     validator: (input) =>
                         input.length < 6 ? 'Must be at least 6 chars' : null,
-                    onSaved: (input) => _password = input,
+                    onChanged: (input) => setState(() {
+                      _password = input;
+                    }),
                     obscureText: true,
                   ),
                 ),
@@ -128,10 +141,13 @@ class _SignupScreenState extends State<SignupScreen> {
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10.0),
                         labelText: 'Telephone'),
+                    initialValue: _telephone,
                     validator: (input) => input.trim().isEmpty
                         ? 'Please Enter valid number'
                         : null,
-                    onSaved: (input) => _telephone = input,
+                    onChanged: (input) => setState(() {
+                      _telephone = input;
+                    }),
                   ),
                 ),
               ),
@@ -145,11 +161,14 @@ class _SignupScreenState extends State<SignupScreen> {
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10.0),
                         labelText: 'Type: Helper/Asker'),
+                    initialValue: _type,
                     validator: (input) =>
                         !(input.trim() == "Asker" || input.trim() == "Helper")
                             ? 'Please type Helper or Asker'
                             : null,
-                    onSaved: (input) => _type = input,
+                    onChanged: (input) => setState(() {
+                      _type = input;
+                    }),
                   ),
                 ),
               ),
@@ -163,9 +182,12 @@ class _SignupScreenState extends State<SignupScreen> {
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10.0),
                         labelText: 'Street'),
+                    initialValue: _street,
                     validator: (input) =>
                         input.trim().isEmpty ? 'Please Enter valid name' : null,
-                    onSaved: (input) => _street = input,
+                    onChanged: (input) => setState(() {
+                      _street = input;
+                    }),
                   ),
                 ),
               ),
@@ -179,9 +201,12 @@ class _SignupScreenState extends State<SignupScreen> {
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10.0),
                         labelText: 'Apt/floor'),
+                    initialValue: _aptfloor,
                     validator: (input) =>
                         input.trim().isEmpty ? 'Please Enter valid name' : null,
-                    onSaved: (input) => _aptfloor = input,
+                    onChanged: (input) => setState(() {
+                      _aptfloor = input;
+                    }),
                   ),
                 ),
               ),
@@ -195,9 +220,12 @@ class _SignupScreenState extends State<SignupScreen> {
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10.0),
                         labelText: 'Postal Code'),
+                    initialValue: _pcode,
                     validator: (input) =>
                         input.trim().isEmpty ? 'Please Enter valid name' : null,
-                    onSaved: (input) => _pcode = input,
+                    onChanged: (input) => setState(() {
+                      _pcode = input;
+                    }),
                   ),
                 ),
               ),
@@ -211,9 +239,12 @@ class _SignupScreenState extends State<SignupScreen> {
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.all(10.0),
                         labelText: 'City'),
+                    initialValue: _city,
                     validator: (input) =>
                         input.trim().isEmpty ? 'Please Enter valid name' : null,
-                    onSaved: (input) => _city = input,
+                    onChanged: (input) => setState(() {
+                      _city = input;
+                    }),
                   ),
                 ),
               ),
