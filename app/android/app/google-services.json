@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "261992976571",
+    "firebase_url": "https://helpneighbor-6a8d3.firebaseio.com",
+    "project_id": "helpneighbor-6a8d3",
+    "storage_bucket": "helpneighbor-6a8d3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:261992976571:android:582f39bffb5259d4b5999e",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "261992976571-5h2sp321c1243rr4v517kjnb0ie30buk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAR6_-Aq5iqTEWbrnyOhbAqAEV4jqsEDBQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "261992976571-5h2sp321c1243rr4v517kjnb0ie30buk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "261992976571-oshi5d6126of72d7je1tn5h2floqv2v6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.HYNeighbor.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
