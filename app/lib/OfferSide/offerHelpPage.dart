@@ -16,11 +16,26 @@ class _OfferHelpPageState extends State<OfferHelpPage> {
   void initState() {
     super.initState();
     _requests = [
-      _HelpRequest("clement", "normandie"),
-      _HelpRequest("lancelot", "grenoble"),
-      _HelpRequest("dougydoug", "geneve"),
-      _HelpRequest("ludo", "lausanne"),
-      _HelpRequest("elasfour", "caire")
+      _HelpRequest("Clément", "Saint-Sulpice", 1),
+      _HelpRequest("Lancelot", "Saint-Sulpice", 20),
+      _HelpRequest("Douglas", "Morges", 30),
+      _HelpRequest("Ludovic", "Lausanne", 10),
+      _HelpRequest("Mohamed", "Le Caire", 5),
+      _HelpRequest("Clément", "Saint-Sulpice", 1),
+      _HelpRequest("Lancelot", "Saint-Sulpice", 20),
+      _HelpRequest("Douglas", "Morges", 30),
+      _HelpRequest("Ludovic", "Lausanne", 10),
+      _HelpRequest("Mohamed", "Le Caire", 5),
+      _HelpRequest("Clément", "Saint-Sulpice", 1),
+      _HelpRequest("Lancelot", "Saint-Sulpice", 20),
+      _HelpRequest("Douglas", "Morges", 30),
+      _HelpRequest("Ludovic", "Lausanne", 10),
+      _HelpRequest("Mohamed", "Le Caire", 5),
+      _HelpRequest("Clément", "Saint-Sulpice", 1),
+      _HelpRequest("Lancelot", "Saint-Sulpice", 20),
+      _HelpRequest("Douglas", "Morges", 30),
+      _HelpRequest("Ludovic", "Lausanne", 10),
+      _HelpRequest("Mohamed", "Le Caire", 5)
     ];
   }
 
@@ -31,6 +46,7 @@ class _OfferHelpPageState extends State<OfferHelpPage> {
         title: Text(widget.title),
       ),
       body: ListView.builder(
+        physics: BouncingScrollPhysics(),
         itemCount: _requests.length,
         itemBuilder: (BuildContext context, int index) => Padding(
           padding: EdgeInsets.all(5.0),
@@ -49,23 +65,34 @@ class _OfferHelpPageState extends State<OfferHelpPage> {
                   child: ListTile(
                     dense: true,
                     contentPadding: EdgeInsets.symmetric(horizontal: 3.0),
-                    leading: Text(
-                      _requests[index]._name,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.w300,
-                      ),
+                    leading: Column(
+                      children: <Widget>[
+                        Text(
+                          _requests[index]._name,
+                          // textAlign: TextAlign.left,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        Text(
+                            _requests[index]._nb_of_articles == 1
+                                ? "1 article"
+                                : _requests[index]._nb_of_articles.toString() +
+                                    " articles",
+                            // textAlign: TextAlign.left,
+                            style: TextStyle(
+                                fontSize: 10.0, fontWeight: FontWeight.w200))
+                      ],
                     ),
                     title: Text(
                       _requests[index]._location,
-                      textAlign: TextAlign.center,
+                      textAlign: TextAlign.right,
                       style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.w400,
-                      ),
+                          color: Colors.black,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w200),
                     ),
                     trailing: Icon(
                       Icons.keyboard_arrow_right,
@@ -82,12 +109,13 @@ class _OfferHelpPageState extends State<OfferHelpPage> {
 }
 
 class _HelpRequest {
-  String _name;
-  String _location;
+  String _name, _location;
+  int _nb_of_articles;
 
-  _HelpRequest(String name, String location) {
+  _HelpRequest(String name, String location, int nb_of_articles) {
     _name = name;
     _location = location;
+    _nb_of_articles = nb_of_articles;
   }
 }
 
@@ -95,7 +123,7 @@ class _HelpRequestWithArticles extends _HelpRequest {
   List<Article> _articles;
 
   _HelpRequestWithArticles(String name, String location, List<Article> articles)
-      : super(name, location) {
+      : super(name, location, articles.length) {
     _articles = articles;
   }
 }
