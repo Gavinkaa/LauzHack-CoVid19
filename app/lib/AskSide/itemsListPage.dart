@@ -43,7 +43,7 @@ class _ItemsListPageState extends State<ItemsListPage> {
             title: Text(types[i].getStr()),
             children: <Widget>[
               Column(
-                children: [_buildArticles(_articlesByType[types[i]])],
+                children: _buildArticles(_articlesByType[types[i]]),
               )
             ],
           );
@@ -54,17 +54,17 @@ class _ItemsListPageState extends State<ItemsListPage> {
     }
   }
 
-  Widget _buildArticles(List<Article> articles) {
+  List<Widget> _buildArticles(List<Article> articles) {
     if (_articlesByType != null) {
-      return ListView.builder(
-        padding: const EdgeInsets.all(16.0),
-        itemCount: articles.length,
-        itemBuilder: (context, i) {
-          return _buildRow(articles[i]);
-        },
-      );
+      List<Widget> articlesWidgets = [];
+
+      for (int i = 0; i < articles.length; i++) {
+        articlesWidgets.add(_buildRow(articles[i]));
+      }
+
+      return articlesWidgets;
     } else {
-      return CircularProgressIndicator();
+      return [CircularProgressIndicator()];
     }
   }
 
