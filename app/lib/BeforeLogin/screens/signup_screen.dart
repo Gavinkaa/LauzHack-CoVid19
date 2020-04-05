@@ -199,7 +199,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       //     _type = input;
                       //   }),
                       // ),
-                      Row(children: <Widget>[
+                      Column(children: <Widget>[
                     RadioListTile<String>(
                       title: const Text("Demandeur d'aide"),
                       value: 'Asker',
