@@ -71,15 +71,15 @@ class Contact {
     _firstName = firstName;
   }
 
-  String setLastname(String lastName) {
+  void setLastname(String lastName) {
     _lastName = lastName;
   }
 
-  String setPhone(String phone) {
+  void setPhone(String phone) {
     _phone = phone;
   }
 
-  String setEmail(String email) {
+  void setEmail(String email) {
     _email = email;
   }
 }
