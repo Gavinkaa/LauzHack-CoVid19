@@ -18,4 +18,12 @@ class Request {
   Contact getAsker() {
     return Contact.from(asker);
   }
+
+  void setArticles(List<Article> articles) {
+    this.articles = List.from(articles);
+  }
+
+  void setAsker(Contact asker) {
+    this.asker = Contact.from(asker);
+  }
 }
