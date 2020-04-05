@@ -118,7 +118,43 @@ class ArticleType {
 
   @override
   String toString() {
-    return this._str;
+    switch (this._type) {
+      case _Type.Viande:
+        return "Viande";
+        break;
+      case _Type.Legumes:
+        return "Légumes";
+        break;
+      case _Type.Fruits:
+        return "Fruits";
+        break;
+      case _Type.Poisson:
+        return "Poisson";
+        break;
+      case _Type.Epicerie:
+        return "Epicerie";
+        break;
+      case _Type.ProdLait:
+        return "Produits laitiers";
+        break;
+      case _Type.Cosmetiques:
+        return "Cosmétiques";
+        break;
+      case _Type.Boissons:
+        return "Boissons";
+        break;
+      case _Type.Papeterie:
+        return "Papeterie";
+        break;
+      case _Type.PetitDej:
+        return "Petit déjeuner";
+        break;
+      case _Type.ProdMen:
+        return "Produits ménagers";
+        break;
+      default:
+        return "Autre";
+    }
   }
 
   @override

@@ -1,0 +1,12 @@
+
+- Demander de l-aide: 1. mes demandes, 2. creer ma liste.
+- affichage de mes demandes
+- Button accepter request
+- store picture file
+- boutton valider la liste
+
+
+
+FAITS :
+
+- beaux buttons home page

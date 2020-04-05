@@ -65,6 +65,37 @@ class _RequestPageState extends State<RequestPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Demande de " + _request.getAsker().getFirstName()),
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text("Accepter la demande ?"),
+                    content: Text(
+                        "Etes-vous sûr de vouloir prendre en charge cette demande ?"),
+                    actions: <Widget>[
+                      FlatButton(
+                          onPressed: () => Navigator.of(context).pop(),
+                          child: Text("Annuler")),
+                      FlatButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text("Accepter")),
+                    ],
+                  );
+                },
+              );
+            },
+            icon: Icon(
+              Icons.assignment_turned_in,
+              color: Colors.green,
+              size: 30.0,
+            ),
+          ),
+        ],
       ),
       body: Column(
         children: _buildArticles(_articlesFromRequest),

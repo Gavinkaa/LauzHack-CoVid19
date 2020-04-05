@@ -16,7 +16,7 @@ import 'package:firebase/firestore.dart';
 class AuthService {
   static final _auth = FirebaseAuth.instance;
 
-  //static final _firestore = firestore();
+  static final _firestore = firestore();
   //.Firestore.instance;
   //Handle Authentication
   handleAuth() {
@@ -41,37 +41,37 @@ class AuthService {
 
   Future<void> register_in_with_error(
       BuildContext context,
-      String firstName,
-      String lastName,
-      String email,
-      String password,
-      String telephone,
-      String type,
-      String street,
-      String aptfloor,
-      String pcode,
-      String city) async {
+      String _firstName,
+      String _lastName,
+      String _email,
+      String _password,
+      String _telephone,
+      String _type,
+      String _street,
+      String _aptfloor,
+      String _pcode,
+      String _city) async {
     try {
       AuthResult authRes = await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+          email: _email, password: _password);
       FirebaseUser signedInUser = authRes.user; // handles auth
       // handles writing to the db
-      //if (signedInUser != null) {
-      //  //_firestore.collection('/users').document(signedInUser.uid).setData({
-      //  _firestore.collection('/users').doc(signedInUser.uid).set({
-      //    'firstName': firstName,
-      //    'lastName': lastName,
-      //    'email': email,
-      //    'telephone': telephone,
-      //    'type': type,
-      //    'street': street,
-      //    'aptFloor': aptfloor,
-      //    'pcode': pcode,
-      //    'city': city
-      //  });
-      //  //  Navigator.pushReplacementNamed(
-      //  //      context, LoginPage().toString()); // not to be able to come back
-      //}
+      if (signedInUser != null) {
+        //  //_firestore.collection('/users').document(signedInUser.uid).setData({
+        _firestore.collection('/users').doc(signedInUser.uid).set({
+          'firstName': _firstName,
+          'lastName': _lastName,
+          'email': _email,
+          'telephone': _telephone,
+          'type': _type,
+          'street': _street,
+          'aptFloor': _aptfloor,
+          'pcode': _pcode,
+          'city': _city
+        });
+        //  Navigator.pushReplacementNamed(
+        //      context, LoginPage().toString()); // not to be able to come back
+      }
     } catch (ERROR_WRONG_PASSWORD) {
       Widget okBut = FlatButton(
         child: Text("OK"),
@@ -148,22 +148,6 @@ class AuthService {
           });
     }
   }
-}
-
-Padding add_Box(String field, String type) {
-  return Padding(
-      padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 20.0, bottom: 5.0),
-      child: Container(
-        height: 32.0,
-        child: TextFormField(
-          obscureText: true,
-          decoration: InputDecoration(hintText: type),
-          validator: (value) => value.isEmpty ? type + ' is required' : null,
-          onChanged: (value) {
-            field = value;
-          },
-        ),
-      ));
 }
 
 class BuilderContext {}

@@ -27,7 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
       );
 
       AlertDialog alert = AlertDialog(
-        title: Text("Error"),
+        title: Text("Erreur"),
         content: Text("Incorrect email or password"),
         actions: [
           okBut,
@@ -52,77 +52,96 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'HYNeighbor',
-              style: TextStyle(fontSize: 50.0),
-            ),
-            Form(
-              key: _formKey,
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 30.0,
-                      vertical: 10.0,
-                    ),
-                    child: TextFormField(
-                      decoration: InputDecoration(labelText: 'Email'),
-                      validator: (input) => !input.contains('@')
-                          ? 'Please Enter valid email'
-                          : null,
-                      onSaved: (input) => _email = input,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 30.0,
-                      vertical: 10.0,
-                    ),
-                    child: TextFormField(
-                      decoration: InputDecoration(labelText: 'Password'),
-                      validator: (input) =>
-                          input.length < 6 ? 'Must be at least 6 chars' : null,
-                      onSaved: (input) => _password = input,
-                      obscureText: true,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  FlatButton(
-                    onPressed: _submit,
-                    color: Colors.red,
-                    child: Text(
-                      'Login',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18.0,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20.0,
-                  ),
-                  FlatButton(
-                    onPressed: () =>
-                        Navigator.pushNamed(context, SignupScreen.id),
-                    color: Colors.red,
-                    child: Text(
-                      'Go to sign up',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18.0,
-                      ),
-                    ),
-                  ),
-                ],
+        child: Form(
+          autovalidate: true,
+          key: _formKey,
+          child: ListView(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(40.0),
+                child: Text(
+                  "HYNeighbor",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 50.0, fontWeight: FontWeight.w200),
+                ),
               ),
-            ),
-          ],
+              SizedBox(height: 40.0),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30.0,
+                  vertical: 10.0,
+                ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      labelText: 'Email',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  validator: (input) => !input.contains('@')
+                      ? 'Entrez une adresse e-mail valide'
+                      : null,
+                  onSaved: (input) => _email = input,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30.0,
+                  vertical: 10.0,
+                ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      labelText: 'Mot de passe',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  validator: (input) => input.length < 6
+                      ? 'Doit faire au moins 6 caractères'
+                      : null,
+                  onSaved: (input) => _password = input,
+                  obscureText: true,
+                ),
+              ),
+              SizedBox(
+                height: 80.0,
+              ),
+              Center(
+                child: FlatButton(
+                  onPressed: _submit,
+                  color: Colors.red,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(8.0),
+                  ),
+                  child: Text(
+                    'SE CONNECTER',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w300),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 15.0,
+              ),
+              Center(
+                child: FlatButton(
+                  onPressed: () =>
+                      Navigator.pushNamed(context, SignupScreen.id),
+                  color: Colors.red,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(8.0),
+                  ),
+                  child: Text(
+                    "S'INSCRIRE",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w300),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

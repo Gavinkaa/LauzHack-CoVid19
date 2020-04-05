@@ -45,7 +45,7 @@ class _ItemsListPageState extends State<ItemsListPage> {
         itemBuilder: (context, i) {
           List<ArticleType> types = _articlesByType.keys.toList();
           return ExpansionTile(
-            title: Text(types[i].getStr(), style: _fontTypes),
+            title: Text(types[i].toString(), style: _fontTypes),
             children: <Widget>[
               Column(
                 children: _buildArticles(_articlesByType[types[i]]),
@@ -99,7 +99,10 @@ class _ItemsListPageState extends State<ItemsListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Votre demande :'),
+        title: Text(
+          'Votre demande :',
+          style: TextStyle(color: Colors.black),
+        ),
         actions: <Widget>[
           IconButton(
               icon: Icon(

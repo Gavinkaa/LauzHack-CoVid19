@@ -1,5 +1,6 @@
 import 'package:app/BeforeLogin/services/auth_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class SignupScreen extends StatefulWidget {
   static final String id = 'signup_sceen';
@@ -19,6 +20,8 @@ class _SignupScreenState extends State<SignupScreen> {
       _aptfloor,
       _pcode,
       _city;
+  bool _passwordInvisible;
+  int radioValue = -1;
 
   _submit() {
     if (_formKey.currentState.validate()) {
@@ -30,6 +33,12 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   @override
+  void initState() {
+    _passwordInvisible = true;
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return _myListView(context);
   }
@@ -38,184 +47,301 @@ class _SignupScreenState extends State<SignupScreen> {
     return Scaffold(
       body: Center(
         child: Form(
+          autovalidate: true,
           key: _formKey,
           child: ListView(
             children: <Widget>[
-              Text(
-                'Helper App',
-                style: TextStyle(fontSize: 50.0),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 30.0,
-                  vertical: 10.0,
-                ),
-                child: Card(
-                  child: TextFormField(
-                    decoration: InputDecoration(labelText: 'First Name'),
-                    validator: (input) =>
-                        input.trim().isEmpty ? 'Please Enter valid name' : null,
-                    onSaved: (input) => _firstName = input,
+              Container(
+                alignment: Alignment.center,
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Text(
+                    "HYNeighbor",
+                    style:
+                        TextStyle(fontSize: 50.0, fontWeight: FontWeight.w200),
                   ),
                 ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 30.0,
-                  vertical: 10.0,
+                  vertical: 5.0,
                 ),
-                child: Card(
-                  child: TextFormField(
-                    decoration: InputDecoration(labelText: 'Last Name'),
-                    validator: (input) =>
-                        input.trim().isEmpty ? 'Please Enter valid name' : null,
-                    onSaved: (input) => _lastName = input,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 30.0,
-                  vertical: 10.0,
-                ),
-                child: Card(
-                  child: TextFormField(
-                    decoration: InputDecoration(labelText: 'Email'),
-                    validator: (input) => !input.contains('@')
-                        ? 'Please Enter valid email'
-                        : null,
-                    onSaved: (input) => _email = input,
-                  ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: 'Prénom',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  initialValue: _firstName,
+                  validator: (input) =>
+                      input.trim().isEmpty ? 'Entrez un prénom valide' : null,
+                  onChanged: (input) => setState(() {
+                    _firstName = input;
+                  }),
                 ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 30.0,
-                  vertical: 10.0,
+                  vertical: 5.0,
                 ),
-                child: Card(
-                  child: TextFormField(
-                    decoration: InputDecoration(labelText: 'Password'),
-                    validator: (input) =>
-                        input.length < 6 ? 'Must be at least 6 chars' : null,
-                    onSaved: (input) => _password = input,
-                    obscureText: true,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 30.0,
-                  vertical: 10.0,
-                ),
-                child: Card(
-                  child: TextFormField(
-                    decoration: InputDecoration(labelText: 'Telephone'),
-                    validator: (input) => input.trim().isEmpty
-                        ? 'Please Enter valid number'
-                        : null,
-                    onSaved: (input) => _telephone = input,
-                  ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: 'Nom',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  initialValue: _lastName,
+                  validator: (input) =>
+                      input.trim().isEmpty ? 'Entrez un nom valide' : null,
+                  onChanged: (input) => setState(() {
+                    _lastName = input;
+                  }),
                 ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 30.0,
-                  vertical: 10.0,
+                  vertical: 5.0,
                 ),
-                child: Card(
-                  child: TextFormField(
-                    decoration:
-                        InputDecoration(labelText: 'Type: Helper/Asker'),
-                    validator: (input) =>
-                        !(input.trim() == "Asker" || input.trim() == "Helper")
-                            ? 'Please type Helper or Asker'
-                            : null,
-                    onSaved: (input) => _type = input,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 30.0,
-                  vertical: 10.0,
-                ),
-                child: Card(
-                  child: TextFormField(
-                    decoration: InputDecoration(labelText: 'Street'),
-                    validator: (input) =>
-                        input.trim().isEmpty ? 'Please Enter valid name' : null,
-                    onSaved: (input) => _street = input,
-                  ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: 'Email',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  initialValue: _email,
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (input) =>
+                      !input.contains('@') ? 'Entrez un email valide' : null,
+                  onChanged: (input) => setState(() {
+                    _email = input;
+                  }),
                 ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 30.0,
-                  vertical: 10.0,
+                  vertical: 5.0,
                 ),
-                child: Card(
-                  child: TextFormField(
-                    decoration: InputDecoration(labelText: 'Apt/floor'),
-                    validator: (input) =>
-                        input.trim().isEmpty ? 'Please Enter valid name' : null,
-                    onSaved: (input) => _aptfloor = input,
-                  ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: 'Mot de passe',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      ),
+                      suffixIcon: IconButton(
+                          icon: Icon(
+                            _passwordInvisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: Colors.black,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _passwordInvisible = !_passwordInvisible;
+                            });
+                          })),
+                  initialValue: _password,
+                  validator: (input) => input.length < 6
+                      ? 'Doit faire au moins 6 caractères'
+                      : null,
+                  onChanged: (input) => setState(() {
+                    _password = input;
+                  }),
+                  obscureText: _passwordInvisible,
                 ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 30.0,
-                  vertical: 10.0,
+                  vertical: 5.0,
                 ),
-                child: Card(
-                  child: TextFormField(
-                    decoration: InputDecoration(labelText: 'Postal Code'),
-                    validator: (input) =>
-                        input.trim().isEmpty ? 'Please Enter valid name' : null,
-                    onSaved: (input) => _pcode = input,
-                  ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: 'Téléphone',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  initialValue: _telephone,
+                  keyboardType: TextInputType.phone,
+                  validator: (input) =>
+                      input.trim().isEmpty ? 'Entrez un numéro valide' : null,
+                  onChanged: (input) => setState(() {
+                    _telephone = input;
+                  }),
                 ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 30.0,
-                  vertical: 10.0,
+                  vertical: 5.0,
                 ),
-                child: Card(
-                  child: TextFormField(
-                    decoration: InputDecoration(labelText: 'City'),
-                    validator: (input) =>
-                        input.trim().isEmpty ? 'Please Enter valid name' : null,
-                    onSaved: (input) => _city = input,
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: 'Rue',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  initialValue: _street,
+                  validator: (input) =>
+                      input.trim().isEmpty ? 'Entrez une adresse valide' : null,
+                  onChanged: (input) => setState(() {
+                    _street = input;
+                  }),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30.0,
+                  vertical: 5.0,
+                ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: "Complément d'adresse",
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  initialValue: _aptfloor,
+                  validator: (input) => input.trim().isEmpty
+                      ? "Entrez un complément d'adresse valide"
+                      : null,
+                  onChanged: (input) => setState(() {
+                    _aptfloor = input;
+                  }),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30.0,
+                  vertical: 5.0,
+                ),
+                child: TextFormField(
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: 'Code postal',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  initialValue: _pcode,
+                  validator: (input) => input.trim().isEmpty
+                      ? 'Entrez un code postal valide'
+                      : null,
+                  onChanged: (input) => setState(() {
+                    _pcode = input;
+                  }),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30.0,
+                  vertical: 5.0,
+                ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: 'Ville',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  initialValue: _city,
+                  validator: (input) =>
+                      input.trim().isEmpty ? 'Entrez une ville valide' : null,
+                  onChanged: (input) => setState(() {
+                    _city = input;
+                  }),
+                ),
+              ),
+              SizedBox(height: 10.0),
+              Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 30.0,
+                    vertical: 5.0,
+                  ),
+                  child: Text("Type d'utilisateur :",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(fontSize: 15.0))),
+              Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 30.0,
+                    vertical: 5.0,
+                  ),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            Radio(
+                              activeColor: Colors.red,
+                              hoverColor: Colors.red[600],
+                              value: 0,
+                              groupValue: radioValue,
+                              onChanged: _radioValue,
+                            ),
+                            Text(
+                              "Demandeur d'aide",
+                              style: TextStyle(fontSize: 16.0),
+                              textAlign: TextAlign.start,
+                            ),
+                          ],
+                        ),
+                        Row(children: <Widget>[
+                          Radio(
+                            activeColor: Colors.red,
+                            hoverColor: Colors.red[600],
+                            value: 1,
+                            groupValue: radioValue,
+                            onChanged: _radioValue,
+                          ),
+                          Text(
+                            "Aideur",
+                            style: TextStyle(
+                              fontSize: 16.0,
+                            ),
+                          ),
+                        ]),
+                      ])),
+              Center(
+                child: FlatButton(
+                  onPressed: _submit,
+                  color: Colors.red,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: Text(
+                    "S'INSCRIRE",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w300),
                   ),
                 ),
               ),
               SizedBox(
-                height: 20.0,
+                height: 15.0,
               ),
-              FlatButton(
-                onPressed: _submit,
-                color: Colors.red,
-                child: Text(
-                  'Signup',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18.0,
+              Center(
+                child: FlatButton(
+                  onPressed: () => Navigator.pop(context),
+                  color: Colors.red,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
-                ),
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-              FlatButton(
-                onPressed: () => Navigator.pop(context),
-                color: Colors.red,
-                child: Text(
-                  'Back to Login',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18.0,
+                  child: Text(
+                    "RETOUR",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w300),
                   ),
                 ),
               ),
@@ -224,5 +350,19 @@ class _SignupScreenState extends State<SignupScreen> {
         ),
       ),
     );
+  }
+
+  void _radioValue(int value) {
+    setState(() {
+      radioValue = value;
+      switch (radioValue) {
+        case 0:
+          _type = "Asker";
+          break;
+        case 1:
+          _type = "Helper";
+          break;
+      }
+    });
   }
 }
