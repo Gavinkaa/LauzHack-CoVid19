@@ -41,18 +41,27 @@ class _SignupScreenState extends State<SignupScreen> {
           key: _formKey,
           child: ListView(
             children: <Widget>[
-              Text(
-                'Helper App',
-                style: TextStyle(fontSize: 50.0),
+              Container(
+                alignment: Alignment.center,
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Text(
+                    "HYNeighbor",
+                    style:
+                        TextStyle(fontSize: 50.0, fontWeight: FontWeight.w200),
+                  ),
+                ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 30.0,
-                  vertical: 10.0,
+                  vertical: 5.0,
                 ),
                 child: Card(
                   child: TextFormField(
-                    decoration: InputDecoration(labelText: 'First Name'),
+                    decoration: InputDecoration(
+                        contentPadding: EdgeInsets.all(10.0),
+                        labelText: 'First Name'),
                     validator: (input) =>
                         input.trim().isEmpty ? 'Please Enter valid name' : null,
                     onSaved: (input) => _firstName = input,
@@ -62,11 +71,13 @@ class _SignupScreenState extends State<SignupScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 30.0,
-                  vertical: 10.0,
+                  vertical: 5.0,
                 ),
                 child: Card(
                   child: TextFormField(
-                    decoration: InputDecoration(labelText: 'Last Name'),
+                    decoration: InputDecoration(
+                        contentPadding: EdgeInsets.all(10.0),
+                        labelText: 'Last Name'),
                     validator: (input) =>
                         input.trim().isEmpty ? 'Please Enter valid name' : null,
                     onSaved: (input) => _lastName = input,
@@ -76,11 +87,13 @@ class _SignupScreenState extends State<SignupScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 30.0,
-                  vertical: 10.0,
+                  vertical: 5.0,
                 ),
                 child: Card(
                   child: TextFormField(
-                    decoration: InputDecoration(labelText: 'Email'),
+                    decoration: InputDecoration(
+                        contentPadding: EdgeInsets.all(10.0),
+                        labelText: 'Email'),
                     validator: (input) => !input.contains('@')
                         ? 'Please Enter valid email'
                         : null,
@@ -91,11 +104,13 @@ class _SignupScreenState extends State<SignupScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 30.0,
-                  vertical: 10.0,
+                  vertical: 5.0,
                 ),
                 child: Card(
                   child: TextFormField(
-                    decoration: InputDecoration(labelText: 'Password'),
+                    decoration: InputDecoration(
+                        contentPadding: EdgeInsets.all(10.0),
+                        labelText: 'Password'),
                     validator: (input) =>
                         input.length < 6 ? 'Must be at least 6 chars' : null,
                     onSaved: (input) => _password = input,
@@ -106,11 +121,13 @@ class _SignupScreenState extends State<SignupScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 30.0,
-                  vertical: 10.0,
+                  vertical: 5.0,
                 ),
                 child: Card(
                   child: TextFormField(
-                    decoration: InputDecoration(labelText: 'Telephone'),
+                    decoration: InputDecoration(
+                        contentPadding: EdgeInsets.all(10.0),
+                        labelText: 'Telephone'),
                     validator: (input) => input.trim().isEmpty
                         ? 'Please Enter valid number'
                         : null,
@@ -121,12 +138,13 @@ class _SignupScreenState extends State<SignupScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 30.0,
-                  vertical: 10.0,
+                  vertical: 5.0,
                 ),
                 child: Card(
                   child: TextFormField(
-                    decoration:
-                        InputDecoration(labelText: 'Type: Helper/Asker'),
+                    decoration: InputDecoration(
+                        contentPadding: EdgeInsets.all(10.0),
+                        labelText: 'Type: Helper/Asker'),
                     validator: (input) =>
                         !(input.trim() == "Asker" || input.trim() == "Helper")
                             ? 'Please type Helper or Asker'
@@ -138,11 +156,13 @@ class _SignupScreenState extends State<SignupScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 30.0,
-                  vertical: 10.0,
+                  vertical: 5.0,
                 ),
                 child: Card(
                   child: TextFormField(
-                    decoration: InputDecoration(labelText: 'Street'),
+                    decoration: InputDecoration(
+                        contentPadding: EdgeInsets.all(10.0),
+                        labelText: 'Street'),
                     validator: (input) =>
                         input.trim().isEmpty ? 'Please Enter valid name' : null,
                     onSaved: (input) => _street = input,
@@ -152,11 +172,13 @@ class _SignupScreenState extends State<SignupScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 30.0,
-                  vertical: 10.0,
+                  vertical: 5.0,
                 ),
                 child: Card(
                   child: TextFormField(
-                    decoration: InputDecoration(labelText: 'Apt/floor'),
+                    decoration: InputDecoration(
+                        contentPadding: EdgeInsets.all(10.0),
+                        labelText: 'Apt/floor'),
                     validator: (input) =>
                         input.trim().isEmpty ? 'Please Enter valid name' : null,
                     onSaved: (input) => _aptfloor = input,
@@ -166,11 +188,13 @@ class _SignupScreenState extends State<SignupScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 30.0,
-                  vertical: 10.0,
+                  vertical: 5.0,
                 ),
                 child: Card(
                   child: TextFormField(
-                    decoration: InputDecoration(labelText: 'Postal Code'),
+                    decoration: InputDecoration(
+                        contentPadding: EdgeInsets.all(10.0),
+                        labelText: 'Postal Code'),
                     validator: (input) =>
                         input.trim().isEmpty ? 'Please Enter valid name' : null,
                     onSaved: (input) => _pcode = input,
@@ -180,11 +204,13 @@ class _SignupScreenState extends State<SignupScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 30.0,
-                  vertical: 10.0,
+                  vertical: 5.0,
                 ),
                 child: Card(
                   child: TextFormField(
-                    decoration: InputDecoration(labelText: 'City'),
+                    decoration: InputDecoration(
+                        contentPadding: EdgeInsets.all(10.0),
+                        labelText: 'City'),
                     validator: (input) =>
                         input.trim().isEmpty ? 'Please Enter valid name' : null,
                     onSaved: (input) => _city = input,
