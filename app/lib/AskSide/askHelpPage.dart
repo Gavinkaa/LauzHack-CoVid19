@@ -7,7 +7,7 @@ import 'itemsListPage.dart';
 class AskHelpPage extends StatefulWidget {
   AskHelpPage({Key key}) : super(key: key);
 
-  final String title = 'Ask Help';
+  final String title = "Demander de l'aide";
 
   @override
   _AskHelpPageState createState() => _AskHelpPageState();
@@ -19,14 +19,14 @@ class _AskHelpPageState extends State<AskHelpPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Choose how to do the list"),
+          title: Text("Choisis une méthode :"),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
                 GestureDetector(
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
-                    child: Text("Write a list"),
+                    child: Text("Créer une liste de courses"),
                   ),
                   onTap: () {
                     Navigator.of(context).pop();
@@ -39,7 +39,7 @@ class _AskHelpPageState extends State<AskHelpPage> {
                 Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: GestureDetector(
-                    child: Text("Take a picture"),
+                    child: Text("Prendre une photo de ma liste de course"),
                     onTap: () {
                       Navigator.of(context).pop();
                       Navigator.push(
@@ -81,7 +81,7 @@ class _AskHelpPageState extends State<AskHelpPage> {
                     );
                   }
                 },
-                child: Text('Items list')),
+                child: Text('Créer une liste de courses')),
           ],
         ),
       ),

@@ -64,7 +64,7 @@ class _RequestPageState extends State<RequestPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Votre demande :'),
+        title: Text("Demande de " + _request.getAsker().getFirstName()),
       ),
       body: Column(
         children: _buildArticles(_articlesFromRequest),

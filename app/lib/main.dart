@@ -25,7 +25,7 @@ class HelpYourNeighbors extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key}) : super(key: key);
 
-  final String title = 'Home page';
+  final String title = 'HelpYourNeighbors';
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -64,8 +64,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 padding: const EdgeInsets.all(10.0),
-                child:
-                    const Text('Ask for help', style: TextStyle(fontSize: 20)),
+                child: const Text("Demander de l'aide",
+                    style: TextStyle(fontSize: 20)),
               ),
             ),
             const SizedBox(height: 30),
@@ -89,7 +89,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 padding: const EdgeInsets.all(10.0),
-                child: const Text('Offer help', style: TextStyle(fontSize: 20)),
+                child: const Text("Offrir son aide",
+                    style: TextStyle(fontSize: 20)),
               ),
             ),
           ],
