@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 class AuthServ {
   static final _auth = FirebaseAuth.instance;
   static final _firestore = Firestore.instance;
+  static AuthResult authRes;
   static void signUpUser(
       BuildContext context,
       String firstName,
@@ -20,12 +21,13 @@ class AuthServ {
       String pcode,
       String city) async {
     try {
-      AuthResult authRes = await _auth.createUserWithEmailAndPassword(
+      authRes = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser signedInUser = authRes.user; // handles auth
       // handles writing to the db
       if (signedInUser != null) {
         _firestore.collection('/users').document(signedInUser.uid).setData({
+          'userId': authRes.user.uid,
           'firstName': firstName,
           'lastName': lastName,
           'email': email,
@@ -73,5 +75,9 @@ class AuthServ {
       return false;
     }
     return true;
+  }
+
+  static AuthResult getAuth() {
+    return authRes;
   }
 }
