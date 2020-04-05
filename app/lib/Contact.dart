@@ -5,8 +5,17 @@ class Contact {
   String _phone;
   String _email;
 
-  Contact(this._pcode, this._city, this._street, this._aptFloor,
-      this._firstName, this._lastName, this._phone, this._email);
+  Contact(int pcode, String city, String street, String aptFloor,
+      String firstName, String lastName, String phone, String email) {
+    this._pcode = pcode;
+    this._city = city;
+    this._street = street;
+    this._aptFloor = aptFloor;
+    this._firstName = firstName[0].toLowerCase() + firstName.substring(1);
+    this._lastName = lastName[0].toLowerCase() + lastName.substring(1);
+    this._phone = phone;
+    this._email = email;
+  }
 
   Contact.from(Contact contact) {
     this._pcode = contact._pcode;

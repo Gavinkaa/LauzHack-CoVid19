@@ -34,10 +34,6 @@ class Request {
     this._asker = Contact.from(asker);
   }
 
-  String _capitalize(String s) {
-    return s[0].toUpperCase() + s.substring(1);
-  }
-
   Widget widget() {
     return Card(
       elevation: 4.0,
