@@ -11,8 +11,8 @@ class Contact {
     this._city = city;
     this._street = street;
     this._aptFloor = aptFloor;
-    this._firstName = firstName[0].toLowerCase() + firstName.substring(1);
-    this._lastName = lastName[0].toLowerCase() + lastName.substring(1);
+    this._firstName = firstName[0].toUpperCase() + firstName.substring(1);
+    this._lastName = lastName[0].toUpperCase() + lastName.substring(1);
     this._phone = phone;
     this._email = email;
   }
