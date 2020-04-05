@@ -18,7 +18,6 @@ class _ItemsListPageState extends State<ItemsListPage> {
     var jsonData = await rootBundle.loadString('assets/articles.json');
     setState(() {
       _articlesByType = Article.dataToMap(json.decode(jsonData));
-      print("\n\n" + (_articlesByType.keys.length).toString() + "\n\n");
       // Map<String, List<Map<String, String>>>
     });
   }
