@@ -1,5 +1,6 @@
 import 'package:app/AskSide/Articles.dart';
 import 'package:flutter/material.dart';
+import '../Request.dart';
 
 class OfferHelpPage extends StatefulWidget {
   OfferHelpPage({Key key}) : super(key: key);
@@ -11,33 +12,33 @@ class OfferHelpPage extends StatefulWidget {
 }
 
 class _OfferHelpPageState extends State<OfferHelpPage> {
-  List<_HelpRequest> _requests;
+  List<Request> _requests;
   @override
   void initState() {
     super.initState();
     _requests = [
       // API calls to database
-      // _HelpRequest(user name, location, List<Article> articles)
-      // _HelpRequest("Clément", "Saint-Sulpice", 1),
-      // _HelpRequest("Lancelot", "Saint-Sulpice", 20),
-      // _HelpRequest("Douglas", "Morges", 30),
-      // _HelpRequest("Ludovic", "Lausanne", 10),
-      // _HelpRequest("Mohamed", "Le Caire", 5),
-      // _HelpRequest("Clément", "Saint-Sulpice", 1),
-      // _HelpRequest("Lancelot", "Saint-Sulpice", 20),
-      // _HelpRequest("Douglas", "Morges", 30),
-      // _HelpRequest("Ludovic", "Lausanne", 10),
-      // _HelpRequest("Mohamed", "Le Caire", 5),
-      // _HelpRequest("Clément", "Saint-Sulpice", 1),
-      // _HelpRequest("Lancelot", "Saint-Sulpice", 20),
-      // _HelpRequest("Douglas", "Morges", 30),
-      // _HelpRequest("Ludovic", "Lausanne", 10),
-      // _HelpRequest("Mohamed", "Le Caire", 5),
-      // _HelpRequest("Clément", "Saint-Sulpice", 1),
-      // _HelpRequest("Lancelot", "Saint-Sulpice", 20),
-      // _HelpRequest("Douglas", "Morges", 30),
-      // _HelpRequest("Ludovic", "Lausanne", 10),
-      // _HelpRequest("Mohamed", "Le Caire", 5)
+      // Request(user name, location, List<Article> articles)
+      // Request("Clément", "Saint-Sulpice", 1),
+      // Request("Lancelot", "Saint-Sulpice", 20),
+      // Request("Douglas", "Morges", 30),
+      // Request("Ludovic", "Lausanne", 10),
+      // Request("Mohamed", "Le Caire", 5),
+      // Request("Clément", "Saint-Sulpice", 1),
+      // Request("Lancelot", "Saint-Sulpice", 20),
+      // Request("Douglas", "Morges", 30),
+      // Request("Ludovic", "Lausanne", 10),
+      // Request("Mohamed", "Le Caire", 5),
+      // Request("Clément", "Saint-Sulpice", 1),
+      // Request("Lancelot", "Saint-Sulpice", 20),
+      // Request("Douglas", "Morges", 30),
+      // Request("Ludovic", "Lausanne", 10),
+      // Request("Mohamed", "Le Caire", 5),
+      // Request("Clément", "Saint-Sulpice", 1),
+      // Request("Lancelot", "Saint-Sulpice", 20),
+      // Request("Douglas", "Morges", 30),
+      // Request("Ludovic", "Lausanne", 10),
+      // Request("Mohamed", "Le Caire", 5)
     ];
   }
 
@@ -70,7 +71,7 @@ class _OfferHelpPageState extends State<OfferHelpPage> {
                     leading: Column(
                       children: <Widget>[
                         Text(
-                          _requests[index]._name,
+                          _requests[index].getAsker().getFirstName(),
                           // textAlign: TextAlign.left,
                           style: TextStyle(
                             color: Colors.black,
@@ -79,9 +80,11 @@ class _OfferHelpPageState extends State<OfferHelpPage> {
                           ),
                         ),
                         Text(
-                            _requests[index]._nb_of_articles == 1
+                            _requests[index].getNumberOfArticles() == 1
                                 ? "1 article"
-                                : _requests[index]._nb_of_articles.toString() +
+                                : _requests[index]
+                                        .getNumberOfArticles()
+                                        .toString() +
                                     " articles",
                             // textAlign: TextAlign.left,
                             style: TextStyle(
@@ -89,7 +92,7 @@ class _OfferHelpPageState extends State<OfferHelpPage> {
                       ],
                     ),
                     title: Text(
-                      _requests[index]._location,
+                      _requests[index].getAsker().getCity(),
                       textAlign: TextAlign.right,
                       style: TextStyle(
                           color: Colors.black,
@@ -109,25 +112,3 @@ class _OfferHelpPageState extends State<OfferHelpPage> {
     );
   }
 }
-
-class _HelpRequest {
-  String _name, _location;
-  int _nb_of_articles;
-  List<Article> _articles;
-
-  _HelpRequest(String name, String location, List<Article> articles) {
-    _name = name;
-    _location = location;
-    this._articles = articles;
-    this._nb_of_articles = _articles.length;
-  }
-}
-
-// class _HelpRequestWithArticles extends _HelpRequest {
-//   List<Article> _articles;
-
-//   _HelpRequestWithArticles(String name, String location, List<Article> articles)
-//       : super(name, location, articles.length) {
-//     _articles = articles;
-//   }
-// }
