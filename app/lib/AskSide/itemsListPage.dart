@@ -38,7 +38,7 @@ class _ItemsListPageState extends State<ItemsListPage> {
         padding: const EdgeInsets.all(16.0),
         itemCount: _articlesByType.length,
         itemBuilder: (context, i) {
-          List<ArticleType> types = _articlesByType.keys;
+          List<ArticleType> types = _articlesByType.keys.toList();
           return ExpansionTile(
             title: Text(types[i].getStr()),
             children: <Widget>[

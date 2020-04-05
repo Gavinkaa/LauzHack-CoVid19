@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 enum _Type {
   Viande,
   Legumes,
@@ -106,6 +108,12 @@ class ArticleType {
   String getStr() {
     return this._str;
   }
+
+  @override
+  int get hashCode => hashValues(_type, _str);
+
+  @override
+  bool operator ==(o) => o is ArticleType && _type == o._type && _str == o._str;
 }
 
 class Article implements Comparable {
@@ -132,7 +140,7 @@ class Article implements Comparable {
             ArticleType.fromString(key),
             value[i]["name"],
             value[i]["comment"],
-            int.parse(value[i]["quantity"]),
+            value[i]["quantity"] == "" ? 0 : int.parse(value[i]["quantity"]),
             value[i]["icon_url"]));
       }
       elementsByType.putIfAbsent(ArticleType.fromString(key), () => articles);
