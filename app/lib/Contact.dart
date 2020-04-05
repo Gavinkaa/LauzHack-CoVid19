@@ -4,8 +4,20 @@ class Contact {
   String _firstName, _lastName;
   String _phone;
   String _email;
+
   Contact(this._pcode, this._city, this._street, this._aptFloor,
       this._firstName, this._lastName, this._phone, this._email);
+
+  Contact.from(Contact contact) {
+    this._pcode = contact._pcode;
+    this._city = contact._city;
+    this._street = contact._street;
+    this._aptFloor = contact._aptFloor;
+    this._firstName = contact._firstName;
+    this._lastName = contact._lastName;
+    this._phone = contact._phone;
+    this._email = contact._email;
+  }
 
   int getPCode() {
     return _pcode;
