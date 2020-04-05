@@ -1,72 +1,19 @@
 import 'package:firewebauth/home_screen.dart';
 import 'package:firewebauth/login_screen.dart';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 //import 'package:help_auth_mob/screens/after_login_screen.dart';
 //import 'package:help_auth_mob/screens/login_screen.dart';
 //import 'package:API_web_doug_lancelot/firewebauth/_LoginPageState.dart';
 
-//class AuthServ {
-// static final _auth = FirebaseAuth.instance;
-// static final _firestore = Firestore.instance;
-// static void signUpUser(
-//     BuildContext context,
-//     String firstName,
-//     String lastName,
-//     String email,
-//     String password,
-//     String telephone,
-//     String type,
-//     String street,
-//     String aptfloor,
-//     String pcode,
-//     String city) async {
-//   try {
-//     AuthResult authRes = await _auth.createUserWithEmailAndPassword(
-//         email: email, password: password);
-//     FirebaseUser signedInUser = authRes.user; // handles auth
-//     // handles writing to the db
-//     if (signedInUser != null) {
-//       _firestore.collection('/users').document(signedInUser.uid).setData({
-//         'firstName': firstName,
-//         'lastName': lastName,
-//         'email': email,
-//         'telephone': telephone,
-//         'type': type,
-//         'street': street,
-//         'aptFloor': aptfloor,
-//         'pcode': pcode,
-//         'city': city
-//       });
 //       Navigator.pushReplacementNamed(
 //           context, _HomePa.id); // not to be able to come back
 //     }
-//   } catch (e) {
-//     Widget okBut = FlatButton(
-//       child: Text("OK"),
-//       onPressed: () => Navigator.of(context).pop(),
-//     );
-//
-//     AlertDialog alert = AlertDialog(
-//       title: Text("Error"),
-//       content: Text("Email already used"),
-//       actions: [
-//         okBut,
-//       ],
-//     );
-//
-//     showDialog(
-//         context: context,
-//         builder: (BuildContext context) {
-//           return alert;
-//         });
-//   }
-// }
 class AuthService {
   static final _auth = FirebaseAuth.instance;
-  static final _firestore = Firestore.instance;
+  //static final _firestore = Firestore.instance;
   //Handle Authentication
   handleAuth() {
     return StreamBuilder(
@@ -88,8 +35,7 @@ class AuthService {
     FirebaseAuth.instance.signOut();
   }
 
-
-  static void sign_in_with_error(
+  Future<void> register_in_with_error(
       BuildContext context,
       String firstName,
       String lastName,
@@ -102,9 +48,9 @@ class AuthService {
       String pcode,
       String city) async {
     try {
-        AuthResult authRes = await _auth.createUserWithEmailAndPassword(
-//         email: email, password: password);
-//     FirebaseUser signedInUser = authRes.user; // handles auth
+      AuthResult authRes = await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      FirebaseUser signedInUser = authRes.user; // handles auth
 //     // handles writing to the db
 //     if (signedInUser != null) {
 //       _firestore.collection('/users').document(signedInUser.uid).setData({
@@ -118,9 +64,9 @@ class AuthService {
 //         'pcode': pcode,
 //         'city': city
 //       });
-//       Navigator.pushReplacementNamed(
-//           context, _HomePa.id); // not to be able to come back
-//     }
+      Navigator.pushReplacementNamed(
+          context, LoginPage().toString()); // not to be able to come back
+
     } catch (ERROR_WRONG_PASSWORD) {
       Widget okBut = FlatButton(
         child: Text("OK"),
@@ -162,7 +108,7 @@ class AuthService {
     }
   }
 
-  Future<void> register_in_with_error(
+  Future<void> sign_in_with_error(
       String email, String password, BuildContext context) async {
     try {
       AuthResult authRes = await FirebaseAuth.instance
@@ -197,6 +143,22 @@ class AuthService {
           });
     }
   }
+}
+
+Padding add_Box(String field, String type) {
+  return Padding(
+      padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 20.0, bottom: 5.0),
+      child: Container(
+        height: 50.0,
+        child: TextFormField(
+          obscureText: true,
+          decoration: InputDecoration(hintText: 'type'),
+          validator: (value) => value.isEmpty ? 'type is required' : null,
+          onChanged: (value) {
+            field = value;
+          },
+        ),
+      ));
 }
 
 class BuilderContext {}
