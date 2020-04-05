@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async';
 import 'dart:convert';
-import 'Articles.dart';
+
+import '../Article.dart';
 
 class ItemsListPage extends StatefulWidget {
   ItemsListPage({Key key}) : super(key: key);

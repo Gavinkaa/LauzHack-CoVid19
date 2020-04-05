@@ -1,6 +1,6 @@
+import 'Article.dart';
 import 'Request.dart';
 import 'package:flutter/material.dart';
-import 'AskSide/Articles.dart';
 
 class RequestPage extends StatefulWidget {
   Request _request;

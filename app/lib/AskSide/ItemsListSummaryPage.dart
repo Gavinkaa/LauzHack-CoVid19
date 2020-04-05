@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'Articles.dart';
+import '../Article.dart';
 
 class ItemsListSummaryPage extends StatefulWidget {
   Set<Article> _articles;

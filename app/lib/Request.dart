@@ -1,5 +1,5 @@
-import 'package:app/AskSide/Articles.dart';
 import 'package:flutter/material.dart';
+import 'Article.dart';
 import 'Contact.dart';
 
 class Request {
@@ -54,7 +54,7 @@ class Request {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  _capitalize(_asker.getFirstName()),
+                  _asker.getFirstName(),
                   // textAlign: TextAlign.left,
                   style: TextStyle(
                     color: Colors.black,

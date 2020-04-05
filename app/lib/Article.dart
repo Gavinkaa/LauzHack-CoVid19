@@ -26,7 +26,7 @@ class ArticleType {
       case "Viande":
         _type = _Type.Viande;
         break;
-      case "Légumes":
+      case "Legumes":
         _type = _Type.Legumes;
         break;
       case "Fruits":
@@ -38,22 +38,22 @@ class ArticleType {
       case "Epicerie":
         _type = _Type.Epicerie;
         break;
-      case "Produits laitiers":
+      case "Produits_laitiers":
         _type = _Type.ProdLait;
         break;
-      case "Cosmétiques":
+      case "Cosmetiques":
         _type = _Type.Cosmetiques;
         break;
       case "Boissons":
         _type = _Type.Boissons;
         break;
-      case "Papèterie":
+      case "Papeterie":
         _type = _Type.Papeterie;
         break;
-      case "Petit-déjeuner":
+      case "Petit_dejeuner":
         _type = _Type.PetitDej;
         break;
-      case "Produits ménagers":
+      case "Produits_menagers":
         _type = _Type.ProdMen;
         break;
       default:
@@ -80,7 +80,7 @@ class ArticleType {
         _str = "Epicerie";
         break;
       case _Type.ProdLait:
-        _str = "ProdLait";
+        _str = "Produits_laitiers";
         break;
       case _Type.Cosmetiques:
         _str = "Cosmetiques";
@@ -92,10 +92,10 @@ class ArticleType {
         _str = "Papeterie";
         break;
       case _Type.PetitDej:
-        _str = "PetitDej";
+        _str = "Petit_dejeuner";
         break;
       case _Type.ProdMen:
-        _str = "ProdMen";
+        _str = "Produits_menagers";
         break;
       default:
         _str = "Autre";
