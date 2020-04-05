@@ -127,10 +127,10 @@ class _SignupScreenState extends State<SignupScreen> {
                 child: Card(
                   child: TextFormField(
                     decoration:
-                        InputDecoration(labelText: 'Type: Helper/Victim'),
+                        InputDecoration(labelText: 'Type: Helper/Asker'),
                     validator: (input) =>
-                        !(input.trim() == "Victim" || input.trim() == "Helper")
-                            ? 'Please type Helper or Victim'
+                        !(input.trim() == "Asker" || input.trim() == "Helper")
+                            ? 'Please type Helper or Asker'
                             : null,
                     onSaved: (input) => _type = input,
                   ),

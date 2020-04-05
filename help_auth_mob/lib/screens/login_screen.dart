@@ -57,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(
-              'Helper App',
+              'HYNeighbor',
               style: TextStyle(fontSize: 50.0),
             ),
             Form(
