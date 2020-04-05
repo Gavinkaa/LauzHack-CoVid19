@@ -106,6 +106,12 @@ class _ItemsListPageState extends State<ItemsListPage> {
         actions: <Widget>[
           IconButton(
               icon: Icon(
+            Icons.search,
+            color: Colors.black,
+            size: 30.0,
+          )),
+          IconButton(
+              icon: Icon(
                 Icons.shopping_cart,
                 color: Colors.green,
                 size: 30.0,
