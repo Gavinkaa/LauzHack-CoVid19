@@ -99,7 +99,6 @@ class _ItemsListPageState extends State<ItemsListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
         title: Text(
           'Votre demande :',
           style: TextStyle(color: Colors.black),

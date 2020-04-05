@@ -19,7 +19,6 @@ class _AfterLoginHomePageState extends State<AfterLoginHomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.white,
         title: Text(
           widget.title,
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.w200),
