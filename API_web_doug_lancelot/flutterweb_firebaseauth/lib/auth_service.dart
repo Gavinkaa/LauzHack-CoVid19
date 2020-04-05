@@ -1,3 +1,4 @@
+import 'package:firebase/firebase.dart';
 import 'package:firewebauth/home_screen.dart';
 import 'package:firewebauth/login_screen.dart';
 
@@ -14,7 +15,8 @@ import 'package:firebase/firestore.dart';
 //     }
 class AuthService {
   static final _auth = FirebaseAuth.instance;
-  static final _firestore = Firestore.instance;
+  static final _firestore = firestore();
+  //.Firestore.instance;
   //Handle Authentication
   handleAuth() {
     return StreamBuilder(
@@ -52,22 +54,23 @@ class AuthService {
       AuthResult authRes = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser signedInUser = authRes.user; // handles auth
-//     // handles writing to the db
-//     if (signedInUser != null) {
-//       _firestore.collection('/users').document(signedInUser.uid).setData({
-//         'firstName': firstName,
-//         'lastName': lastName,
-//         'email': email,
-//         'telephone': telephone,
-//         'type': type,
-//         'street': street,
-//         'aptFloor': aptfloor,
-//         'pcode': pcode,
-//         'city': city
-//       });
-      Navigator.pushReplacementNamed(
-          context, LoginPage().toString()); // not to be able to come back
-
+      // handles writing to the db
+      if (signedInUser != null) {
+        //_firestore.collection('/users').document(signedInUser.uid).setData({
+        _firestore.collection('/users').doc(signedInUser.uid).set({
+          'firstName': firstName,
+          'lastName': lastName,
+          'email': email,
+          'telephone': telephone,
+          'type': type,
+          'street': street,
+          'aptFloor': aptfloor,
+          'pcode': pcode,
+          'city': city
+        });
+        //  Navigator.pushReplacementNamed(
+        //      context, LoginPage().toString()); // not to be able to come back
+      }
     } catch (ERROR_WRONG_PASSWORD) {
       Widget okBut = FlatButton(
         child: Text("OK"),
