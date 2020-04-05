@@ -131,7 +131,7 @@ class Article implements Comparable {
   }
 
   // Map<String, List<Map<String, String>>>
-  static Map<ArticleType, List<Article>> dataToMap(Map<String, dynamic> data) {
+  static Map<ArticleType, List<Article>> jsonToMap(Map<String, dynamic> data) {
     Map<ArticleType, List<Article>> elementsByType = {};
     data.forEach((key, value) {
       List<Article> articles = [];
