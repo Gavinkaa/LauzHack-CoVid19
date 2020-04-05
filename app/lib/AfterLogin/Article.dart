@@ -196,8 +196,9 @@ class Article implements Comparable {
     return elementsByType;
   }
 
-  static String toJSON(Map<ArticleType, List<Article>> mapToConvert) {
-    Map<String, List<Map<String, String>>> articles = {};
+  static Map<String, dynamic> toJSON(
+      Map<ArticleType, List<Article>> mapToConvert) {
+    Map<String, dynamic> articles = {};
     mapToConvert.forEach((k, v) => articles.putIfAbsent(
           k.toString(),
           () => v
@@ -210,7 +211,7 @@ class Article implements Comparable {
               .toList(),
         ));
 
-    return jsonEncode(articles);
+    return articles;
   }
 
   String getName() {

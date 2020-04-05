@@ -38,6 +38,21 @@ class APIRequests {
 
   static Future<bool> POST_NewRequest(Map<String, dynamic> json) async {
     // post a new request associated to the user thats logged in saved to orders
+    json.putIfAbsent(
+        "contact",
+        () => {
+              "firstName": "",
+              "lastName": "",
+              "email": "",
+              "phone": "",
+              "type": "",
+              "street": "",
+              "aptFloor": "",
+              "pcode": "",
+              "city": "",
+              "accepted_orders": ["id1", "id2"]
+            });
+
     await _auth.currentUser().then((value) => authUserUid = value.uid);
     json.putIfAbsent(
         "orderID", () => authUserUid); //we need to generate unique ID
