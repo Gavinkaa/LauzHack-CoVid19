@@ -91,7 +91,7 @@
             "icon-url": ""
         }
     ],
-    "Légumes": [
+    "Legumes": [
         {
             "name": "Ail",
             "comment": "",
@@ -909,7 +909,7 @@
             "icon-url": ""
         }
     ],
-    "Produits laitiers": [
+    "Produits_laitiers": [
         {
             "name": "",
             "comment": "",
@@ -923,7 +923,7 @@
             "icon-url": ""
         }
     ],
-    "Cosmétiques": [
+    "Cosmetiques": [
         {
             "name": "Après rasage",
             "comment": "",
@@ -1069,7 +1069,7 @@
             "icon-url": ""
         }
     ],
-    "Produits ménagers": [
+    "Produits_menagers": [
         {
             "name": "Allume barbecue",
             "comment": "",
@@ -1283,7 +1283,7 @@
             "icon-url": ""
         }
     ],
-    "Papèterie": [
+    "Papeterie": [
         {
             "name": "Bloc note",
             "comment": "",
@@ -1411,7 +1411,7 @@
             "icon-url": ""
         }
     ],
-    "Petit-déjeuner": [
+    "Petit_dejeuner": [
         {
             "name": "Biscottes",
             "comment": "",
