@@ -118,9 +118,11 @@ class _SecondRouteState extends State<SecondRoute> {
                                       )),
                                   validator: (value) =>
                                       //check condition for password
-                                      value.isEmpty && value.length > 6
+                                      value.isEmpty
                                           ? 'password is required'
-                                          : null,
+                                          : value.length < 6
+                                              ? 'Must be at least 6 characters'
+                                              : null,
                                   onChanged: (value) => setState(() {
                                     password = value;
                                   }),
@@ -148,7 +150,18 @@ class _SecondRouteState extends State<SecondRoute> {
                                       //add cehcking condition
                                       value.isEmpty
                                           ? 'First Name is required'
-                                          : null,
+                                          : value.contains("1") ||
+                                                  value.contains("2") ||
+                                                  value.contains("3") ||
+                                                  value.contains("4") ||
+                                                  value.contains("5") ||
+                                                  value.contains("6") ||
+                                                  value.contains("7") ||
+                                                  value.contains("8") ||
+                                                  value.contains("9") ||
+                                                  value.contains("0")
+                                              ? "First Name cannot contains numbers"
+                                              : null,
                                   onChanged: (value) => setState(() {
                                     firstName = value;
                                   }),
@@ -174,8 +187,19 @@ class _SecondRouteState extends State<SecondRoute> {
                                   validator: (value) =>
                                       //check condition for last name
                                       value.isEmpty
-                                          ? 'Last name is required'
-                                          : null,
+                                          ? 'Last Name is required'
+                                          : value.contains("1") ||
+                                                  value.contains("2") ||
+                                                  value.contains("3") ||
+                                                  value.contains("4") ||
+                                                  value.contains("5") ||
+                                                  value.contains("6") ||
+                                                  value.contains("7") ||
+                                                  value.contains("8") ||
+                                                  value.contains("9") ||
+                                                  value.contains("0")
+                                              ? "Last Name cannot contains numbers"
+                                              : null,
                                   onChanged: (value) => setState(() {
                                     lastName = value;
                                   }),
@@ -201,8 +225,10 @@ class _SecondRouteState extends State<SecondRoute> {
                                   validator: (value) =>
                                       //check condition for phone
                                       value.isEmpty
-                                          ? type + 'phone number is required'
-                                          : null,
+                                          ? 'phone number is required'
+                                          : value.length != 10
+                                              ? "your phone number must have ten digits"
+                                              : null,
                                   onChanged: (value) => setState(() {
                                     telephone = value;
                                   }),

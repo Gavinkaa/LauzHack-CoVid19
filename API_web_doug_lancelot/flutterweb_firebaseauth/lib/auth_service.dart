@@ -1,6 +1,9 @@
+import 'package:firewebauth/AfterLoginHomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:firewebauth/home_screen.dart';
 import 'package:firewebauth/login_screen.dart';
+import 'package:firewebauth/AfterLoginHomePage.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:firebase/firebase.dart';
@@ -71,6 +74,10 @@ class AuthService {
         });
         //  Navigator.pushReplacementNamed(
         //      context, LoginPage().toString()); // not to be able to come back
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => AfterLoginHomePage()),
+        );
       }
     } catch (ERROR_WRONG_PASSWORD) {
       Widget okBut = FlatButton(
@@ -116,17 +123,20 @@ class AuthService {
   Future<void> sign_in_with_error(
       String email, String password, BuildContext context) async {
     try {
-      AuthResult authRes = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email, password: password);
+      AuthResult authRes = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
       FirebaseUser signedInUser = authRes.user;
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => AfterLoginHomePage()),
+      );
+
       //if (signedInUser != null) {
       //  _firestore
       //      .collection('/users')
       //      .document(signedInUser.uid)
       //      .setData({'name': name, 'email': email});
-      //  Navigator.pushReplacementNamed(
-      //      context, AfterLogInScreen.id); // not to be able to come back
-      //}
+      //  }
     } catch (e) {
       Widget okBut = FlatButton(
         child: Text("OK"),
