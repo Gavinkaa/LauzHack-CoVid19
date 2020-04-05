@@ -122,16 +122,16 @@ class _LoginPageState extends State<LoginPage> {
 }
 
 class SecondRoute extends StatelessWidget {
-  String email,
-      password,
-      firstName,
-      lastName,
-      telephone,
-      type,
-      street,
-      aptfloor,
-      pcode,
-      city;
+  String email = 'email';
+  String password = 'password',
+      firstName = 'firstName',
+      lastName = 'lastName',
+      telephone = 'telephone',
+      type = 'type',
+      street = 'street',
+      aptfloor = 'aptfloor',
+      pcode = 'pcode',
+      city = 'city';
 
   final formKey = new GlobalKey<FormState>();
 
@@ -159,7 +159,7 @@ class SecondRoute extends StatelessWidget {
     return Scaffold(
       body: Center(
           child: Container(
-              height: 400.0,
+              height: 900.0,
               width: 300.0,
               child: Column(
                 children: <Widget>[

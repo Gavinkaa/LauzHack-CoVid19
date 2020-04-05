@@ -1,9 +1,10 @@
 import 'package:firewebauth/home_screen.dart';
 import 'package:firewebauth/login_screen.dart';
 
-//import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase/firestore.dart';
 //import 'package:help_auth_mob/screens/after_login_screen.dart';
 //import 'package:help_auth_mob/screens/login_screen.dart';
 //import 'package:API_web_doug_lancelot/firewebauth/_LoginPageState.dart';
@@ -13,7 +14,7 @@ import 'package:flutter/material.dart';
 //     }
 class AuthService {
   static final _auth = FirebaseAuth.instance;
-  //static final _firestore = Firestore.instance;
+  static final _firestore = Firestore.instance;
   //Handle Authentication
   handleAuth() {
     return StreamBuilder(
@@ -149,11 +150,11 @@ Padding add_Box(String field, String type) {
   return Padding(
       padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 20.0, bottom: 5.0),
       child: Container(
-        height: 50.0,
+        height: 32.0,
         child: TextFormField(
           obscureText: true,
-          decoration: InputDecoration(hintText: 'type'),
-          validator: (value) => value.isEmpty ? 'type is required' : null,
+          decoration: InputDecoration(hintText: type),
+          validator: (value) => value.isEmpty ? type + ' is required' : null,
           onChanged: (value) {
             field = value;
           },
