@@ -51,23 +51,23 @@ class Contact {
     return _email;
   }
 
-  int setPCode(int pcode) {
+  void setPCode(int pcode) {
     _pcode = pcode;
   }
 
-  String setCity(String city) {
+  void setCity(String city) {
     _city = city;
   }
 
-  String setStreet(String street) {
+  void setStreet(String street) {
     _street = street;
   }
 
-  String setAptFloor(String aptFloor) {
+  void setAptFloor(String aptFloor) {
     _aptFloor = aptFloor;
   }
 
-  String setFirstName(String firstName) {
+  void setFirstName(String firstName) {
     _firstName = firstName;
   }
 

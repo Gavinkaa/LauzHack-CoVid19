@@ -10,4 +10,12 @@ class Request {
     this.articles = List.from(articles);
     this.asker = Contact.from(asker);
   }
+
+  List<Article> getArticles() {
+    return List.from(articles);
+  }
+
+  Contact getAsker() {
+    return Contact.from(asker);
+  }
 }
