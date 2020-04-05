@@ -22,6 +22,7 @@
 
 
 
+
 <script>
   // Your web app's Firebase configuration
   var firebaseConfig = {
@@ -37,6 +38,12 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
+
+  //const firebase = require("firebase");
+  //// Required for side-effects
+//require("firebase/firestore");
+//
+  var db = firebase.firestore();
 </script>
 
   <script src="main.dart.js" type="application/javascript"></script>
