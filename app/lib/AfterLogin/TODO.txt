@@ -1,4 +1,3 @@
-- pop up avant de deco
 - beaux buttons home page
 - Demander de l-aide: 1. mes demandes, 2. creer ma liste.
 - affichage de mes demandes
