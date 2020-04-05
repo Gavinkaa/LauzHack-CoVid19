@@ -112,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderRadius: new BorderRadius.circular(8.0),
                   ),
                   child: Text(
-                    'Se connecter',
+                    'SE CONNECTER',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 18.0,
@@ -132,7 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     borderRadius: new BorderRadius.circular(8.0),
                   ),
                   child: Text(
-                    "S'inscrire",
+                    "S'INSCRIRE",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 18.0,

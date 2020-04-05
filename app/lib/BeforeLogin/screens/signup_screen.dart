@@ -20,7 +20,8 @@ class _SignupScreenState extends State<SignupScreen> {
       _aptfloor,
       _pcode,
       _city;
-  bool _passwordInvisible, _helps;
+  bool _passwordInvisible;
+  int radioValue = -1;
 
   _submit() {
     if (_formKey.currentState.validate()) {
@@ -178,50 +179,6 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
               ),
               Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 30.0,
-                    vertical: 5.0,
-                  ),
-                  child:
-                      // TextFormField(
-                      //   decoration: InputDecoration(
-                      //       contentPadding: EdgeInsets.all(10.0),
-                      //       labelText: 'Type: Helper/Asker',
-                      //       labelStyle: TextStyle(
-                      //         color: Colors.grey[600],
-                      //       )),
-                      //   initialValue: _type,
-                      //   validator: (input) =>
-                      //       !(input.trim() == "Asker" || input.trim() == "Helper")
-                      //           ? "Entrez 'Asker' ou 'Helper'"
-                      //           : null,
-                      //   onChanged: (input) => setState(() {
-                      //     _type = input;
-                      //   }),
-                      // ),
-                      Column(children: <Widget>[
-                    RadioListTile<String>(
-                      title: const Text("Demandeur d'aide"),
-                      value: 'Asker',
-                      groupValue: _type,
-                      onChanged: (value) {
-                        setState(() {
-                          _type = value;
-                        });
-                      },
-                    ),
-                    RadioListTile<String>(
-                      title: const Text("Aideur"),
-                      value: 'Helper',
-                      groupValue: _type,
-                      onChanged: (value) {
-                        setState(() {
-                          _type = value;
-                        });
-                      },
-                    ),
-                  ])),
-              Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 30.0,
                   vertical: 5.0,
@@ -304,22 +261,68 @@ class _SignupScreenState extends State<SignupScreen> {
                   }),
                 ),
               ),
-              SizedBox(
-                height: 20.0,
-              ),
+              SizedBox(height: 10.0),
+              Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 30.0,
+                    vertical: 5.0,
+                  ),
+                  child: Text("Type d'utilisateur :",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(fontSize: 15.0))),
+              Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 30.0,
+                    vertical: 5.0,
+                  ),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            Radio(
+                              activeColor: Colors.red,
+                              hoverColor: Colors.red[600],
+                              value: 0,
+                              groupValue: radioValue,
+                              onChanged: _radioValue,
+                            ),
+                            Text(
+                              "Demandeur d'aide",
+                              style: TextStyle(fontSize: 16.0),
+                              textAlign: TextAlign.start,
+                            ),
+                          ],
+                        ),
+                        Row(children: <Widget>[
+                          Radio(
+                            activeColor: Colors.red,
+                            hoverColor: Colors.red[600],
+                            value: 1,
+                            groupValue: radioValue,
+                            onChanged: _radioValue,
+                          ),
+                          Text(
+                            "Aideur",
+                            style: TextStyle(
+                              fontSize: 16.0,
+                            ),
+                          ),
+                        ]),
+                      ])),
               Center(
                 child: FlatButton(
                   onPressed: _submit,
                   color: Colors.red,
                   shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(8.0),
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
                   child: Text(
-                    "S'inscrire",
+                    "S'INSCRIRE",
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18.0,
-                    ),
+                        color: Colors.white,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w300),
                   ),
                 ),
               ),
@@ -331,14 +334,14 @@ class _SignupScreenState extends State<SignupScreen> {
                   onPressed: () => Navigator.pop(context),
                   color: Colors.red,
                   shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(8.0),
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
                   child: Text(
-                    "Retour",
+                    "RETOUR",
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18.0,
-                    ),
+                        color: Colors.white,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w300),
                   ),
                 ),
               ),
@@ -347,5 +350,19 @@ class _SignupScreenState extends State<SignupScreen> {
         ),
       ),
     );
+  }
+
+  void _radioValue(int value) {
+    setState(() {
+      radioValue = value;
+      switch (radioValue) {
+        case 0:
+          _type = "Asker";
+          break;
+        case 1:
+          _type = "Helper";
+          break;
+      }
+    });
   }
 }
