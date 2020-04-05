@@ -2,19 +2,47 @@ import 'package:firewebauth/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
 
-class SecondRoute extends StatelessWidget {
-  String email = 'email';
-  String password = 'password',
-      firstName = 'firstName',
-      lastName = 'lastName',
-      telephone = 'telephone',
-      type = 'type',
-      street = 'street',
-      aptfloor = 'aptfloor',
-      pcode = 'pcode',
-      city = 'city';
+class SecondRoute extends StatefulWidget {
+  @override
+  _SecondRouteState createState() => _SecondRouteState();
+}
+
+class _SecondRouteState extends State<SecondRoute> {
+  String email,
+      password,
+      firstName,
+      lastName,
+      telephone,
+      type,
+      street,
+      aptfloor,
+      pcode,
+      city;
 
   final formKey = new GlobalKey<FormState>();
+
+  Padding add_Box(String field, String type) {
+    return Padding(
+        padding:
+            EdgeInsets.only(left: 25.0, right: 25.0, top: 20.0, bottom: 5.0),
+        child: Container(
+          height: 32.0,
+          child: TextFormField(
+            initialValue: field,
+            obscureText: true,
+            decoration: InputDecoration(
+                contentPadding: EdgeInsets.all(10.0),
+                labelText: type,
+                labelStyle: TextStyle(
+                  color: Colors.grey[600],
+                )),
+            validator: (value) => value.isEmpty ? type + ' is required' : null,
+            onChanged: (value) => setState(() {
+              field = value;
+            }),
+          ),
+        ));
+  }
 
   checkFields() {
     final form = formKey.currentState;
@@ -58,25 +86,26 @@ class SecondRoute extends StatelessWidget {
                               child: Container(
                                 height: 50.0,
                                 child: TextFormField(
+                                  initialValue: email,
                                   decoration:
                                       InputDecoration(hintText: 'Email'),
                                   validator: (value) => value.isEmpty
                                       ? 'Email is required'
                                       : validateEmail(value.trim()),
-                                  onChanged: (value) {
+                                  onChanged: (value) => setState(() {
                                     this.email = value;
-                                  },
+                                  }),
                                 ),
                               )),
-                          add_Box(this.password, password),
-                          add_Box(this.firstName, firstName),
-                          add_Box(this.lastName, lastName),
-                          add_Box(this.telephone, telephone),
-                          add_Box(this.type, type),
-                          add_Box(this.street, street),
-                          add_Box(this.aptfloor, aptfloor),
-                          add_Box(this.pcode, pcode),
-                          add_Box(this.city, city),
+                          add_Box(this.password, 'password'),
+                          add_Box(this.firstName, 'firstName'),
+                          add_Box(this.lastName, 'lastName'),
+                          add_Box(this.telephone, 'telephone'),
+                          add_Box(this.type, 'type'),
+                          add_Box(this.street, 'street'),
+                          add_Box(this.aptfloor, 'aptfloor'),
+                          add_Box(this.pcode, 'pcode'),
+                          add_Box(this.city, 'city'),
                           InkWell(
                               onTap: () {
                                 if (checkFields()) {
