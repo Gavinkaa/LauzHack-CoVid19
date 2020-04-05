@@ -4,3 +4,5 @@
 - affichage de mes demandes
 - Button accepter request
 - store picture file
+- traduction des forms
+- boutton valider la liste
