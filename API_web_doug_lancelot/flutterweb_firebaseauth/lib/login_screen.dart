@@ -1,3 +1,4 @@
+import 'package:firewebauth/after_login_HomePage.dart';
 import 'package:firewebauth/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'register_screen.dart';
@@ -66,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                                         ? 'Email is required'
                                         : validateEmail(value.trim()),
                                     onChanged: (value) {
-                                      this.email = value;
+                                      email = value;
                                     },
                                   ),
                                 )),
@@ -77,17 +78,25 @@ class _LoginPageState extends State<LoginPage> {
                                     top: 20.0,
                                     bottom: 5.0),
                                 child: Container(
-                                  height: 50.0,
+                                  height: 32.0,
                                   child: TextFormField(
+                                    initialValue: password,
+                                    //to think about
                                     obscureText: true,
-                                    decoration:
-                                        InputDecoration(hintText: 'Password'),
-                                    validator: (value) => value.isEmpty
-                                        ? 'Password is required'
-                                        : null,
-                                    onChanged: (value) {
-                                      this.password = value;
-                                    },
+                                    decoration: InputDecoration(
+                                        contentPadding: EdgeInsets.all(10.0),
+                                        labelText: 'password',
+                                        labelStyle: TextStyle(
+                                          color: Colors.grey[600],
+                                        )),
+                                    validator: (value) =>
+                                        //check condition for password
+                                        value.isEmpty && value.length > 6
+                                            ? 'password is required'
+                                            : null,
+                                    onChanged: (value) => setState(() {
+                                      password = value;
+                                    }),
                                   ),
                                 )),
                             InkWell(
