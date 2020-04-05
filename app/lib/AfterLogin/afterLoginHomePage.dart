@@ -40,8 +40,11 @@ class _AfterLoginHomePageState extends State<AfterLoginHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            const SizedBox(height: 5),
             Expanded(
               child: RaisedButton(
+                color: Colors.white60,
+                splashColor: Colors.black38,
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -49,26 +52,22 @@ class _AfterLoginHomePageState extends State<AfterLoginHomePage> {
                   );
                 },
                 textColor: Colors.white,
-                padding: const EdgeInsets.all(0.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: <Color>[
-                        Color(0xFF0D47A1),
-                        Color(0xFF1976D2),
-                        Color(0xFF42A5F5),
-                      ],
-                    ),
-                  ),
                   alignment: Alignment.center,
-                  child: const Text("Demander de l'aide",
-                      style: TextStyle(fontSize: 40)),
+                  child: const Text("DEMANDER DE L'AIDE",
+                      style: TextStyle(
+                          fontSize: 35,
+                          fontWeight: FontWeight.w200,
+                          color: Colors.red)),
                 ),
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 5),
             Expanded(
               child: RaisedButton(
+                color: Colors.black12,
+                splashColor: Colors.black38,
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -76,23 +75,18 @@ class _AfterLoginHomePageState extends State<AfterLoginHomePage> {
                   );
                 },
                 textColor: Colors.white,
-                padding: const EdgeInsets.all(0.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: <Color>[
-                        Color(0xFF0D47A1),
-                        Color(0xFF1976D2),
-                        Color(0xFF42A5F5),
-                      ],
-                    ),
-                  ),
                   alignment: Alignment.center,
-                  child: const Text("Offrir son aide",
-                      style: TextStyle(fontSize: 40)),
+                  child: const Text("OFFRIR SON AIDE",
+                      style: TextStyle(
+                          fontSize: 35,
+                          fontWeight: FontWeight.w200,
+                          color: Colors.red)),
                 ),
               ),
             ),
+            const SizedBox(height: 5),
           ],
         ),
       ),

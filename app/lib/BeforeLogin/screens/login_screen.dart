@@ -57,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(
-              "HYNeighbor",
+              "HelpYourNeighbor",
               style: TextStyle(fontSize: 50.0, fontWeight: FontWeight.w200),
             ),
             Form(
@@ -65,6 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
               key: _formKey,
               child: Column(
                 children: <Widget>[
+                  SizedBox(height: 80.0),
                   Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: 30.0,
@@ -73,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: TextFormField(
                       decoration: InputDecoration(labelText: 'Email'),
                       validator: (input) => !input.contains('@')
-                          ? 'Please Enter valid email'
+                          ? 'Entrez une adresse e-mail valide'
                           : null,
                       onSaved: (input) => _email = input,
                     ),
@@ -84,39 +85,50 @@ class _LoginScreenState extends State<LoginScreen> {
                       vertical: 10.0,
                     ),
                     child: TextFormField(
-                      decoration: InputDecoration(labelText: 'Password'),
-                      validator: (input) =>
-                          input.length < 6 ? 'Must be at least 6 chars' : null,
+                      decoration: InputDecoration(labelText: 'Mot de passe'),
+                      validator: (input) => input.length < 6
+                          ? 'Doit faire au moins 6 caractères'
+                          : null,
                       onSaved: (input) => _password = input,
                       obscureText: true,
                     ),
                   ),
                   SizedBox(
-                    height: 20.0,
+                    height: 80.0,
                   ),
-                  FlatButton(
-                    onPressed: _submit,
-                    color: Colors.red,
-                    child: Text(
-                      'Login',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18.0,
+                  ClipRect(
+                    child: FlatButton(
+                      onPressed: _submit,
+                      color: Colors.red,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(12.0),
+                      ),
+                      child: Text(
+                        'Se connecter',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w300),
                       ),
                     ),
                   ),
                   SizedBox(
                     height: 20.0,
                   ),
-                  FlatButton(
-                    onPressed: () =>
-                        Navigator.pushNamed(context, SignupScreen.id),
-                    color: Colors.red,
-                    child: Text(
-                      'Go to sign up',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18.0,
+                  ClipRect(
+                    child: FlatButton(
+                      onPressed: () =>
+                          Navigator.pushNamed(context, SignupScreen.id),
+                      color: Colors.red,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(12.0),
+                      ),
+                      child: Text(
+                        "S'inscrire",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.w300),
                       ),
                     ),
                   ),
