@@ -7,7 +7,7 @@ class AfterLoginHomePage extends StatefulWidget {
   static final String id = "after_login_screen";
   AfterLoginHomePage({Key key}) : super(key: key);
 
-  final String title = 'HelpYourNeighbors';
+  final String title = 'HelpYourNeighbor';
 
   @override
   _AfterLoginHomePageState createState() => _AfterLoginHomePageState();
@@ -43,8 +43,8 @@ class _AfterLoginHomePageState extends State<AfterLoginHomePage> {
             const SizedBox(height: 5),
             Expanded(
               child: RaisedButton(
-                color: Colors.white60,
-                splashColor: Colors.black38,
+                color: Colors.white70,
+                splashColor: Colors.white,
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -66,8 +66,8 @@ class _AfterLoginHomePageState extends State<AfterLoginHomePage> {
             const SizedBox(height: 5),
             Expanded(
               child: RaisedButton(
-                color: Colors.black12,
-                splashColor: Colors.black38,
+                color: Colors.white70,
+                splashColor: Colors.white,
                 onPressed: () {
                   Navigator.push(
                     context,

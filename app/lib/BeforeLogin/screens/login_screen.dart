@@ -27,7 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
       );
 
       AlertDialog alert = AlertDialog(
-        title: Text("Error"),
+        title: Text("Erreur"),
         content: Text("Incorrect email or password"),
         actions: [
           okBut,
