@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -34,14 +33,14 @@ class _PictureTakerPageState extends State<PictureTakerPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Select mage's source"),
+          title: Text("Choisir la source de l'image"),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
                 GestureDetector(
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
-                    child: Text("Gallery"),
+                    child: Text("Gallerie"),
                   ),
                   onTap: () {
                     _openGallery(context);
@@ -50,7 +49,7 @@ class _PictureTakerPageState extends State<PictureTakerPage> {
                 GestureDetector(
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
-                    child: Text("Camera"),
+                    child: Text("Appareil photo"),
                   ),
                   onTap: () {
                     _openCamera(context);
@@ -72,16 +71,16 @@ class _PictureTakerPageState extends State<PictureTakerPage> {
     } else {
       return Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Text("No image is selected"),
+        child: Text("Aucune image sélectionnée"),
       );
     }
   }
 
   Text _raisedButtonText() {
     if (image != null) {
-      return Text("Change image");
+      return Text("Reprendre une image");
     } else {
-      return Text("Select Image");
+      return Text("Choisir cette image");
     }
   }
 
@@ -89,7 +88,7 @@ class _PictureTakerPageState extends State<PictureTakerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Image selection"),
+        title: Text("Liste sous forme d'image"),
       ),
       body: Center(
         child: SingleChildScrollView(

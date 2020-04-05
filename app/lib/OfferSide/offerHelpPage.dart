@@ -7,7 +7,7 @@ import '../RequestPage.dart';
 class OfferHelpPage extends StatefulWidget {
   OfferHelpPage({Key key}) : super(key: key);
 
-  final String title = 'Offer Help';
+  final String title = 'Offrir mon aide';
 
   @override
   _OfferHelpPageState createState() => _OfferHelpPageState();
