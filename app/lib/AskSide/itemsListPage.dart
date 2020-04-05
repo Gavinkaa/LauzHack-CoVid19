@@ -18,6 +18,7 @@ class _ItemsListPageState extends State<ItemsListPage> {
     var jsonData = await rootBundle.loadString('assets/articles.json');
     setState(() {
       _articlesByType = Article.dataToMap(json.decode(jsonData));
+      print("\n\n" + (_articlesByType.keys.length).toString() + "\n\n");
       // Map<String, List<Map<String, String>>>
     });
   }
@@ -31,13 +32,35 @@ class _ItemsListPageState extends State<ItemsListPage> {
   final _biggerFont = const TextStyle(fontSize: 18.0);
   final Set<Article> _saved = Set<Article>();
 
-  Widget _buildArticles() {
+  Widget _buildTypes() {
     if (_articlesByType != null) {
       return ListView.builder(
         padding: const EdgeInsets.all(16.0),
         itemCount: _articlesByType.length,
         itemBuilder: (context, i) {
-          return _buildRow(_articlesByType[i]);
+          List<ArticleType> types = _articlesByType.keys;
+          return ExpansionTile(
+            title: Text(types[i].getStr()),
+            children: <Widget>[
+              Column(
+                children: [_buildArticles(_articlesByType[types[i]])],
+              )
+            ],
+          );
+        },
+      );
+    } else {
+      return CircularProgressIndicator();
+    }
+  }
+
+  Widget _buildArticles(List<Article> articles) {
+    if (_articlesByType != null) {
+      return ListView.builder(
+        padding: const EdgeInsets.all(16.0),
+        itemCount: articles.length,
+        itemBuilder: (context, i) {
+          return _buildRow(articles[i]);
         },
       );
     } else {
@@ -77,7 +100,7 @@ class _ItemsListPageState extends State<ItemsListPage> {
         ],
       ),
       body: Container(
-        child: _buildArticles(),
+        child: _buildTypes(),
         alignment: Alignment.center,
       ),
     );
