@@ -31,7 +31,7 @@ class _ItemsListPageState extends State<ItemsListPage> {
   final _fontArticles = const TextStyle(fontSize: 17.0);
   final _fontTypes = const TextStyle(
     fontSize: 21.0,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w200,
   );
   final Set<Article> _saved = Set<Article>();
 
@@ -112,7 +112,6 @@ class _ItemsListPageState extends State<ItemsListPage> {
   void _pushSaved() {
     Navigator.of(context).push(
       MaterialPageRoute<void>(
-        // Add 20 lines from here...
         builder: (BuildContext context) {
           final Iterable<ListTile> tiles = _saved.map(
             (Article article) {

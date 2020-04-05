@@ -16,26 +16,28 @@ class _OfferHelpPageState extends State<OfferHelpPage> {
   void initState() {
     super.initState();
     _requests = [
-      _HelpRequest("Clément", "Saint-Sulpice", 1),
-      _HelpRequest("Lancelot", "Saint-Sulpice", 20),
-      _HelpRequest("Douglas", "Morges", 30),
-      _HelpRequest("Ludovic", "Lausanne", 10),
-      _HelpRequest("Mohamed", "Le Caire", 5),
-      _HelpRequest("Clément", "Saint-Sulpice", 1),
-      _HelpRequest("Lancelot", "Saint-Sulpice", 20),
-      _HelpRequest("Douglas", "Morges", 30),
-      _HelpRequest("Ludovic", "Lausanne", 10),
-      _HelpRequest("Mohamed", "Le Caire", 5),
-      _HelpRequest("Clément", "Saint-Sulpice", 1),
-      _HelpRequest("Lancelot", "Saint-Sulpice", 20),
-      _HelpRequest("Douglas", "Morges", 30),
-      _HelpRequest("Ludovic", "Lausanne", 10),
-      _HelpRequest("Mohamed", "Le Caire", 5),
-      _HelpRequest("Clément", "Saint-Sulpice", 1),
-      _HelpRequest("Lancelot", "Saint-Sulpice", 20),
-      _HelpRequest("Douglas", "Morges", 30),
-      _HelpRequest("Ludovic", "Lausanne", 10),
-      _HelpRequest("Mohamed", "Le Caire", 5)
+      // API calls to database
+      //_HelpRequest(user name, location, List<Article> articles)
+      // _HelpRequest("Clément", "Saint-Sulpice", 1),
+      // _HelpRequest("Lancelot", "Saint-Sulpice", 20),
+      // _HelpRequest("Douglas", "Morges", 30),
+      // _HelpRequest("Ludovic", "Lausanne", 10),
+      // _HelpRequest("Mohamed", "Le Caire", 5),
+      // _HelpRequest("Clément", "Saint-Sulpice", 1),
+      // _HelpRequest("Lancelot", "Saint-Sulpice", 20),
+      // _HelpRequest("Douglas", "Morges", 30),
+      // _HelpRequest("Ludovic", "Lausanne", 10),
+      // _HelpRequest("Mohamed", "Le Caire", 5),
+      // _HelpRequest("Clément", "Saint-Sulpice", 1),
+      // _HelpRequest("Lancelot", "Saint-Sulpice", 20),
+      // _HelpRequest("Douglas", "Morges", 30),
+      // _HelpRequest("Ludovic", "Lausanne", 10),
+      // _HelpRequest("Mohamed", "Le Caire", 5),
+      // _HelpRequest("Clément", "Saint-Sulpice", 1),
+      // _HelpRequest("Lancelot", "Saint-Sulpice", 20),
+      // _HelpRequest("Douglas", "Morges", 30),
+      // _HelpRequest("Ludovic", "Lausanne", 10),
+      // _HelpRequest("Mohamed", "Le Caire", 5)
     ];
   }
 
@@ -111,19 +113,21 @@ class _OfferHelpPageState extends State<OfferHelpPage> {
 class _HelpRequest {
   String _name, _location;
   int _nb_of_articles;
-
-  _HelpRequest(String name, String location, int nb_of_articles) {
-    _name = name;
-    _location = location;
-    _nb_of_articles = nb_of_articles;
-  }
-}
-
-class _HelpRequestWithArticles extends _HelpRequest {
   List<Article> _articles;
 
-  _HelpRequestWithArticles(String name, String location, List<Article> articles)
-      : super(name, location, articles.length) {
-    _articles = articles;
+  _HelpRequest(String name, String location, List<Article> articles) {
+    _name = name;
+    _location = location;
+    this._articles = articles;
+    this._nb_of_articles = _articles.length;
   }
 }
+
+// class _HelpRequestWithArticles extends _HelpRequest {
+//   List<Article> _articles;
+
+//   _HelpRequestWithArticles(String name, String location, List<Article> articles)
+//       : super(name, location, articles.length) {
+//     _articles = articles;
+//   }
+// }
