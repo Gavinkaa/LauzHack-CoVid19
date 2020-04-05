@@ -79,7 +79,7 @@ class _ItemsListPageState extends State<ItemsListPage> {
           style: _fontArticles,
         ),
         trailing: Icon(
-          alreadySaved ? Icons.check_box : Icons.check_box_outline_blank,
+          alreadySaved ? Icons.check_circle : Icons.add_shopping_cart,
           color: alreadySaved ? Colors.green : null,
         ),
         onTap: () {
@@ -99,7 +99,12 @@ class _ItemsListPageState extends State<ItemsListPage> {
       appBar: AppBar(
         title: Text('Votre demande :'),
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.list), onPressed: _pushSaved),
+          IconButton(
+              icon: Icon(
+                Icons.shopping_cart,
+                color: Colors.red,
+              ),
+              onPressed: _pushSaved),
         ],
       ),
       body: Container(
