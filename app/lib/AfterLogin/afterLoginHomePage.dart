@@ -30,16 +30,25 @@ class _AfterLoginHomePageState extends State<AfterLoginHomePage> {
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
-                    title: Text("Déconnexion"),
+                    title: Text(
+                      "DECONNEXION",
+                      style: TextStyle(fontWeight: FontWeight.w200),
+                    ),
                     content:
                         Text("Etes-vous sûr de vouloir vous déconnecter ?"),
                     actions: <Widget>[
                       FlatButton(
                           onPressed: () => Navigator.of(context).pop(),
-                          child: Text("Annuler")),
+                          child: Text("ANNULER",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w300,
+                                  color: Colors.red))),
                       FlatButton(
                           onPressed: () => AuthServ.logout(context),
-                          child: Text("Déconnexion")),
+                          child: Text("DECONNEXION",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w300,
+                                  color: Colors.red))),
                     ],
                   );
                 },
@@ -59,7 +68,6 @@ class _AfterLoginHomePageState extends State<AfterLoginHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const SizedBox(height: 5),
             Expanded(
               child: RaisedButton(
                 color: Colors.white70,
@@ -105,7 +113,6 @@ class _AfterLoginHomePageState extends State<AfterLoginHomePage> {
                 ),
               ),
             ),
-            const SizedBox(height: 5),
           ],
         ),
       ),
