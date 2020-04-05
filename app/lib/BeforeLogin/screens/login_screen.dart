@@ -57,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(
-              "HelpYourNeighbor",
+              "HYNeighbor",
               style: TextStyle(fontSize: 50.0, fontWeight: FontWeight.w200),
             ),
             Form(
@@ -65,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
               key: _formKey,
               child: Column(
                 children: <Widget>[
-                  SizedBox(height: 80.0),
+                  SizedBox(height: 40.0),
                   Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: 30.0,
