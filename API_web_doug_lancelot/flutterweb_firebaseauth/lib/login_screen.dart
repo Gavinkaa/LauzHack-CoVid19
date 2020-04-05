@@ -122,7 +122,16 @@ class _LoginPageState extends State<LoginPage> {
 }
 
 class SecondRoute extends StatelessWidget {
-  String email, password;
+  String email,
+      password,
+      firstName,
+      lastName,
+      telephone,
+      type,
+      street,
+      aptfloor,
+      pcode,
+      city;
 
   final formKey = new GlobalKey<FormState>();
 
@@ -178,32 +187,31 @@ class SecondRoute extends StatelessWidget {
                                   },
                                 ),
                               )),
-                          Padding(
-                              padding: EdgeInsets.only(
-                                  left: 25.0,
-                                  right: 25.0,
-                                  top: 20.0,
-                                  bottom: 5.0),
-                              child: Container(
-                                height: 50.0,
-                                child: TextFormField(
-                                  obscureText: true,
-                                  decoration:
-                                      InputDecoration(hintText: 'Password'),
-                                  validator: (value) => value.isEmpty
-                                      ? 'Password is required'
-                                      : null,
-                                  onChanged: (value) {
-                                    this.password = value;
-                                  },
-                                ),
-                              )),
+                          add_Box(this.password, password),
+                          add_Box(this.firstName, firstName),
+                          add_Box(this.lastName, lastName),
+                          add_Box(this.telephone, telephone),
+                          add_Box(this.type, type),
+                          add_Box(this.street, street),
+                          add_Box(this.aptfloor, aptfloor),
+                          add_Box(this.pcode, pcode),
+                          add_Box(this.city, city),
                           InkWell(
                               onTap: () {
                                 if (checkFields()) {
                                   //AuthService().signIn(email, password);
                                   AuthService().register_in_with_error(
-                                      email, password, context);
+                                      context,
+                                      firstName,
+                                      lastName,
+                                      email,
+                                      password,
+                                      telephone,
+                                      type,
+                                      street,
+                                      aptfloor,
+                                      pcode,
+                                      city);
                                 }
                               },
                               child: Container(
