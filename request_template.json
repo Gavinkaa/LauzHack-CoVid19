@@ -1,31 +1,38 @@
-{
-    "contact": {
-        "firstName": "",
-        "lastName": "",
-        "email": "",
-        "phone": "",
-        "type": "",
-        "street": "",
-        "aptFloor": "",
-        "pcode": "",
-        "city": ""
-    },
-    "order": {
-        "Viande": [
-            {
-                "name": "",
-                "comment": "",
-                "quantity": "",
-                "icon-url": ""
-            }
-        ],
-        "type2_ex": [
-            {
-                "name": "",
-                "comment": "",
-                "quantity": "",
-                "icon-url": ""
-            }
-        ]
+[
+    {
+        "contact": {
+            "firstName": "",
+            "lastName": "",
+            "email": "",
+            "phone": "",
+            "type": "",
+            "street": "",
+            "aptFloor": "",
+            "pcode": "",
+            "city": "",
+            "accepted_orders": [
+                "id1",
+                "id2"
+            ]
+        },
+        "order": {
+            "Viande": [
+                {
+                    "name": "",
+                    "comment": "",
+                    "quantity": "",
+                    "icon-url": ""
+                }
+            ],
+            "type2_ex": [
+                {
+                    "name": "",
+                    "comment": "",
+                    "quantity": "",
+                    "icon-url": ""
+                }
+            ]
+        },
+        "orderID": "id"
     }
-}
+]
