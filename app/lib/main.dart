@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Login helper',
         debugShowCheckedModeBanner: false,
+        theme: ThemeData(primaryColor: Colors.white),
         home: _getScreenId(),
         routes: {
           LoginScreen.id: (context) => LoginScreen(),
