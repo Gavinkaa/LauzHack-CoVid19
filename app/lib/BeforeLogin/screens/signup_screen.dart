@@ -1,4 +1,4 @@
-import 'package:app/services/auth_service.dart';
+import 'package:app/BeforeLogin/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class SignupScreen extends StatefulWidget {

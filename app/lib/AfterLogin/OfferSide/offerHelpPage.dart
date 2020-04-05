@@ -1,4 +1,4 @@
-import 'package:app/Contact.dart';
+import 'package:app/AfterLogin/Contact.dart';
 import 'package:flutter/material.dart';
 import '../Article.dart';
 import '../Request.dart';

@@ -1,4 +1,4 @@
-import 'package:app/AskSide/pictureTakerPage.dart';
+import 'package:app/AfterLogin/AskSide/pictureTakerPage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 

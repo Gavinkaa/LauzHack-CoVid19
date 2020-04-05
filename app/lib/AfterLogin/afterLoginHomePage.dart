@@ -1,5 +1,5 @@
-import 'package:app/OfferSide/offerHelpPage.dart';
-import 'package:app/services/auth_service.dart';
+import 'package:app/AfterLogin/OfferSide/offerHelpPage.dart';
+import 'package:app/BeforeLogin/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
 import 'AskSide/askHelpPage.dart';

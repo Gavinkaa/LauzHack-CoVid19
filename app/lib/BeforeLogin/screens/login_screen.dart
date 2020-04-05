@@ -1,6 +1,6 @@
-import 'package:app/afterLoginHomePage.dart';
-import 'package:app/screens/signup_screen.dart';
-import 'package:app/services/auth_service.dart';
+import 'package:app/AfterLogin/afterLoginHomePage.dart';
+import 'package:app/BeforeLogin/services/auth_service.dart';
+import 'package:app/BeforeLogin/screens/signup_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

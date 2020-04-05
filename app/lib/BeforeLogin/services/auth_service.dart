@@ -1,5 +1,5 @@
-import 'package:app/afterLoginHomePage.dart';
-import 'package:app/screens/login_screen.dart';
+import 'package:app/AfterLogin/afterLoginHomePage.dart';
+import 'package:app/BeforeLogin/screens/login_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
