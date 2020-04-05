@@ -280,7 +280,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                   validator: (value) =>
                                       //check condition for aptflorr
                                       value.isEmpty
-                                          ? 'aptfloor is required'
+                                          ? 'aptfloor is required' : !(value.contains("1") || value.contains("2") || value.contains("3") || value.contains("4") || value.contains("5") || value.contains("6") || value.contains("7") || value.contains("8") || value.contains("9") || value.contains("0")) ?  "aptfloor must contains numbers"
                                           : null,
                                   onChanged: (value) => setState(() {
                                     aptfloor = value;
@@ -307,7 +307,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                   validator: (value) =>
                                       //check condition for pcode
                                       value.isEmpty
-                                          ? 'code postale is required'
+                                          ? 'c_postal is required' : !(value.contains("1") || value.contains("2") || value.contains("3") || value.contains("4") || value.contains("5") || value.contains("6") || value.contains("7") || value.contains("8") || value.contains("9") || value.contains("0")) ?  "c_postal must contains numbers"
                                           : null,
                                   onChanged: (value) => setState(() {
                                     pcode = value;
