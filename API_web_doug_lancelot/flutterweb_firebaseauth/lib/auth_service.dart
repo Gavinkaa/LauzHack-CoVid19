@@ -150,20 +150,4 @@ class AuthService {
   }
 }
 
-Padding add_Box(String field, String type) {
-  return Padding(
-      padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 20.0, bottom: 5.0),
-      child: Container(
-        height: 32.0,
-        child: TextFormField(
-          obscureText: true,
-          decoration: InputDecoration(hintText: type),
-          validator: (value) => value.isEmpty ? type + ' is required' : null,
-          onChanged: (value) {
-            field = value;
-          },
-        ),
-      ));
-}
-
 class BuilderContext {}
