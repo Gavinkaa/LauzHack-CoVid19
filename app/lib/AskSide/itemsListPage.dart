@@ -29,7 +29,11 @@ class _ItemsListPageState extends State<ItemsListPage> {
     super.initState();
   }
 
-  final _biggerFont = const TextStyle(fontSize: 18.0);
+  final _fontArticles = const TextStyle(fontSize: 17.0);
+  final _fontTypes = const TextStyle(
+    fontSize: 21.0,
+    fontWeight: FontWeight.bold,
+  );
   final Set<Article> _saved = Set<Article>();
 
   Widget _buildTypes() {
@@ -40,7 +44,7 @@ class _ItemsListPageState extends State<ItemsListPage> {
         itemBuilder: (context, i) {
           List<ArticleType> types = _articlesByType.keys.toList();
           return ExpansionTile(
-            title: Text(types[i].getStr()),
+            title: Text(types[i].getStr(), style: _fontTypes),
             children: <Widget>[
               Column(
                 children: _buildArticles(_articlesByType[types[i]]),
@@ -73,7 +77,7 @@ class _ItemsListPageState extends State<ItemsListPage> {
     return ListTile(
         title: Text(
           article.getName(),
-          style: _biggerFont,
+          style: _fontArticles,
         ),
         trailing: Icon(
           alreadySaved ? Icons.check_box : Icons.check_box_outline_blank,
@@ -116,7 +120,7 @@ class _ItemsListPageState extends State<ItemsListPage> {
               return ListTile(
                 title: Text(
                   article.getName(),
-                  style: _biggerFont,
+                  style: _fontArticles,
                 ),
               );
             },
