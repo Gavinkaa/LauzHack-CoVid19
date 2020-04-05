@@ -102,7 +102,8 @@ class _ItemsListPageState extends State<ItemsListPage> {
           IconButton(
               icon: Icon(
                 Icons.shopping_cart,
-                color: Colors.red,
+                color: Colors.deepOrange,
+                size: 30.0,
               ),
               onPressed: _pushSaved),
         ],
@@ -118,13 +119,18 @@ class _ItemsListPageState extends State<ItemsListPage> {
     Navigator.of(context).push(
       MaterialPageRoute<void>(
         builder: (BuildContext context) {
-          final Iterable<ListTile> tiles = _saved.map(
+          Iterable<ListTile> tiles = _saved.map(
             (Article article) {
               return ListTile(
                 title: Text(
                   article.getName(),
                   style: _fontArticles,
                 ),
+                trailing: GestureDetector(
+                    onTap: () {
+                      _saved.remove(article.getName());
+                    },
+                    child: Icon(Icons.remove_shopping_cart, color: Colors.red)),
               );
             },
           );
