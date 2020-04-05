@@ -25,7 +25,25 @@ class _AfterLoginHomePageState extends State<AfterLoginHomePage> {
         ),
         actions: <Widget>[
           IconButton(
-              onPressed: () => AuthServ.logout(context),
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text("Déconnexion"),
+                        content:
+                            Text("Etes-vous sûr de vouloir vous déconnecter ?"),
+                        actions: <Widget>[
+                          FlatButton(
+                              onPressed: () => Navigator.of(context).pop(),
+                              child: Text("Annuler")),
+                          FlatButton(
+                              onPressed: () => AuthServ.logout(context),
+                              child: Text("Déconnexion")),
+                        ],
+                      );
+                    });
+              },
               icon: Icon(
                 Icons.power_settings_new,
                 color: Colors.red,
