@@ -18,26 +18,26 @@ class _OfferHelpPageState extends State<OfferHelpPage> {
     _requests = [
       // API calls to database
       // _HelpRequest(user name, location, List<Article> articles)
-      _HelpRequest("Clément", "Saint-Sulpice", 1),
-      _HelpRequest("Lancelot", "Saint-Sulpice", 20),
-      _HelpRequest("Douglas", "Morges", 30),
-      _HelpRequest("Ludovic", "Lausanne", 10),
-      _HelpRequest("Mohamed", "Le Caire", 5),
-      _HelpRequest("Clément", "Saint-Sulpice", 1),
-      _HelpRequest("Lancelot", "Saint-Sulpice", 20),
-      _HelpRequest("Douglas", "Morges", 30),
-      _HelpRequest("Ludovic", "Lausanne", 10),
-      _HelpRequest("Mohamed", "Le Caire", 5),
-      _HelpRequest("Clément", "Saint-Sulpice", 1),
-      _HelpRequest("Lancelot", "Saint-Sulpice", 20),
-      _HelpRequest("Douglas", "Morges", 30),
-      _HelpRequest("Ludovic", "Lausanne", 10),
-      _HelpRequest("Mohamed", "Le Caire", 5),
-      _HelpRequest("Clément", "Saint-Sulpice", 1),
-      _HelpRequest("Lancelot", "Saint-Sulpice", 20),
-      _HelpRequest("Douglas", "Morges", 30),
-      _HelpRequest("Ludovic", "Lausanne", 10),
-      _HelpRequest("Mohamed", "Le Caire", 5)
+      // _HelpRequest("Clément", "Saint-Sulpice", 1),
+      // _HelpRequest("Lancelot", "Saint-Sulpice", 20),
+      // _HelpRequest("Douglas", "Morges", 30),
+      // _HelpRequest("Ludovic", "Lausanne", 10),
+      // _HelpRequest("Mohamed", "Le Caire", 5),
+      // _HelpRequest("Clément", "Saint-Sulpice", 1),
+      // _HelpRequest("Lancelot", "Saint-Sulpice", 20),
+      // _HelpRequest("Douglas", "Morges", 30),
+      // _HelpRequest("Ludovic", "Lausanne", 10),
+      // _HelpRequest("Mohamed", "Le Caire", 5),
+      // _HelpRequest("Clément", "Saint-Sulpice", 1),
+      // _HelpRequest("Lancelot", "Saint-Sulpice", 20),
+      // _HelpRequest("Douglas", "Morges", 30),
+      // _HelpRequest("Ludovic", "Lausanne", 10),
+      // _HelpRequest("Mohamed", "Le Caire", 5),
+      // _HelpRequest("Clément", "Saint-Sulpice", 1),
+      // _HelpRequest("Lancelot", "Saint-Sulpice", 20),
+      // _HelpRequest("Douglas", "Morges", 30),
+      // _HelpRequest("Ludovic", "Lausanne", 10),
+      // _HelpRequest("Mohamed", "Le Caire", 5)
     ];
   }
 
