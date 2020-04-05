@@ -79,7 +79,7 @@ class _ItemsListPageState extends State<ItemsListPage> {
           style: _fontArticles,
         ),
         trailing: Icon(
-          alreadySaved ? Icons.check_box : Icons.check_box_outline_blank,
+          alreadySaved ? Icons.check_circle : Icons.add_shopping_cart,
           color: alreadySaved ? Colors.green : null,
         ),
         onTap: () {
@@ -99,7 +99,13 @@ class _ItemsListPageState extends State<ItemsListPage> {
       appBar: AppBar(
         title: Text('Votre demande :'),
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.list), onPressed: _pushSaved),
+          IconButton(
+              icon: Icon(
+                Icons.shopping_cart,
+                color: Colors.deepOrange,
+                size: 30.0,
+              ),
+              onPressed: _pushSaved),
         ],
       ),
       body: Container(
@@ -113,13 +119,18 @@ class _ItemsListPageState extends State<ItemsListPage> {
     Navigator.of(context).push(
       MaterialPageRoute<void>(
         builder: (BuildContext context) {
-          final Iterable<ListTile> tiles = _saved.map(
+          Iterable<ListTile> tiles = _saved.map(
             (Article article) {
               return ListTile(
                 title: Text(
                   article.getName(),
                   style: _fontArticles,
                 ),
+                trailing: GestureDetector(
+                    onTap: () {
+                      _saved.remove(article.getName());
+                    },
+                    child: Icon(Icons.remove_shopping_cart, color: Colors.red)),
               );
             },
           );

@@ -1,18 +1,23 @@
 import 'package:app/AskSide/Articles.dart';
-
 import 'Contact.dart';
 
 class Request {
-  List<Article> articles;
+  List<Article> _articles;
+  int _nbOfArticles;
   Contact asker;
 
   Request(List<Article> articles, Contact asker) {
-    this.articles = List.from(articles);
+    this._articles = List.from(articles);
     this.asker = Contact.from(asker);
+    this._nbOfArticles = _articles.length;
   }
 
   List<Article> getArticles() {
-    return List.from(articles);
+    return List.from(_articles);
+  }
+
+  int getNumberOfArticles() {
+    return _nbOfArticles;
   }
 
   Contact getAsker() {
@@ -20,7 +25,8 @@ class Request {
   }
 
   void setArticles(List<Article> articles) {
-    this.articles = List.from(articles);
+    this._articles = List.from(_articles);
+    this._nbOfArticles = _articles.length;
   }
 
   void setAsker(Contact asker) {
