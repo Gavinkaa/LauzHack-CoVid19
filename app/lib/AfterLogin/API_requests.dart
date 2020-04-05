@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -41,6 +39,8 @@ class APIRequests {
   static Future<bool> POST_NewRequest(Map<String, dynamic> json) async {
     // post a new request associated to the user thats logged in saved to orders
     await _auth.currentUser().then((value) => authUserUid = value.uid);
+    json.putIfAbsent(
+        "orderID", () => authUserUid); //we need to generate unique ID
     await _firestore.collection('/orders').document(authUserUid).setData(json);
     return true;
   }
@@ -69,21 +69,5 @@ class APIRequests {
         .document(authUserUid)
         .setData(orderToBeMoved);
     return true;
-  }
-
-  static String GET_orderByID(String id) {
-    return null;
-  }
-
-  static String GET_ownContact() {
-    return null;
-  }
-
-  static bool POST_modifyContact(String jsonContact) {
-    return null;
-  }
-
-  static String GET_userType() {
-    return null;
   }
 }
