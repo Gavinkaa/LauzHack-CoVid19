@@ -259,28 +259,38 @@ class _SignupScreenState extends State<SignupScreen> {
               SizedBox(
                 height: 20.0,
               ),
-              FlatButton(
-                onPressed: _submit,
-                color: Colors.red,
-                child: Text(
-                  'Signup',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18.0,
+              Center(
+                child: FlatButton(
+                  onPressed: _submit,
+                  color: Colors.red,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(8.0),
+                  ),
+                  child: Text(
+                    'Signup',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18.0,
+                    ),
                   ),
                 ),
               ),
               SizedBox(
-                height: 20.0,
+                height: 15.0,
               ),
-              FlatButton(
-                onPressed: () => Navigator.pop(context),
-                color: Colors.red,
-                child: Text(
-                  'Back to Login',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18.0,
+              Center(
+                child: FlatButton(
+                  onPressed: () => Navigator.pop(context),
+                  color: Colors.red,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(8.0),
+                  ),
+                  child: Text(
+                    'Back to Login',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18.0,
+                    ),
                   ),
                 ),
               ),

@@ -104,12 +104,12 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: 80.0,
               ),
-              ClipRect(
+              Center(
                 child: FlatButton(
                   onPressed: _submit,
                   color: Colors.red,
                   shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(12.0),
+                    borderRadius: new BorderRadius.circular(8.0),
                   ),
                   child: Text(
                     'Se connecter',
@@ -121,15 +121,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               SizedBox(
-                height: 20.0,
+                height: 15.0,
               ),
-              ClipRect(
+              Center(
                 child: FlatButton(
                   onPressed: () =>
                       Navigator.pushNamed(context, SignupScreen.id),
                   color: Colors.red,
                   shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(12.0),
+                    borderRadius: new BorderRadius.circular(8.0),
                   ),
                   child: Text(
                     "S'inscrire",
