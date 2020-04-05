@@ -12,7 +12,7 @@ class HelpYourNeighbors extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Help Your Neighbors',
+      title: 'HelpYourNeighbors',
       theme: ThemeData(
         primaryColor: Colors.white,
       ),
@@ -45,21 +45,53 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             RaisedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => AskHelpPage()),
-                  );
-                },
-                child: Text('Ask help')),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AskHelpPage()),
+                );
+              },
+              textColor: Colors.white,
+              padding: const EdgeInsets.all(0.0),
+              child: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: <Color>[
+                      Color(0xFF0D47A1),
+                      Color(0xFF1976D2),
+                      Color(0xFF42A5F5),
+                    ],
+                  ),
+                ),
+                padding: const EdgeInsets.all(10.0),
+                child:
+                    const Text('Ask for help', style: TextStyle(fontSize: 20)),
+              ),
+            ),
+            const SizedBox(height: 30),
             RaisedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => OfferHelpPage()),
-                  );
-                },
-                child: Text('Offer help')),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => OfferHelpPage()),
+                );
+              },
+              textColor: Colors.white,
+              padding: const EdgeInsets.all(0.0),
+              child: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: <Color>[
+                      Color(0xFF0D47A1),
+                      Color(0xFF1976D2),
+                      Color(0xFF42A5F5),
+                    ],
+                  ),
+                ),
+                padding: const EdgeInsets.all(10.0),
+                child: const Text('Offer help', style: TextStyle(fontSize: 20)),
+              ),
+            ),
           ],
         ),
       ),
