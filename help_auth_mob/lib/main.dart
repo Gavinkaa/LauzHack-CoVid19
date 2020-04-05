@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:help_auth_mob/screens/after_login_screen.dart';
+import 'package:help_auth_mob/screens/signup_form_screen.dart';
 import 'package:help_auth_mob/screens/signup_screen.dart';
 
 import 'screens/login_screen.dart';

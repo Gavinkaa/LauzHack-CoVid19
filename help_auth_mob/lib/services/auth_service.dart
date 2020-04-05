@@ -8,16 +8,34 @@ class AuthServ {
   static final _auth = FirebaseAuth.instance;
   static final _firestore = Firestore.instance;
   static void signUpUser(
-      BuildContext context, String name, String email, String password) async {
+      BuildContext context,
+      String firstName,
+      String lastName,
+      String email,
+      String password,
+      String telephone,
+      String type,
+      String street,
+      String aptfloor,
+      String pcode,
+      String city) async {
     try {
       AuthResult authRes = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      FirebaseUser signedInUser = authRes.user;
+      FirebaseUser signedInUser = authRes.user; // handles auth
+      // handles writing to the db
       if (signedInUser != null) {
-        _firestore
-            .collection('/users')
-            .document(signedInUser.uid)
-            .setData({'name': name, 'email': email});
+        _firestore.collection('/users').document(signedInUser.uid).setData({
+          'firstName': firstName,
+          'lastName': lastName,
+          'email': email,
+          'telephone': telephone,
+          'type': type,
+          'street': street,
+          'aptFloor': aptfloor,
+          'pcode': pcode,
+          'city': city
+        });
         Navigator.pushReplacementNamed(
             context, AfterLogInScreen.id); // not to be able to come back
       }
