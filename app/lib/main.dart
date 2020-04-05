@@ -14,11 +14,11 @@ class MyApp extends StatelessWidget {
     return StreamBuilder<FirebaseUser>(
       stream: FirebaseAuth.instance.onAuthStateChanged,
       builder: (BuildContext context, snapshot) {
-        // if (snapshot.hasData) {
-        return AfterLoginHomePage();
-        // } else {
-        //   return LoginScreen();
-        // }
+        if (snapshot.hasData) {
+          return AfterLoginHomePage();
+        } else {
+          return LoginScreen();
+        }
       },
     );
   }
