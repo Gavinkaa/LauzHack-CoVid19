@@ -102,6 +102,7 @@ class _ItemsListPageState extends State<ItemsListPage> {
         title: Text(
           'Votre demande :',
           style: TextStyle(color: Colors.black),
+          textAlign: TextAlign.end,
         ),
         actions: <Widget>[
           IconButton(
