@@ -103,6 +103,11 @@ class ArticleType {
     _type = type;
   }
 
+  ArticleType.from(ArticleType articleType) {
+    this._type = articleType._type;
+    this._str = articleType._str;
+  }
+
   _Type getType() {
     return this._type;
   }
@@ -133,7 +138,7 @@ class Article implements Comparable {
     this._name = name;
     this._comment = comment;
     this._quantity = quantity;
-    this._type = type;
+    this._type = ArticleType.from(type);
     this._iconUrl = iconUrl;
   }
 
