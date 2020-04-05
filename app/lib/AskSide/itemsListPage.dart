@@ -103,7 +103,7 @@ class _ItemsListPageState extends State<ItemsListPage> {
           IconButton(
               icon: Icon(
                 Icons.shopping_cart,
-                color: Colors.deepOrange,
+                color: Colors.green,
                 size: 30.0,
               ),
               onPressed: _pushSaved),
