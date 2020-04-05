@@ -41,33 +41,33 @@ class AuthService {
 
   Future<void> register_in_with_error(
       BuildContext context,
-      String firstName,
-      String lastName,
-      String email,
-      String password,
-      String telephone,
-      String type,
-      String street,
-      String aptfloor,
-      String pcode,
-      String city) async {
+      String _firstName,
+      String _lastName,
+      String _email,
+      String _password,
+      String _telephone,
+      String _type,
+      String _street,
+      String _aptfloor,
+      String _pcode,
+      String _city) async {
     try {
       AuthResult authRes = await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+          email: _email, password: _password);
       FirebaseUser signedInUser = authRes.user; // handles auth
       // handles writing to the db
       if (signedInUser != null) {
         //  //_firestore.collection('/users').document(signedInUser.uid).setData({
         _firestore.collection('/users').doc(signedInUser.uid).set({
-          'firstName': firstName,
-          'lastName': lastName,
-          'email': email,
-          'telephone': telephone,
-          'type': type,
-          'street': street,
-          'aptFloor': aptfloor,
-          'pcode': pcode,
-          'city': city
+          'firstName': _firstName,
+          'lastName': _lastName,
+          'email': _email,
+          'telephone': _telephone,
+          'type': _type,
+          'street': _street,
+          'aptFloor': _aptfloor,
+          'pcode': _pcode,
+          'city': _city
         });
         //  Navigator.pushReplacementNamed(
         //      context, LoginPage().toString()); // not to be able to come back

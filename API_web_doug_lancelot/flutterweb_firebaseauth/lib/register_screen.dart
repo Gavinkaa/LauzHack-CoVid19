@@ -29,6 +29,7 @@ class _SecondRouteState extends State<SecondRoute> {
           height: 32.0,
           child: TextFormField(
             initialValue: field,
+            //to think about
             obscureText: true,
             decoration: InputDecoration(
                 contentPadding: EdgeInsets.all(10.0),
@@ -97,31 +98,266 @@ class _SecondRouteState extends State<SecondRoute> {
                                   }),
                                 ),
                               )),
-                          add_Box(this.password, 'password'),
-                          add_Box(this.firstName, 'firstName'),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0,
+                                  right: 25.0,
+                                  top: 20.0,
+                                  bottom: 5.0),
+                              child: Container(
+                                height: 32.0,
+                                child: TextFormField(
+                                  initialValue: password,
+                                  //to think about
+                                  obscureText: true,
+                                  decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(10.0),
+                                      labelText: 'password',
+                                      labelStyle: TextStyle(
+                                        color: Colors.grey[600],
+                                      )),
+                                  validator: (value) =>
+                                      //check condition for password
+                                      value.isEmpty && value.length > 6
+                                          ? type + ' is required'
+                                          : null,
+                                  onChanged: (value) => setState(() {
+                                    password = value;
+                                  }),
+                                ),
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0,
+                                  right: 25.0,
+                                  top: 20.0,
+                                  bottom: 5.0),
+                              child: Container(
+                                height: 32.0,
+                                child: TextFormField(
+                                  initialValue: firstName,
+                                  //to think about
+                                  obscureText: true,
+                                  decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(10.0),
+                                      labelText: 'first name',
+                                      labelStyle: TextStyle(
+                                        color: Colors.grey[600],
+                                      )),
+                                  validator: (value) =>
+                                      //add cehcking condition
+                                      value.isEmpty
+                                          ? 'First Name is required'
+                                          : null,
+                                  onChanged: (value) => setState(() {
+                                    firstName = value;
+                                  }),
+                                ),
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0,
+                                  right: 25.0,
+                                  top: 20.0,
+                                  bottom: 5.0),
+                              child: Container(
+                                height: 32.0,
+                                child: TextFormField(
+                                  initialValue: lastName,
+                                  //to think about
+                                  decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(10.0),
+                                      labelText: 'last Name',
+                                      labelStyle: TextStyle(
+                                        color: Colors.grey[600],
+                                      )),
+                                  validator: (value) =>
+                                      //check condition for last name
+                                      value.isEmpty
+                                          ? 'Last name is required'
+                                          : null,
+                                  onChanged: (value) => setState(() {
+                                    lastName = value;
+                                  }),
+                                ),
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0,
+                                  right: 25.0,
+                                  top: 20.0,
+                                  bottom: 5.0),
+                              child: Container(
+                                height: 32.0,
+                                child: TextFormField(
+                                  initialValue: telephone,
+                                  //to think about
+                                  decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(10.0),
+                                      labelText: 'phone number',
+                                      labelStyle: TextStyle(
+                                        color: Colors.grey[600],
+                                      )),
+                                  validator: (value) =>
+                                      //check condition for phone
+                                      value.isEmpty
+                                          ? type + 'phone number is required'
+                                          : null,
+                                  onChanged: (value) => setState(() {
+                                    telephone = value;
+                                  }),
+                                ),
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0,
+                                  right: 25.0,
+                                  top: 20.0,
+                                  bottom: 5.0),
+                              child: Container(
+                                height: 32.0,
+                                child: TextFormField(
+                                  initialValue: type,
+                                  //to think about
+                                  decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(10.0),
+                                      labelText: 'type',
+                                      labelStyle: TextStyle(
+                                        color: Colors.grey[600],
+                                      )),
+                                  validator: (value) =>
+                                      //check condition for type
+                                      value.isEmpty ? 'type is required' : null,
+                                  onChanged: (value) => setState(() {
+                                    type = value;
+                                  }),
+                                ),
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0,
+                                  right: 25.0,
+                                  top: 20.0,
+                                  bottom: 5.0),
+                              child: Container(
+                                height: 32.0,
+                                child: TextFormField(
+                                  initialValue: street,
+                                  //to think about
+                                  decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(10.0),
+                                      labelText: 'street name',
+                                      labelStyle: TextStyle(
+                                        color: Colors.grey[600],
+                                      )),
+                                  validator: (value) =>
+                                      //check condition for street
+                                      value.isEmpty
+                                          ? 'street name is required'
+                                          : null,
+                                  onChanged: (value) => setState(() {
+                                    street = value;
+                                  }),
+                                ),
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0,
+                                  right: 25.0,
+                                  top: 20.0,
+                                  bottom: 5.0),
+                              child: Container(
+                                height: 32.0,
+                                child: TextFormField(
+                                  initialValue: aptfloor,
+                                  //to think about
+                                  decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(10.0),
+                                      labelText: 'aptfloor',
+                                      labelStyle: TextStyle(
+                                        color: Colors.grey[600],
+                                      )),
+                                  validator: (value) =>
+                                      //check condition for aptflorr
+                                      value.isEmpty
+                                          ? 'aptfloor is required'
+                                          : null,
+                                  onChanged: (value) => setState(() {
+                                    aptfloor = value;
+                                  }),
+                                ),
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0,
+                                  right: 25.0,
+                                  top: 20.0,
+                                  bottom: 5.0),
+                              child: Container(
+                                height: 32.0,
+                                child: TextFormField(
+                                  initialValue: pcode,
+                                  //to think about
+                                  decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(10.0),
+                                      labelText: 'c_postal',
+                                      labelStyle: TextStyle(
+                                        color: Colors.grey[600],
+                                      )),
+                                  validator: (value) =>
+                                      //check condition for pcode
+                                      value.isEmpty
+                                          ? 'code postale is required'
+                                          : null,
+                                  onChanged: (value) => setState(() {
+                                    pcode = value;
+                                  }),
+                                ),
+                              )),
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  left: 25.0,
+                                  right: 25.0,
+                                  top: 20.0,
+                                  bottom: 5.0),
+                              child: Container(
+                                height: 32.0,
+                                child: TextFormField(
+                                  initialValue: city,
+                                  //to think about
+                                  decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(10.0),
+                                      labelText: 'City',
+                                      labelStyle: TextStyle(
+                                        color: Colors.grey[600],
+                                      )),
+                                  validator: (value) =>
+                                      //check condition for city
+                                      value.isEmpty ? 'city is required' : null,
+                                  onChanged: (value) => setState(() {
+                                    city = value;
+                                  }),
+                                ),
+                              )),
                           add_Box(this.lastName, 'lastName'),
                           add_Box(this.telephone, 'telephone'),
                           add_Box(this.type, 'type'),
-                          add_Box(this.street, 'street'),
-                          add_Box(this.aptfloor, 'aptfloor'),
-                          add_Box(this.pcode, 'pcode'),
-                          add_Box(this.city, 'city'),
                           InkWell(
                               onTap: () {
                                 if (checkFields()) {
                                   //AuthService().signIn(email, password);
                                   AuthService().register_in_with_error(
-                                      context,
-                                      firstName,
-                                      lastName,
-                                      email,
+                                      this.context,
+                                      this.firstName,
+                                      this.lastName,
+                                      this.email,
                                       password,
-                                      telephone,
-                                      type,
-                                      street,
-                                      aptfloor,
-                                      pcode,
-                                      city);
+                                      this.telephone,
+                                      this.type,
+                                      this.street,
+                                      this.aptfloor,
+                                      this.pcode,
+                                      this.city);
                                 }
                               },
                               child: Container(
