@@ -47,6 +47,37 @@ class _ItemsListSummaryPageState extends State<ItemsListSummaryPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Articles enregistrés :'),
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text("Valider la commande ?"),
+                    content: Text(
+                        "Êtes vous sûr de voulour valider la commande ?"),
+                    actions: <Widget>[
+                      FlatButton(
+                          onPressed: () => Navigator.of(context).pop(),
+                          child: Text("Annuler")),
+                      FlatButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text("Accepter")),
+                    ],
+                  );
+                },
+              );
+            },
+            icon: Icon(
+              Icons.assignment_turned_in,
+              color: Colors.green,
+              size: 30.0,
+            ),
+          ),
+        ],
       ),
       body: ListView(
         children: ListTile.divideTiles(
