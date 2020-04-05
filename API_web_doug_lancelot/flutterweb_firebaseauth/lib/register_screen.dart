@@ -119,7 +119,7 @@ class _SecondRouteState extends State<SecondRoute> {
                                   validator: (value) =>
                                       //check condition for password
                                       value.isEmpty && value.length > 6
-                                          ? type + ' is required'
+                                          ? 'password is required'
                                           : null,
                                   onChanged: (value) => setState(() {
                                     password = value;
@@ -339,9 +339,6 @@ class _SecondRouteState extends State<SecondRoute> {
                                   }),
                                 ),
                               )),
-                          add_Box(this.lastName, 'lastName'),
-                          add_Box(this.telephone, 'telephone'),
-                          add_Box(this.type, 'type'),
                           InkWell(
                               onTap: () {
                                 if (checkFields()) {
