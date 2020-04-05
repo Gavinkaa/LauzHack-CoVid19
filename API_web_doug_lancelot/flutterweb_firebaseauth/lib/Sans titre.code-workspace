@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "/Users/douglasbouchet/LauzHack-CoVid19/API_web_doug_lancelot/flutterweb_firebaseauth/android"
+		},
+		{
+			"path": "/Users/douglasbouchet/LauzHack-CoVid19/API_web_doug_lancelot/flutterweb_firebaseauth/build"
+		},
+		{
+			"path": "/Users/douglasbouchet/LauzHack-CoVid19/API_web_doug_lancelot/flutterweb_firebaseauth/ios"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "/Users/douglasbouchet/LauzHack-CoVid19/API_web_doug_lancelot/flutterweb_firebaseauth/test"
+		},
+		{
+			"path": "/Users/douglasbouchet/LauzHack-CoVid19/API_web_doug_lancelot/flutterweb_firebaseauth/web"
+		}
+	]
+}
