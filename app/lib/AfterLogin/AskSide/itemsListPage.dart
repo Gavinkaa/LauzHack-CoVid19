@@ -51,7 +51,8 @@ class _ItemsListPageState extends State<ItemsListPage> {
     super.initState();
   }
 
-  final _fontArticles = const TextStyle(fontSize: 17.0);
+  final _fontArticles =
+      const TextStyle(fontSize: 17.0, fontWeight: FontWeight.w300);
   final _fontTypes = const TextStyle(
     fontSize: 21.0,
     fontWeight: FontWeight.w200,

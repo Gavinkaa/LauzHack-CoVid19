@@ -26,7 +26,7 @@ class _ItemsListSummaryPageState extends State<ItemsListSummaryPage> {
         return ListTile(
           title: Text(
             article.getName(),
-            style: TextStyle(fontSize: 17.0),
+            style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.w300),
           ),
           trailing: GestureDetector(
               onTap: () {
@@ -51,7 +51,8 @@ class _ItemsListSummaryPageState extends State<ItemsListSummaryPage> {
           icon: new Icon(Icons.arrow_back_ios, color: Colors.black),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: Text('ARTICLES ENREGISTRÉS :'),
+        title: Text('ARTICLES ENREGISTRÉS',
+            style: TextStyle(fontWeight: FontWeight.w300)),
         centerTitle: true,
         actions: <Widget>[
           IconButton(

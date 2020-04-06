@@ -48,8 +48,10 @@ class AuthServ {
       );
 
       AlertDialog alert = AlertDialog(
-        title: Text("Error"),
-        content: Text("Email already used"),
+        title: Text("ERREUR",
+            style: TextStyle(fontWeight: FontWeight.w300, color: Colors.red)),
+        content: Text("Adresse email déjà utilisée",
+            style: TextStyle(fontWeight: FontWeight.w300)),
         actions: [
           okBut,
         ],
@@ -90,11 +92,9 @@ class AuthServ {
   }
 
   static bool isNumbers(String phone) {
-    String p =
-     r'^[0-9]*[1-9][0-9]*$';
-     RegExp regExp = new RegExp(p);
+    String p = r'^[0-9]*[1-9][0-9]*$';
+    RegExp regExp = new RegExp(p);
 
-     return regExp.hasMatch(phone);
-
+    return regExp.hasMatch(phone);
   }
 }
