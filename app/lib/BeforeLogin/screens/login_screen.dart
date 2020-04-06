@@ -23,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
       Widget okBut = FlatButton(
         child: Text(
-          "OK",
+          "RÉESSAYER",
           style: TextStyle(color: Colors.red, fontWeight: FontWeight.w300),
         ),
         onPressed: () => Navigator.of(context).pop(),
@@ -31,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
       AlertDialog alert = AlertDialog(
         title: Text("ERREUR",
-            style: TextStyle(color: Colors.red, fontWeight: FontWeight.w200)),
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.w200)),
         content: Text("Email ou mot de passe incorrect(s)"),
         actions: [
           okBut,
