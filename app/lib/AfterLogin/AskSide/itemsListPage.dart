@@ -124,7 +124,8 @@ class _ItemsListPageState extends State<ItemsListPage> {
             ),
             onPressed: () {
               showSearch(
-                  context: context, delegate: ArticleSearch(_articles, _saved));
+                  context: context,
+                  delegate: ArticleSearch(_articles, _saved, this));
             },
           ),
           IconButton(
@@ -157,10 +158,10 @@ class _ItemsListPageState extends State<ItemsListPage> {
 class ArticleSearch extends SearchDelegate<Article> {
   List<Article> _l;
   final List<Article> recent = [];
-  Set<Article> _p;
-  bool alreadySaved;
+  Set<Article> _s;
+  _ItemsListPageState _iLPS;
 
-  ArticleSearch(this._l, this._p);
+  ArticleSearch(this._l, this._s, this._iLPS);
 
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -189,25 +190,37 @@ class ArticleSearch extends SearchDelegate<Article> {
   Widget buildResults(BuildContext context) {
     // show some results based on the selection
     return ListView.builder(
-      itemBuilder: (context, index) => ListTile(
-        onTap: () {
-          showResults(context);
-        },
-        title: RichText(
-            text: TextSpan(
-                text: _l[index].getName().substring(0, query.length),
-                style: TextStyle(color: Colors.black),
-                children: [
-              TextSpan(
-                  text: _l[index].getName().substring(query.length),
-                  style: TextStyle(
-                      color: Colors.grey, fontWeight: FontWeight.w300))
-            ])),
-        trailing: Icon(
-          alreadySaved ? Icons.check_circle : Icons.add_shopping_cart,
-          color: alreadySaved ? Colors.green : null,
-        ),
-      ),
+      itemBuilder: (context, index) {
+        final bool _alreadySaved = _s.contains(_l[index]);
+        return ListTile(
+          onTap: () {
+            _iLPS.setState(() {
+              if (_alreadySaved) {
+                _s.remove(_l[index]);
+              } else {
+                _s.add(_l[index]);
+              }
+            });
+            showResults(context);
+          },
+          title: RichText(
+              text: TextSpan(
+                  text: _l[index].getName().substring(0, query.length),
+                  style: TextStyle(color: Colors.black),
+                  children: [
+                TextSpan(
+                    text: _l[index].getName().substring(query.length),
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.w300,
+                        fontSize: 17.0))
+              ])),
+          trailing: Icon(
+            _alreadySaved ? Icons.check_circle : Icons.add_shopping_cart,
+            color: _alreadySaved ? Colors.green : null,
+          ),
+        );
+      },
       itemCount: _l.length,
     );
   }
@@ -241,22 +254,38 @@ class ArticleSearch extends SearchDelegate<Article> {
                 a.getName().toLowerCase().startsWith(query.toLowerCase()))
             .toList();
     return ListView.builder(
-      itemBuilder: (context, index) => ListTile(
-        onTap: () {
-          showResults(context);
-        },
-        title: RichText(
-            text: TextSpan(
-                text:
-                    suggestionList[index].getName().substring(0, query.length),
-                style: TextStyle(color: Colors.black),
-                children: [
-              TextSpan(
-                  text: suggestionList[index].getName().substring(query.length),
-                  style: TextStyle(
-                      color: Colors.grey, fontWeight: FontWeight.w300))
-            ])),
-      ),
+      itemBuilder: (context, index) {
+        final bool _alreadySaved = _s.contains(_l[index]);
+        return ListTile(
+          onTap: () {
+            _iLPS.setState(() {
+              if (_alreadySaved) {
+                _s.remove(_l[index]);
+              } else {
+                _s.add(_l[index]);
+              }
+            });
+            showResults(context);
+          },
+          title: RichText(
+              text: TextSpan(
+                  text: suggestionList[index]
+                      .getName()
+                      .substring(0, query.length),
+                  style: TextStyle(color: Colors.black),
+                  children: [
+                TextSpan(
+                    text:
+                        suggestionList[index].getName().substring(query.length),
+                    style: TextStyle(
+                        color: Colors.grey, fontWeight: FontWeight.w300))
+              ])),
+          trailing: Icon(
+            _alreadySaved ? Icons.check_circle : Icons.add_shopping_cart,
+            color: _alreadySaved ? Colors.green : null,
+          ),
+        );
+      },
       itemCount: suggestionList.length,
     );
   }
