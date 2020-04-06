@@ -100,6 +100,7 @@ class _ItemsListPageState extends State<ItemsListPage> {
             if (alreadySaved) {
               _saved.remove(article);
             } else {
+              article.setQuantity(1);
               _saved.add(article);
             }
           });
