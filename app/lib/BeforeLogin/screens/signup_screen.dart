@@ -223,11 +223,8 @@ class _SignupScreenState extends State<SignupScreen> {
                         color: Colors.grey[600],
                       )),
                   initialValue: _aptfloor,
-                  validator: (input) => input.trim().isEmpty
-                      ? "Entrez un complément d'adresse valide"
-                      : null,
                   onChanged: (input) => setState(() {
-                    _aptfloor = input;
+                    _aptfloor = input.isEmpty ? "/" : input;
                   }),
                 ),
               ),
