@@ -85,7 +85,7 @@ class _AskHelpPageState extends State<AskHelpPage> {
                                 _myRequests.getArticles().toSet())));
                   }
                 },
-                child: _myRequests.widgetAsker(false),
+                child: _myRequests.widgetAsker(),
               ),
             ),
           )
@@ -101,7 +101,6 @@ class _AskHelpPageState extends State<AskHelpPage> {
       request = await APIRequests.GET_userAcceptedOrder();
       accepted = true;
     }
-
     Contact contact =
         Contact.fromJSON(request["contact"].cast<String, String>());
     List<Article> articles = [];
