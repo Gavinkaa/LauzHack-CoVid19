@@ -1,3 +1,5 @@
+import 'package:app/AfterLogin/API_requests.dart';
+
 import 'Article.dart';
 import 'Request.dart';
 import 'package:flutter/material.dart';
@@ -82,6 +84,10 @@ class _RequestPageState extends State<RequestPage> {
                       FlatButton(
                           onPressed: () {
                             Navigator.of(context).pop();
+                            //orderid, person id who place id;
+                            APIRequests.POST_AcceptRequest(
+                                "UBbuBsPoiOUU9MfeFgT9UnGWdE93",
+                                "UBbuBsPoiOUU9MfeFgT9UnGWdE93");
                           },
                           child: Text("Accepter")),
                     ],
