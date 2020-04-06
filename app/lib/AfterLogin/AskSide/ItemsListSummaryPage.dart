@@ -47,7 +47,7 @@ class _ItemsListSummaryPageState extends State<ItemsListSummaryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Articles enregistrés :'),
+        title: Text('ARTICLES ENREGISTRÉS :'),
         actions: <Widget>[
           IconButton(
             onPressed: () {
@@ -55,13 +55,17 @@ class _ItemsListSummaryPageState extends State<ItemsListSummaryPage> {
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
-                    title: Text("Valider la commande ?"),
+                    title: Text("VALIDER LA COMMANDE ?",
+                        style: TextStyle(fontWeight: FontWeight.w300)),
                     content:
                         Text("Êtes vous sûr de voulour valider la commande ?"),
                     actions: <Widget>[
                       FlatButton(
                           onPressed: () => Navigator.of(context).pop(),
-                          child: Text("Annuler")),
+                          child: Text("ANNULER",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w300,
+                                  color: Colors.red))),
                       FlatButton(
                           onPressed: () {
                             //return to "askHelpPage"

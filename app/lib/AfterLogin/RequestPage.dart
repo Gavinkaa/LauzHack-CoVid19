@@ -16,57 +16,53 @@ class RequestPage extends StatefulWidget {
 
 class _RequestPageState extends State<RequestPage> {
   Request _request;
-  List<Article> _articlesFromRequest;
+  Set<Article> _articlesFromRequest;
+  Iterable<ListTile> _tiles;
+  final Set<Article> _picked = Set<Article>();
+  bool alreadyPicked;
 
   _RequestPageState(Request request) {
     this._request = request;
-    _articlesFromRequest = _request.getArticles();
-  }
-
-  final _fontArticles =
-      const TextStyle(fontSize: 17.0, fontWeight: FontWeight.w200);
-  final Set<Article> _picked = Set<Article>();
-
-  List<Widget> _buildArticles(List<Article> articles) {
-    if (_articlesFromRequest != null) {
-      List<Widget> articlesWidgets = [];
-
-      for (int i = 0; i < articles.length; i++) {
-        articlesWidgets.add(_buildRow(articles[i]));
-      }
-      return articlesWidgets;
-    } else {
-      return [CircularProgressIndicator()];
-    }
-  }
-
-  Widget _buildRow(Article article) {
-    final bool alreadyPicked = _picked.contains(article);
-    return ListTile(
+    _articlesFromRequest = _request.getArticles().toSet();
+    _tiles = _articlesFromRequest.map((Article article) {
+      alreadyPicked = _picked.contains(article);
+      return ListTile(
         title: Text(
           article.getName(),
           style: _fontArticles,
         ),
-        trailing: Icon(
-          alreadyPicked ? Icons.check_circle : Icons.check_circle_outline,
-          color: alreadyPicked ? Colors.green : null,
-        ),
-        onTap: () {
-          setState(() {
-            if (alreadyPicked) {
-              _picked.remove(article);
-            } else {
-              _picked.add(article);
-            }
-          });
-        });
+        trailing: GestureDetector(
+            onTap: () {
+              setState(() {
+                if (alreadyPicked) {
+                  _picked.remove(article);
+                } else {
+                  _picked.add(article);
+                }
+              });
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Icon(
+                  alreadyPicked
+                      ? Icons.check_circle
+                      : Icons.check_circle_outline,
+                  color: alreadyPicked ? Colors.green : null),
+            )),
+      );
+    });
   }
+
+  final _fontArticles =
+      const TextStyle(fontSize: 17.0, fontWeight: FontWeight.w200);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Demande de " + _request.getAsker().getFirstName()),
+        title: Text(
+            "DEMANDE DE " + _request.getAsker().getFirstName().toUpperCase(),
+            style: TextStyle(fontWeight: FontWeight.w200)),
         actions: <Widget>[
           IconButton(
             onPressed: () {
@@ -103,8 +99,11 @@ class _RequestPageState extends State<RequestPage> {
           ),
         ],
       ),
-      body: Column(
-        children: _buildArticles(_articlesFromRequest),
+      body: ListView(
+        children: ListTile.divideTiles(
+          context: context,
+          tiles: _tiles,
+        ).toList(),
       ),
     );
   }
