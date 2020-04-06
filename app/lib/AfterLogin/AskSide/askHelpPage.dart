@@ -71,11 +71,13 @@ class _AskHelpPageState extends State<AskHelpPage> {
               padding: EdgeInsets.all(5.0),
               child: GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ItemsListPage.withInitsaved(
-                              _myRequests.getArticles().toSet())));
+                  if (!_myRequests.isAccepted()) {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ItemsListPage.withInitsaved(
+                                _myRequests.getArticles().toSet())));
+                  }
                 },
                 child: _myRequests.widgetAsker(false),
               ),
@@ -138,7 +140,8 @@ class _AskHelpPageState extends State<AskHelpPage> {
             _myRequest(),
             RaisedButton(
               onPressed: () {
-                if (!kIsWeb) {
+                //if (!kIsWeb) {
+                if (true) {
                   _showDialogToSelectShopMode(context);
                 } else {
                   Navigator.push(

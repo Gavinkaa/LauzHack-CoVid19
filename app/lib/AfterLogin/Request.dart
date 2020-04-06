@@ -51,6 +51,10 @@ class Request {
     this._asker = Contact.from(asker);
   }
 
+  bool isAccepted() {
+    return _accepted;
+  }
+
   Widget widgetAsker(bool accepted) {
     return Card(
       elevation: 4.0,
@@ -58,7 +62,7 @@ class Request {
       margin: new EdgeInsets.symmetric(horizontal: 5.0, vertical: 2.0),
       child: Container(
         decoration: BoxDecoration(
-          color: Color.fromRGBO(255, 255, 255, 1),
+          color: accepted ? Colors.green : Color.fromRGBO(255, 255, 255, 1),
           borderRadius: BorderRadius.all(Radius.circular(6.0)),
         ),
         child: Row(
@@ -89,7 +93,8 @@ class Request {
                       (_nbOfArticles == 1
                           ? "1 article"
                           : _nbOfArticles.toString() + " articles") +
-                      ")",
+                      ")" +
+                      (accepted ? "acceptée" : ""),
                   textAlign: TextAlign.right,
                   style: TextStyle(
                       color: Colors.black,
