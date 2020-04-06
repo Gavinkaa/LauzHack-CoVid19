@@ -8,402 +8,376 @@ class SecondRoute extends StatefulWidget {
 }
 
 class _SecondRouteState extends State<SecondRoute> {
-  String email,
-      password,
-      firstName,
-      lastName,
-      telephone,
-      type,
-      street,
-      aptfloor,
-      pcode,
-      city;
+  final _formKey = GlobalKey<FormState>();
+  String _firstName,
+      _lastName,
+      _email,
+      _password,
+      _telephone,
+      _type,
+      _street,
+      _aptfloor,
+      _pcode,
+      _city;
+  bool _passwordInvisible;
+  int radioValue = -1;
 
-  final formKey = new GlobalKey<FormState>();
-
-  Padding add_Box(String field, String type) {
-    return Padding(
-        padding:
-            EdgeInsets.only(left: 25.0, right: 25.0, top: 20.0, bottom: 5.0),
-        child: Container(
-          height: 32.0,
-          child: TextFormField(
-            initialValue: field,
-            //to think about
-            obscureText: true,
-            decoration: InputDecoration(
-                contentPadding: EdgeInsets.all(10.0),
-                labelText: type,
-                labelStyle: TextStyle(
-                  color: Colors.grey[600],
-                )),
-            validator: (value) => value.isEmpty ? type + ' is required' : null,
-            onChanged: (value) => setState(() {
-              field = value;
-            }),
-          ),
-        ));
-  }
-
-  checkFields() {
-    final form = formKey.currentState;
-    if (form.validate()) {
-      return true;
-    } else {
-      return false;
+  _submit() {
+    if (_formKey.currentState.validate()) {
+      _formKey.currentState.save();
+      // Login user
+      AuthService.signUpUser(context, _firstName, _lastName, _email, _password,
+          _telephone, _type, _street, _aptfloor, _pcode, _city);
     }
   }
 
-  String validateEmail(String value) {
-    Pattern pattern =
-        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-    RegExp regex = new RegExp(pattern);
-    if (!regex.hasMatch(value))
-      return 'Enter Valid Email';
-    else
-      return null;
+  @override
+  void initState() {
+    _passwordInvisible = true;
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    return _myListView(context);
+  }
+
+  Widget _myListView(BuildContext context) {
     return Scaffold(
       body: Center(
-          child: Container(
-              height: 900.0,
-              width: 300.0,
-              child: Column(
-                children: <Widget>[
-                  Form(
-                      key: formKey,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Padding(
-                              padding: EdgeInsets.only(
-                                  left: 25.0,
-                                  right: 25.0,
-                                  top: 20.0,
-                                  bottom: 5.0),
-                              child: Container(
-                                height: 50.0,
-                                child: TextFormField(
-                                  initialValue: email,
-                                  decoration:
-                                      InputDecoration(hintText: 'Email'),
-                                  validator: (value) => value.isEmpty
-                                      ? 'Email is required'
-                                      : validateEmail(value.trim()),
-                                  onChanged: (value) => setState(() {
-                                    this.email = value;
-                                  }),
-                                ),
-                              )),
-                          Padding(
-                              padding: EdgeInsets.only(
-                                  left: 25.0,
-                                  right: 25.0,
-                                  top: 20.0,
-                                  bottom: 5.0),
-                              child: Container(
-                                height: 32.0,
-                                child: TextFormField(
-                                  initialValue: password,
-                                  //to think about
-                                  obscureText: true,
-                                  decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.all(10.0),
-                                      labelText: 'password',
-                                      labelStyle: TextStyle(
-                                        color: Colors.grey[600],
-                                      )),
-                                  validator: (value) =>
-                                      //check condition for password
-                                      value.isEmpty
-                                          ? 'password is required'
-                                          : value.length < 6
-                                              ? 'Must be at least 6 characters'
-                                              : null,
-                                  onChanged: (value) => setState(() {
-                                    password = value;
-                                  }),
-                                ),
-                              )),
-                          Padding(
-                              padding: EdgeInsets.only(
-                                  left: 25.0,
-                                  right: 25.0,
-                                  top: 20.0,
-                                  bottom: 5.0),
-                              child: Container(
-                                height: 32.0,
-                                child: TextFormField(
-                                  initialValue: firstName,
-                                  //to think about
-                                  obscureText: true,
-                                  decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.all(10.0),
-                                      labelText: 'first name',
-                                      labelStyle: TextStyle(
-                                        color: Colors.grey[600],
-                                      )),
-                                  validator: (value) =>
-                                      //add cehcking condition
-                                      value.isEmpty
-                                          ? 'First Name is required'
-                                          : value.contains("1") ||
-                                                  value.contains("2") ||
-                                                  value.contains("3") ||
-                                                  value.contains("4") ||
-                                                  value.contains("5") ||
-                                                  value.contains("6") ||
-                                                  value.contains("7") ||
-                                                  value.contains("8") ||
-                                                  value.contains("9") ||
-                                                  value.contains("0")
-                                              ? "First Name cannot contains numbers"
-                                              : null,
-                                  onChanged: (value) => setState(() {
-                                    firstName = value;
-                                  }),
-                                ),
-                              )),
-                          Padding(
-                              padding: EdgeInsets.only(
-                                  left: 25.0,
-                                  right: 25.0,
-                                  top: 20.0,
-                                  bottom: 5.0),
-                              child: Container(
-                                height: 32.0,
-                                child: TextFormField(
-                                  initialValue: lastName,
-                                  //to think about
-                                  decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.all(10.0),
-                                      labelText: 'last Name',
-                                      labelStyle: TextStyle(
-                                        color: Colors.grey[600],
-                                      )),
-                                  validator: (value) =>
-                                      //check condition for last name
-                                      value.isEmpty
-                                          ? 'Last Name is required'
-                                          : value.contains("1") ||
-                                                  value.contains("2") ||
-                                                  value.contains("3") ||
-                                                  value.contains("4") ||
-                                                  value.contains("5") ||
-                                                  value.contains("6") ||
-                                                  value.contains("7") ||
-                                                  value.contains("8") ||
-                                                  value.contains("9") ||
-                                                  value.contains("0")
-                                              ? "Last Name cannot contains numbers"
-                                              : null,
-                                  onChanged: (value) => setState(() {
-                                    lastName = value;
-                                  }),
-                                ),
-                              )),
-                          Padding(
-                              padding: EdgeInsets.only(
-                                  left: 25.0,
-                                  right: 25.0,
-                                  top: 20.0,
-                                  bottom: 5.0),
-                              child: Container(
-                                height: 32.0,
-                                child: TextFormField(
-                                  initialValue: telephone,
-                                  //to think about
-                                  decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.all(10.0),
-                                      labelText: 'phone number',
-                                      labelStyle: TextStyle(
-                                        color: Colors.grey[600],
-                                      )),
-                                  validator: (value) =>
-                                      //check condition for phone
-                                      value.isEmpty
-                                          ? 'phone number is required'
-                                          : value.length != 10
-                                              ? "your phone number must have ten digits"
-                                              : null,
-                                  onChanged: (value) => setState(() {
-                                    telephone = value;
-                                  }),
-                                ),
-                              )),
-                          Padding(
-                              padding: EdgeInsets.only(
-                                  left: 25.0,
-                                  right: 25.0,
-                                  top: 20.0,
-                                  bottom: 5.0),
-                              child: Container(
-                                height: 32.0,
-                                child: TextFormField(
-                                  initialValue: type,
-                                  //to think about
-                                  decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.all(10.0),
-                                      labelText: 'type',
-                                      labelStyle: TextStyle(
-                                        color: Colors.grey[600],
-                                      )),
-                                  validator: (value) =>
-                                      //check condition for type
-                                      value.isEmpty ? 'type is required' : null,
-                                  onChanged: (value) => setState(() {
-                                    type = value;
-                                  }),
-                                ),
-                              )),
-                          Padding(
-                              padding: EdgeInsets.only(
-                                  left: 25.0,
-                                  right: 25.0,
-                                  top: 20.0,
-                                  bottom: 5.0),
-                              child: Container(
-                                height: 32.0,
-                                child: TextFormField(
-                                  initialValue: street,
-                                  //to think about
-                                  decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.all(10.0),
-                                      labelText: 'street name',
-                                      labelStyle: TextStyle(
-                                        color: Colors.grey[600],
-                                      )),
-                                  validator: (value) =>
-                                      //check condition for street
-                                      value.isEmpty
-                                          ? 'street name is required'
-                                          : null,
-                                  onChanged: (value) => setState(() {
-                                    street = value;
-                                  }),
-                                ),
-                              )),
-                          Padding(
-                              padding: EdgeInsets.only(
-                                  left: 25.0,
-                                  right: 25.0,
-                                  top: 20.0,
-                                  bottom: 5.0),
-                              child: Container(
-                                height: 32.0,
-                                child: TextFormField(
-                                  initialValue: aptfloor,
-                                  //to think about
-                                  decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.all(10.0),
-                                      labelText: 'aptfloor',
-                                      labelStyle: TextStyle(
-                                        color: Colors.grey[600],
-                                      )),
-                                  validator: (value) =>
-                                      //check condition for aptflorr
-                                      value.isEmpty
-                                          ? 'aptfloor is required' : !(value.contains("1") || value.contains("2") || value.contains("3") || value.contains("4") || value.contains("5") || value.contains("6") || value.contains("7") || value.contains("8") || value.contains("9") || value.contains("0")) ?  "aptfloor must contains numbers"
-                                          : null,
-                                  onChanged: (value) => setState(() {
-                                    aptfloor = value;
-                                  }),
-                                ),
-                              )),
-                          Padding(
-                              padding: EdgeInsets.only(
-                                  left: 25.0,
-                                  right: 25.0,
-                                  top: 20.0,
-                                  bottom: 5.0),
-                              child: Container(
-                                height: 32.0,
-                                child: TextFormField(
-                                  initialValue: pcode,
-                                  //to think about
-                                  decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.all(10.0),
-                                      labelText: 'c_postal',
-                                      labelStyle: TextStyle(
-                                        color: Colors.grey[600],
-                                      )),
-                                  validator: (value) =>
-                                      //check condition for pcode
-                                      value.isEmpty
-                                          ? 'c_postal is required' : !(value.contains("1") || value.contains("2") || value.contains("3") || value.contains("4") || value.contains("5") || value.contains("6") || value.contains("7") || value.contains("8") || value.contains("9") || value.contains("0")) ?  "c_postal must contains numbers"
-                                          : null,
-                                  onChanged: (value) => setState(() {
-                                    pcode = value;
-                                  }),
-                                ),
-                              )),
-                          Padding(
-                              padding: EdgeInsets.only(
-                                  left: 25.0,
-                                  right: 25.0,
-                                  top: 20.0,
-                                  bottom: 5.0),
-                              child: Container(
-                                height: 32.0,
-                                child: TextFormField(
-                                  initialValue: city,
-                                  //to think about
-                                  decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.all(10.0),
-                                      labelText: 'City',
-                                      labelStyle: TextStyle(
-                                        color: Colors.grey[600],
-                                      )),
-                                  validator: (value) =>
-                                      //check condition for city
-                                      value.isEmpty ? 'city is required' : null,
-                                  onChanged: (value) => setState(() {
-                                    city = value;
-                                  }),
-                                ),
-                              )),
-                          InkWell(
-                              onTap: () {
-                                if (checkFields()) {
-                                  //AuthService().signIn(email, password);
-                                  AuthService().register_in_with_error(
-                                      this.context,
-                                      this.firstName,
-                                      this.lastName,
-                                      this.email,
-                                      password,
-                                      this.telephone,
-                                      this.type,
-                                      this.street,
-                                      this.aptfloor,
-                                      this.pcode,
-                                      this.city);
-                                }
-                              },
-                              child: Container(
-                                  height: 40.0,
-                                  width: 100.0,
-                                  decoration: BoxDecoration(
-                                    color: Colors.green.withOpacity(0.2),
-                                  ),
-                                  child: Center(child: Text('register in'))))
-                        ],
-                        //navigator.push -> pas de go cack
-                      )),
-                  RaisedButton(
-                    child: Text('Go back to login'),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => LoginPage()),
-                      );
-                    },
+        child: Form(
+          autovalidate: true,
+          key: _formKey,
+          child: ListView(
+            children: <Widget>[
+              Container(
+                alignment: Alignment.center,
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Text(
+                    "HYNeighbor",
+                    style:
+                        TextStyle(fontSize: 50.0, fontWeight: FontWeight.w200),
                   ),
-                ],
-              ))),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30.0,
+                  vertical: 5.0,
+                ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: 'Prénom',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  initialValue: _firstName,
+                  validator: (input) =>
+                      input.trim().isEmpty ? 'Entrez un prénom valide' : null,
+                  onChanged: (input) => setState(() {
+                    _firstName = input;
+                  }),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30.0,
+                  vertical: 5.0,
+                ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: 'Nom',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  initialValue: _lastName,
+                  validator: (input) =>
+                      input.trim().isEmpty ? 'Entrez un nom valide' : null,
+                  onChanged: (input) => setState(() {
+                    _lastName = input;
+                  }),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30.0,
+                  vertical: 5.0,
+                ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: 'Email',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  initialValue: _email,
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (input) => !AuthService.isEmail(input)
+                      ? 'Entrez un email valide'
+                      : null,
+                  //insérer ici un regex
+                  //input.contains('@') ? 'Entrez un email valide' : null,
+                  onChanged: (input) => setState(() {
+                    _email = input;
+                  }),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30.0,
+                  vertical: 5.0,
+                ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: 'Mot de passe',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      ),
+                      suffixIcon: IconButton(
+                          icon: Icon(
+                            _passwordInvisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: Colors.black,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _passwordInvisible = !_passwordInvisible;
+                            });
+                          })),
+                  initialValue: _password,
+                  validator: (input) => input.length < 6
+                      ? 'Doit faire au moins 6 caractères'
+                      : null,
+                  onChanged: (input) => setState(() {
+                    _password = input;
+                  }),
+                  obscureText: _passwordInvisible,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30.0,
+                  vertical: 5.0,
+                ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: 'Téléphone',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  initialValue: _telephone,
+                  keyboardType: TextInputType.phone,
+                  validator: (input) =>
+                      input.trim().isEmpty ? 'Entrez un numéro valide' : null,
+                  onChanged: (input) => setState(() {
+                    _telephone = input;
+                  }),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30.0,
+                  vertical: 5.0,
+                ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: 'Rue',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  initialValue: _street,
+                  validator: (input) =>
+                      input.trim().isEmpty ? 'Entrez une adresse valide' : null,
+                  onChanged: (input) => setState(() {
+                    _street = input;
+                  }),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30.0,
+                  vertical: 5.0,
+                ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: "Complément d'adresse",
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  initialValue: _aptfloor,
+                  validator: (input) => input.trim().isEmpty
+                      ? "Entrez un complément d'adresse valide"
+                      : null,
+                  onChanged: (input) => setState(() {
+                    _aptfloor = input;
+                  }),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30.0,
+                  vertical: 5.0,
+                ),
+                child: TextFormField(
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: 'Code postal',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  initialValue: _pcode,
+                  validator: (input) => input.trim().isEmpty
+                      ? 'Entrez un code postal valide'
+                      : null,
+                  onChanged: (input) => setState(() {
+                    _pcode = input;
+                  }),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30.0,
+                  vertical: 5.0,
+                ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(10.0),
+                      labelText: 'Ville',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  initialValue: _city,
+                  validator: (input) =>
+                      input.trim().isEmpty ? 'Entrez une ville valide' : null,
+                  onChanged: (input) => setState(() {
+                    _city = input;
+                  }),
+                ),
+              ),
+              SizedBox(height: 10.0),
+              Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 30.0,
+                    vertical: 5.0,
+                  ),
+                  child: Text("Type d'utilisateur :",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(fontSize: 15.0))),
+              Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 30.0,
+                    vertical: 5.0,
+                  ),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            Radio(
+                              activeColor: Colors.red,
+                              hoverColor: Colors.red[600],
+                              value: 0,
+                              groupValue: radioValue,
+                              onChanged: _radioValue,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                _radioValue(0);
+                              },
+                              child: Text(
+                                "Demandeur d'aide",
+                                style: TextStyle(fontSize: 16.0),
+                                textAlign: TextAlign.start,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(children: <Widget>[
+                          Radio(
+                            activeColor: Colors.red,
+                            hoverColor: Colors.red[600],
+                            value: 1,
+                            groupValue: radioValue,
+                            onChanged: _radioValue,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              _radioValue(1);
+                            },
+                            child: Text(
+                              "Aideur",
+                              style: TextStyle(
+                                fontSize: 16.0,
+                              ),
+                            ),
+                          ),
+                        ]),
+                      ])),
+              Center(
+                child: FlatButton(
+                  onPressed: _submit,
+                  color: Colors.red,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: Text(
+                    "S'INSCRIRE",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w300),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 15.0,
+              ),
+              Center(
+                child: FlatButton(
+                  onPressed: () {
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => LoginPage()));
+                  }, //Navigator.pop(context),
+                  color: Colors.red,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  child: Text(
+                    "RETOUR",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w300),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
+  }
+
+  void _radioValue(int value) {
+    setState(() {
+      radioValue = value;
+      switch (radioValue) {
+        case 0:
+          _type = "Asker";
+          break;
+        case 1:
+          _type = "Helper";
+          break;
+      }
+    });
   }
 }

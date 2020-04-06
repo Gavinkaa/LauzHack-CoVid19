@@ -76,7 +76,18 @@ class _SignupScreenState extends State<SignupScreen> {
                       )),
                   initialValue: _firstName,
                   validator: (input) =>
-                      input.trim().isEmpty ? 'Entrez un prénom valide' : null,
+                      input.trim().isEmpty ? 'Entrez un prénom valide' input.trim().contains("1") ||
+                                                  input.trim().contains("2") ||
+                                                  input.trim().contains("3") ||
+                                                  input.trim().contains("4") ||
+                                                  input.trim().contains("5") ||
+                                                  input.trim().contains("6") ||
+                                                  input.trim().contains("7") ||
+                                                  input.trim().contains("8") ||
+                                                  input.trim().contains("9") ||
+                                                  input.trim().contains("0")
+                                              ? "Le prénom ne peut pas contenir de chiffre"
+                       : null,
                   onChanged: (input) => setState(() {
                     _firstName = input;
                   }),
@@ -96,7 +107,18 @@ class _SignupScreenState extends State<SignupScreen> {
                       )),
                   initialValue: _lastName,
                   validator: (input) =>
-                      input.trim().isEmpty ? 'Entrez un nom valide' : null,
+                      input.trim().isEmpty ? 'Entrez un nom valide' : input.trim().contains("1") ||
+                                                  input.trim().contains("2") ||
+                                                  input.trim().contains("3") ||
+                                                  input.trim().contains("4") ||
+                                                  input.trim().contains("5") ||
+                                                  input.trim().contains("6") ||
+                                                  input.trim().contains("7") ||
+                                                  input.trim().contains("8") ||
+                                                  input.trim().contains("9") ||
+                                                  input.trim().contains("0")
+                                              ? "Le nom ne peut pas contenir de chiffre"
+                      : null,
                   onChanged: (input) => setState(() {
                     _lastName = input;
                   }),
@@ -172,7 +194,9 @@ class _SignupScreenState extends State<SignupScreen> {
                   initialValue: _telephone,
                   keyboardType: TextInputType.phone,
                   validator: (input) =>
-                      input.trim().isEmpty ? 'Entrez un numéro valide' : null,
+                      input.trim().isEmpty ? 'Entrez un numéro valide' : input.trim().length != 10
+                                              ? "Votre numéro de téléphone doit contenir dix chiffres"
+                      : null,
                   onChanged: (input) => setState(() {
                     _telephone = input;
                   }),
@@ -234,7 +258,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       )),
                   initialValue: _pcode,
                   validator: (input) => input.trim().isEmpty
-                      ? 'Entrez un code postal valide'
+                      ? 'Entrez un code postal valide' : !(value.contains("1") || value.contains("2") || value.contains("3") || value.contains("4") || value.contains("5") || value.contains("6") || value.contains("7") || value.contains("8") || value.contains("9") || value.contains("0")) ?  "Le code postal doit d'être composé de chiffres"
                       : null,
                   onChanged: (input) => setState(() {
                     _pcode = input;
