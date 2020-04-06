@@ -119,7 +119,7 @@ class _ItemsListPageState extends State<ItemsListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: new FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.green,
           onPressed: _pushCreateNewArticle,
           child: new Icon(Icons.add, color: Colors.white)),
