@@ -98,24 +98,26 @@ class _AskHelpPageState extends State<AskHelpPage> {
     Map<String, dynamic> request = await APIRequests.GET_userOrder();
 
     if (request == null) {
-      request = await APIRequests.GET_userAcceptedOrder();
+      request = await APIRequests.GET_orderOfUserIfNotAccepted();
       accepted = true;
     }
-    Contact contact =
-        Contact.fromJSON(request["contact"].cast<String, String>());
-    List<Article> articles = [];
+    if (request != null) {
+      Contact contact =
+          Contact.fromJSON(request["contact"].cast<String, String>());
+      List<Article> articles = [];
 
-    Map<String, dynamic> order = request["order"].cast<String, dynamic>();
+      Map<String, dynamic> order = request["order"].cast<String, dynamic>();
 
-    Article.jsonToMap(order).forEach((type, list) {
-      articles.addAll(list);
-    });
+      Article.jsonToMap(order).forEach((type, list) {
+        articles.addAll(list);
+      });
 
-    requests = Request(articles, contact, request["orderID"], accepted);
+      requests = Request(articles, contact, request["orderID"], accepted);
 
-    setState(() {
-      _myRequests = requests;
-    });
+      setState(() {
+        _myRequests = requests;
+      });
+    }
   }
 
   @override

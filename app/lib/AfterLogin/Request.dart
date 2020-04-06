@@ -117,7 +117,7 @@ class Request {
       child: Container(
         constraints: BoxConstraints(maxWidth: 10),
         decoration: BoxDecoration(
-          color: Color.fromRGBO(255, 255, 255, 1),
+          color: _accepted ? Colors.green : Color.fromRGBO(255, 255, 255, 1),
           borderRadius: BorderRadius.all(Radius.circular(6.0)),
         ),
         child: ListTile(

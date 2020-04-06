@@ -40,6 +40,25 @@ class _OfferHelpPageState extends State<OfferHelpPage> {
       }
     });
 
+    data = await APIRequests.GET_ordersAcceptedByUser();
+
+    data.forEach((request) {
+      print(request.toString());
+      if (request["contact"] != null) {
+        Contact contact =
+            Contact.fromJSON((request["contact"].cast<String, String>()));
+
+        List<Article> articles = [];
+
+        Map<String, dynamic> order = request["order"].cast<String, dynamic>();
+
+        Article.jsonToMap(order).forEach((type, list) {
+          articles.addAll(list);
+        });
+
+        requests.add(Request(articles, contact, request["orderID"], true));
+      }
+    });
     setState(() {
       _requests = requests;
     });
