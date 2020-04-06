@@ -8,7 +8,7 @@ import 'itemsListPage.dart';
 class AskHelpPage extends StatefulWidget {
   AskHelpPage({Key key}) : super(key: key);
 
-  final String title = "Demander de l'aide";
+  final String title = "DEMANDER DE L'AIDE";
 
   @override
   _AskHelpPageState createState() => _AskHelpPageState();
