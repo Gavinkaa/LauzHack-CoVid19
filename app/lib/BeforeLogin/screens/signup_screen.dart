@@ -121,7 +121,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   initialValue: _email,
                   keyboardType: TextInputType.emailAddress,
                   validator: (input) =>
-                      AuthServ.isEmail(input) ? 'Entrez un email valide' : null,
+                      !AuthServ.isEmail(input) ? 'Entrez un email valide' : null,
                   onChanged: (input) => setState(() {
                     _email = input;
                   }),
