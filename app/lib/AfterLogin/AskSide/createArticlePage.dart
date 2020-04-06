@@ -4,7 +4,12 @@ import '../API_requests.dart';
 import '../Article.dart';
 
 class createArticlePage extends StatefulWidget {
-  createArticlePage({Key key}) : super(key: key);
+  Set<Article> _saved;
+  Article createdArticle;
+
+  createArticlePage(Set<Article> saved, {Key key}) : super(key: key) {
+    _saved = saved;
+  }
 
   @override
   _createArticlePageState createState() => _createArticlePageState();

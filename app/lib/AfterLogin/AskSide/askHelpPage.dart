@@ -25,14 +25,18 @@ class _AskHelpPageState extends State<AskHelpPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Choisis une méthode :"),
+          title: Text("CHOISISSEZ UNE MÉTHODE :",
+              textAlign: TextAlign.center,
+              style: TextStyle(fontWeight: FontWeight.w300, color: Colors.red)),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
                 GestureDetector(
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
-                    child: Text("Créer une liste de courses"),
+                    child: Text("CRÉER UNE LISTE DE COURSES",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontWeight: FontWeight.w300)),
                   ),
                   onTap: () {
                     Navigator.of(context).pop();
@@ -45,7 +49,9 @@ class _AskHelpPageState extends State<AskHelpPage> {
                 Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: GestureDetector(
-                    child: Text("Prendre une photo de ma liste de course"),
+                    child: Text("PRENDRE UNE PHOTO DE MA LISTE DE COURSES",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontWeight: FontWeight.w300)),
                     onTap: () {
                       Navigator.of(context).pop();
                       Navigator.push(
