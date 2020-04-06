@@ -7,12 +7,15 @@ class Request {
   int _nbOfArticles;
   Contact _asker;
   String _requestID;
+  bool _accepted;
 
-  Request(List<Article> articles, Contact asker, String requestID) {
+  Request(
+      List<Article> articles, Contact asker, String requestID, bool accepted) {
     this._articles = List.from(articles);
     this._asker = Contact.from(asker);
     this._nbOfArticles = _articles.length;
     this._requestID = requestID;
+    this._accepted = accepted;
   }
 
   Request.from(Request r) {
@@ -20,6 +23,7 @@ class Request {
     this._asker = Contact.from(r._asker);
     this._nbOfArticles = _articles.length;
     this._requestID = r._requestID;
+    this._accepted = r._accepted;
   }
 
   List<Article> getArticles() {

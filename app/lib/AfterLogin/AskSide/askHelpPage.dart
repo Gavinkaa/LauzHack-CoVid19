@@ -86,8 +86,13 @@ class _AskHelpPageState extends State<AskHelpPage> {
 
   Future<void> _initRequests() async {
     Request requests;
-
+    bool accepted = false;
     Map<String, dynamic> request = await APIRequests.GET_userOrder();
+
+    if (request == null) {
+      request = await APIRequests.GET_userAcceptedOrder();
+      accepted = true;
+    }
 
     Contact contact =
         Contact.fromJSON(request["contact"].cast<String, String>());
@@ -99,7 +104,7 @@ class _AskHelpPageState extends State<AskHelpPage> {
       articles.addAll(list);
     });
 
-    requests = Request(articles, contact, request["orderID"]);
+    requests = Request(articles, contact, request["orderID"], accepted);
 
     setState(() {
       _myRequests = requests;
