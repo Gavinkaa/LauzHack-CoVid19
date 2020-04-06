@@ -104,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                         color: Colors.grey[600],
                       )),
                   keyboardType: TextInputType.emailAddress,
-                  validator: (input) => !input.contains('@')
+                  validator: (input) => !AuthService.isEmail(input)
                       ? 'Entrez une adresse e-mail valide'
                       : null,
                   onSaved: (input) => _email = input,

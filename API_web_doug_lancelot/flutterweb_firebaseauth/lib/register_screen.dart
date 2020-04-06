@@ -37,25 +37,6 @@ class _SecondRouteState extends State<SecondRoute> {
     super.initState();
   }
 
-  //checkFields() {
-  //  final form = formKey.currentState;
-  //  if (form.validate()) {
-  //    return true;
-  //  } else {
-  //    return false;
-  //  }
-  //}
-
-  String validateEmail(String value) {
-    Pattern pattern =
-        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-    RegExp regex = new RegExp(pattern);
-    if (!regex.hasMatch(value))
-      return 'Enter Valid Email';
-    else
-      return null;
-  }
-
   @override
   Widget build(BuildContext context) {
     return _myListView(context);
@@ -134,8 +115,11 @@ class _SecondRouteState extends State<SecondRoute> {
                       )),
                   initialValue: _email,
                   keyboardType: TextInputType.emailAddress,
-                  validator: (input) =>
-                      !input.contains('@') ? 'Entrez un email valide' : null,
+                  validator: (input) => !AuthService.isEmail(input)
+                      ? 'Entrez un email valide'
+                      : null,
+                  //insérer ici un regex
+                  //input.contains('@') ? 'Entrez un email valide' : null,
                   onChanged: (input) => setState(() {
                     _email = input;
                   }),

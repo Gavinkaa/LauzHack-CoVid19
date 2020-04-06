@@ -12,7 +12,7 @@ class AuthService {
   static AuthResult authRes;
 
   static final _firestore = firestore();
-  //.Firestore.instance;
+
   //Handle Authentication
   handleAuth() {
     return StreamBuilder(
@@ -44,76 +44,35 @@ class AuthService {
     return true;
   }
 
-  Future<void> sign_in_with_error(
-      String email, String password, BuildContext context) async {
-    try {
-      AuthResult authRes = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
-      FirebaseUser signedInUser = authRes.user;
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (context) => AfterLoginHomePage()));
-      //Navigator.push(
-      //  context,
-      //  MaterialPageRoute(builder: (context) => AfterLoginHomePage()),
-      //);
-
-      //if (signedInUser != null) {
-      //  _firestore
-      //      .collection('/users')
-      //      .document(signedInUser.uid)
-      //      .setData({'name': name, 'email': email});
-      //  }
-    } catch (e) {
-      Widget okBut = FlatButton(
-        child: Text("OK"),
-        onPressed: () => Navigator.of(context).pop(),
-      );
-
-      AlertDialog alert = AlertDialog(
-        title: Text("Error"),
-        content: Text("Email already used"),
-        actions: [
-          okBut,
-        ],
-      );
-
-      showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return alert;
-          });
-    }
-  }
-
   static void signUpUser(
       BuildContext context,
-      String firstName,
-      String lastName,
-      String email,
-      String password,
-      String telephone,
-      String type,
-      String street,
-      String aptfloor,
-      String pcode,
-      String city) async {
+      String _firstName,
+      String _lastName,
+      String _email,
+      String _password,
+      String _telephone,
+      String _type,
+      String _street,
+      String _aptfloor,
+      String _pcode,
+      String _city) async {
     try {
       authRes = await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+          email: _email, password: _password);
       FirebaseUser signedInUser = authRes.user; // handles auth
       // handles writing to the db
       if (signedInUser != null) {
         _firestore.collection('/users').doc(signedInUser.uid).set({
           'userId': authRes.user.uid,
-          'firstName': firstName,
-          'lastName': lastName,
-          'email': email,
-          'telephone': telephone,
-          'type': type,
-          'street': street,
-          'aptFloor': aptfloor,
-          'pcode': pcode,
-          'city': city
+          'firstName': _firstName,
+          'lastName': _lastName,
+          'email': _email,
+          'telephone': _telephone,
+          'type': _type,
+          'street': _street,
+          'aptFloor': _aptfloor,
+          'pcode': _pcode,
+          'city': _city
         });
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => AfterLoginHomePage()));
@@ -144,6 +103,14 @@ class AuthService {
             return alert;
           });
     }
+  }
+
+  static bool isEmail(String em) {
+    String p =
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+    RegExp regExp = new RegExp(p);
+
+    return regExp.hasMatch(em);
   }
 }
 
