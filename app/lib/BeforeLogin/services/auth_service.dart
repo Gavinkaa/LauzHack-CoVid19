@@ -88,4 +88,13 @@ class AuthServ {
 
     return regExp.hasMatch(em);
   }
+
+  static bool isPhoneNumber(String phone) {
+    String p =
+     r'^[0-9]*[1-9][0-9]*$';
+     RegExp regExp = new RegExp(p);
+
+     return regExp.hasMatch(phone);
+
+  }
 }
