@@ -121,7 +121,7 @@ class _ItemsListPageState extends State<ItemsListPage> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.green,
-          onPressed: _pushCreateNewArticle,
+          onPressed: () => Navigator.pushNamed(context, createArticlePage.id),
           child: new Icon(Icons.add, color: Colors.white)),
       appBar: AppBar(
         leading: new IconButton(
@@ -177,7 +177,8 @@ class _ItemsListPageState extends State<ItemsListPage> {
     Navigator.of(context)
         .push(
           MaterialPageRoute<void>(
-            builder: (BuildContext context) => createArticlePage(_saved),
+            builder: (BuildContext context) =>
+                createArticlePage(_saved, _types),
           ),
         )
         .then((value) => setState(() {}));
