@@ -54,6 +54,7 @@ class APIRequests {
     json.putIfAbsent("orderID",
         () => "\"" + authUserUid + "\""); //we need to generate unique ID
     await _firestore.collection('/orders').document(authUserUid).setData(json);
+    print(json);
     return true;
   }
 
@@ -93,10 +94,27 @@ class APIRequests {
         .document(authUserUid)
         .get()
         .then((value) => infoOfLoggedInUser = value.data);
+    print(infoOfLoggedInUser);
     return infoOfLoggedInUser; // returns null if no orders
   }
 
-  static Future<Map<String, dynamic>> GET_userAcceptedOrder() async {
+  // get the order of the user if it exists and has been accepted else  null
+  static Future<Map<String, dynamic>> GET_orderOfUserIfNotAccepted() async {
+    await _auth
+        .currentUser()
+        .then((value) => authUserUid = value.uid); // get user thats logged in
+    Map<String, dynamic> infoOfLoggedInUser = new Map<String, dynamic>();
+    await _firestore
+        .collection('/orders')
+        .document(authUserUid)
+        .get()
+        .then((value) => infoOfLoggedInUser = value.data);
+    print(infoOfLoggedInUser);
+    return infoOfLoggedInUser; // returns null if no accepted orders exist
+  }
+
+  // gets the order(s) List that the user accepted
+  static Future<List<Map<String, dynamic>>> GET_ordersAcceptedByUser() async {
     await _auth
         .currentUser()
         .then((value) => authUserUid = value.uid); // get user thats logged in
@@ -105,7 +123,8 @@ class APIRequests {
         .collection('/accepted')
         .document(authUserUid)
         .get()
-        .then((value) => infoOfLoggedInUser = value.data);
-    return infoOfLoggedInUser; // returns null if no accepted orders exist
+        .then((value) => print(value.data));
+    print([infoOfLoggedInUser]);
+    return [infoOfLoggedInUser]; // returns null if no accepted orders exist
   }
 }
