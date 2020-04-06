@@ -125,7 +125,7 @@ class _ItemsListPageState extends State<ItemsListPage> {
         ),
         centerTitle: true,
         title: Text(
-          'VOTRE DEMANDE :',
+          'VOTRE COMMANDE',
           style: TextStyle(fontWeight: FontWeight.w300),
           textAlign: TextAlign.end,
         ),
