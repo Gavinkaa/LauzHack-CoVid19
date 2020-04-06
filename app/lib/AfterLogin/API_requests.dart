@@ -6,9 +6,10 @@ class APIRequests {
   static final _auth = FirebaseAuth.instance;
   static String authUserUid;
 
-  static Future<List<String>> GET_listOfRequestsNotAccepted() async {
+  static Future<List<Map<String, dynamic>>>
+      GET_listOfRequestsNotAccepted() async {
     // gets the list of all not accepted requests
-    List<String> listOfrequests = [];
+    List<Map<String, dynamic>> listOfrequests = [];
     List<DocumentSnapshot> allDocs;
     await _firestore
         .collection('orders')
@@ -16,14 +17,14 @@ class APIRequests {
         .then((value) => allDocs = value.documents);
     print(allDocs.length);
     for (int i = 0; i < allDocs.length; i++) {
-      listOfrequests.add(allDocs[i].data.toString());
+      listOfrequests.add(allDocs[i].data);
     }
     return listOfrequests;
   }
 
-  static Future<List<String>> GET_listOfRequestsAccepted() async {
+  static Future<List<Map<String, dynamic>>> GET_listOfRequestsAccepted() async {
     // gets the list of all not accepted requests
-    List<String> listOfrequests = [];
+    List<Map<String, dynamic>> listOfrequests = [];
     List<DocumentSnapshot> allDocs;
     await _firestore
         .collection('/accepted')
@@ -31,7 +32,7 @@ class APIRequests {
         .then((value) => allDocs = value.documents);
     print(allDocs.length);
     for (int i = 0; i < allDocs.length; i++) {
-      listOfrequests.add(allDocs[i].data.toString());
+      listOfrequests.add(allDocs[i].data);
     }
     return listOfrequests;
   }
@@ -41,21 +42,21 @@ class APIRequests {
     json.putIfAbsent(
         "contact",
         () => {
-              "firstName": "",
-              "lastName": "",
-              "email": "",
-              "phone": "",
-              "type": "",
-              "street": "",
-              "aptFloor": "",
-              "pcode": "",
-              "city": "",
+              "firstName": "Ludo",
+              "lastName": "Test",
+              "email": "salut@gmail.com",
+              "phone": "043242342",
+              "type": "Asker",
+              "street": "Chemin de la street",
+              "aptFloor": "2c",
+              "pcode": "1043",
+              "city": "Lauztown",
               "accepted_orders": ["id1", "id2"]
             });
 
     await _auth.currentUser().then((value) => authUserUid = value.uid);
-    json.putIfAbsent(
-        "orderID", () => authUserUid); //we need to generate unique ID
+    json.putIfAbsent("orderID",
+        () => "\"" + authUserUid + "\""); //we need to generate unique ID
     await _firestore.collection('/orders').document(authUserUid).setData(json);
     return true;
   }

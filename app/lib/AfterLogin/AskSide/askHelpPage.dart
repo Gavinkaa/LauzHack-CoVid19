@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:app/AfterLogin/API_requests.dart';
 import 'package:app/AfterLogin/AskSide/pictureTakerPage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -82,6 +85,62 @@ class _AskHelpPageState extends State<AskHelpPage> {
                   }
                 },
                 child: Text('Créer une liste de courses')),
+            RaisedButton(
+                onPressed: () {
+                  APIRequests.POST_NewRequest({
+                    "contact": {
+                      "firstName": "",
+                      "lastName": "",
+                      "email": "",
+                      "phone": "",
+                      "type": "",
+                      "street": "",
+                      "aptFloor": "",
+                      "pcode": "",
+                      "city": "",
+                      "accepted_orders": ["id1", "id2"]
+                    },
+                    "order": {
+                      "Viande": [
+                        {
+                          "name": "",
+                          "comment": "",
+                          "quantity": "",
+                          "icon-url": ""
+                        }
+                      ],
+                      "type2_ex": [
+                        {
+                          "name": "",
+                          "comment": "",
+                          "quantity": "",
+                          "icon-url": ""
+                        }
+                      ]
+                    }
+                  });
+                },
+                child: Text('POST LIST')),
+            RaisedButton(
+                onPressed: () {
+                  //orderid, person id who place id;
+                  APIRequests.POST_AcceptRequest("UBbuBsPoiOUU9MfeFgT9UnGWdE93",
+                      "UBbuBsPoiOUU9MfeFgT9UnGWdE93");
+                },
+                child: Text('AcceptOrder')),
+            // RaisedButton(
+            //     onPressed: () async {
+            //       //orderid, person id who place id;
+            //       List<String> accepted =
+            //           await APIRequests.GET_listOfRequestsAccepted();
+            //       List<String> nonaccepted =
+            //           await APIRequests.GET_listOfRequestsNotAccepted();
+            //       print("\n\n" +
+            //           accepted.toString() +
+            //           "\n\n" +
+            //           nonaccepted.toString());
+            //     },
+            //     child: Text('getListRequests')),
           ],
         ),
       ),
