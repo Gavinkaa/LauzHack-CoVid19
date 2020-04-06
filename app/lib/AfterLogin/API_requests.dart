@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -38,23 +40,17 @@ class APIRequests {
   }
 
   static Future<bool> POST_NewRequest(Map<String, dynamic> json) async {
+    await _auth
+        .currentUser()
+        .then((value) => authUserUid = value.uid); // get user thats logged in
+    Map<String, dynamic> infoOfLoggedInUser = new Map<String, dynamic>();
+    await _firestore
+        .collection('/users')
+        .document(authUserUid)
+        .get()
+        .then((value) => infoOfLoggedInUser = value.data);
     // post a new request associated to the user thats logged in saved to orders
-    json.putIfAbsent(
-        "contact",
-        () => {
-              "firstName": "Ludo",
-              "lastName": "Test",
-              "email": "salut@gmail.com",
-              "phone": "043242342",
-              "type": "Asker",
-              "street": "Chemin de la street",
-              "aptFloor": "2c",
-              "pcode": "1043",
-              "city": "Lauztown",
-              "accepted_orders": ["id1", "id2"]
-            });
-
-    await _auth.currentUser().then((value) => authUserUid = value.uid);
+    json.putIfAbsent("contact", () => infoOfLoggedInUser);
     json.putIfAbsent("orderID",
         () => "\"" + authUserUid + "\""); //we need to generate unique ID
     await _firestore.collection('/orders').document(authUserUid).setData(json);
@@ -85,5 +81,31 @@ class APIRequests {
         .document(authUserUid)
         .setData(orderToBeMoved);
     return true;
+  }
+
+  static Future<Map<String, dynamic>> GET_userOrder() async {
+    await _auth
+        .currentUser()
+        .then((value) => authUserUid = value.uid); // get user thats logged in
+    Map<String, dynamic> infoOfLoggedInUser = new Map<String, dynamic>();
+    await _firestore
+        .collection('/orders')
+        .document(authUserUid)
+        .get()
+        .then((value) => infoOfLoggedInUser = value.data);
+    return infoOfLoggedInUser; // returns null if no orders
+  }
+
+  static Future<Map<String, dynamic>> GET_userAcceptedOrder() async {
+    await _auth
+        .currentUser()
+        .then((value) => authUserUid = value.uid); // get user thats logged in
+    Map<String, dynamic> infoOfLoggedInUser = new Map<String, dynamic>();
+    await _firestore
+        .collection('/accepted')
+        .document(authUserUid)
+        .get()
+        .then((value) => infoOfLoggedInUser = value.data);
+    return infoOfLoggedInUser; // returns null if no accepted orders exist
   }
 }
