@@ -51,7 +51,13 @@ class _ImageUploaderScreenState extends State<ImageUploaderScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Firestore File Upload'),
+        leading: new IconButton(
+          icon: new Icon(Icons.arrow_back_ios, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: Text('FIRESTORE FILE UPLOAD',
+            style: TextStyle(fontWeight: FontWeight.w300)),
+        centerTitle: true,
       ),
       body: Center(
         child: Column(

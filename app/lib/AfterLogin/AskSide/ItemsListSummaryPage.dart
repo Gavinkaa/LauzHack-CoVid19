@@ -47,7 +47,12 @@ class _ItemsListSummaryPageState extends State<ItemsListSummaryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: new IconButton(
+          icon: new Icon(Icons.arrow_back_ios, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         title: Text('ARTICLES ENREGISTRÉS :'),
+        centerTitle: true,
         actions: <Widget>[
           IconButton(
             onPressed: () {

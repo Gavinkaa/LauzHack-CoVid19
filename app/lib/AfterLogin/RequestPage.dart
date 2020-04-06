@@ -39,6 +39,7 @@ class _RequestPageState extends State<RequestPage> {
                 } else {
                   _picked.add(article);
                 }
+                alreadyPicked = !alreadyPicked;
               });
             },
             child: Padding(
@@ -60,6 +61,11 @@ class _RequestPageState extends State<RequestPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: new IconButton(
+          icon: new Icon(Icons.arrow_back_ios, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        centerTitle: true,
         title: Text(
             "DEMANDE DE " + _request.getAsker().getFirstName().toUpperCase(),
             style: TextStyle(fontWeight: FontWeight.w200)),

@@ -111,9 +111,14 @@ class _ItemsListPageState extends State<ItemsListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: new IconButton(
+          icon: new Icon(Icons.arrow_back_ios, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        centerTitle: true,
         title: Text(
-          'Votre demande :',
-          style: TextStyle(color: Colors.black),
+          'VOTRE DEMANDE :',
+          style: TextStyle(fontWeight: FontWeight.w300),
           textAlign: TextAlign.end,
         ),
         actions: <Widget>[

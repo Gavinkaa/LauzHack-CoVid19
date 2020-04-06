@@ -8,7 +8,7 @@ import '../RequestPage.dart';
 class OfferHelpPage extends StatefulWidget {
   OfferHelpPage({Key key}) : super(key: key);
 
-  final String title = 'Offrir mon aide';
+  final String title = 'OFFRIR MON AIDE';
 
   @override
   _OfferHelpPageState createState() => _OfferHelpPageState();
@@ -51,7 +51,13 @@ class _OfferHelpPageState extends State<OfferHelpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        leading: new IconButton(
+          icon: new Icon(Icons.arrow_back_ios, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title:
+            Text(widget.title, style: TextStyle(fontWeight: FontWeight.w300)),
+        centerTitle: true,
       ),
       body: _requests == null || _requests.length < 1
           ? Center(child: CircularProgressIndicator())

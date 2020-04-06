@@ -88,7 +88,13 @@ class _PictureTakerPageState extends State<PictureTakerPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Liste sous forme d'image"),
+        leading: new IconButton(
+          icon: new Icon(Icons.arrow_back_ios, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        centerTitle: true,
+        title: Text("Liste sous forme d'image",
+            style: TextStyle(fontWeight: FontWeight.w300)),
       ),
       body: Center(
         child: SingleChildScrollView(
