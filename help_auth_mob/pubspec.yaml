@@ -29,6 +29,12 @@ dependencies:
   cloud_firestore: ^0.12.9+4
   validators: ^2.0.0
 
+  image_picker: ^0.6.0+17
+  firebase_storage: ^3.0.6
+  flutter_image_compress: ^0.6.3
+  path_provider: ^1.2.0
+  uuid: 2.0.4
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
