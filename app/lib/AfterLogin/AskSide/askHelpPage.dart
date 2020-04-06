@@ -147,7 +147,7 @@ class _AskHelpPageState extends State<AskHelpPage> {
             RaisedButton(
               onPressed: () {
                 //if (!kIsWeb) {
-                if (true) {
+                if (false) {
                   _showDialogToSelectShopMode(context);
                 } else {
                   Navigator.push(
