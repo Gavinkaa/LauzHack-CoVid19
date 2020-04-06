@@ -74,8 +74,10 @@ class _SecondRouteState extends State<SecondRoute> {
                         color: Colors.grey[600],
                       )),
                   initialValue: _firstName,
-                  validator: (input) =>
-                      input.trim().isEmpty ? 'Entrez un prénom valide' : null,
+                  validator: (input) => input.trim().isEmpty
+                       ? 'Entrez un prénom valide'
+                       : AuthService.isPhoneNumber(input) ? "Le prénom ne peut pas comporter de chiffre"
+                           : null,
                   onChanged: (input) => setState(() {
                     _firstName = input;
                   }),
@@ -94,8 +96,10 @@ class _SecondRouteState extends State<SecondRoute> {
                         color: Colors.grey[600],
                       )),
                   initialValue: _lastName,
-                  validator: (input) =>
-                      input.trim().isEmpty ? 'Entrez un nom valide' : null,
+                  validator: (input) => input.trim().isEmpty
+                       ? 'Entrez un nom valide'
+                       : AuthService.isPhoneNumber(input) ? "Le nom ne peut pas comporter de chiffre"
+                           : null,
                   onChanged: (input) => setState(() {
                     _lastName = input;
                   }),
@@ -173,8 +177,12 @@ class _SecondRouteState extends State<SecondRoute> {
                       )),
                   initialValue: _telephone,
                   keyboardType: TextInputType.phone,
-                  validator: (input) =>
-                      input.trim().isEmpty ? 'Entrez un numéro valide' : null,
+                  validator: (input) => input.trim().isEmpty
+                       ? 'Entrez un numéro valide'
+                       : !AuthService.isPhoneNumber(input) ? "Le numéro de téléphone doit d'être compsé de chiffre"
+                       : input.trim().length != 10
+                           ? "Votre numéro de téléphone doit contenir dix chiffres"
+                           : null,
                   onChanged: (input) => setState(() {
                     _telephone = input;
                   }),
@@ -237,7 +245,8 @@ class _SecondRouteState extends State<SecondRoute> {
                   initialValue: _pcode,
                   validator: (input) => input.trim().isEmpty
                       ? 'Entrez un code postal valide'
-                      : null,
+                       : !AuthService.isPhoneNumber(input) ? "Le code postal doit être composer de chiffres"
+                           : null,
                   onChanged: (input) => setState(() {
                     _pcode = input;
                   }),
@@ -257,7 +266,9 @@ class _SecondRouteState extends State<SecondRoute> {
                       )),
                   initialValue: _city,
                   validator: (input) =>
-                      input.trim().isEmpty ? 'Entrez une ville valide' : null,
+                      input.trim().isEmpty ? 'Entrez une ville valide' 
+                      : AuthService.isPhoneNumber(input) ? "Le nom de la ville ne peut pas comporter de chiffre"
+                      : null,
                   onChanged: (input) => setState(() {
                     _city = input;
                   }),
