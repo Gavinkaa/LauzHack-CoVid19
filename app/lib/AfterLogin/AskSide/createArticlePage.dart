@@ -98,11 +98,6 @@ class _createArticlePageState extends State<createArticlePage> {
                         color: Colors.grey[600],
                       )),
                   initialValue: name,
-                  validator: (input) => input.trim().isEmpty
-                      ? "Entrez un nom d'article valide"
-                      : AuthServ.isNumbers(input)
-                          ? "Le nom ne peut pas comporter de chiffre"
-                          : null,
                   onChanged: (input) => setState(() {
                     name = input;
                   }),
