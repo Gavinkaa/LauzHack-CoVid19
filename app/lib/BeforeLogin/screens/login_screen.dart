@@ -78,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Colors.grey[600],
                       )),
                   keyboardType: TextInputType.emailAddress,
-                  validator: (input) => !input.contains('@')
+                  validator: (input) => !AuthServ.isEmail(input)
                       ? 'Entrez une adresse e-mail valide'
                       : null,
                   onSaved: (input) => _email = input,
