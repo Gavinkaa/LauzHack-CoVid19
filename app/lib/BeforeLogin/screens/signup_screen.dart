@@ -141,7 +141,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   initialValue: _email,
                   keyboardType: TextInputType.emailAddress,
                   validator: (input) =>
-                      !input.contains('@') ? 'Entrez un email valide' : null,
+                      AuthServ.isEmail(input) ? 'Entrez un email valide' : null,
                   onChanged: (input) => setState(() {
                     _email = input;
                   }),
@@ -218,8 +218,9 @@ class _SignupScreenState extends State<SignupScreen> {
                         color: Colors.grey[600],
                       )),
                   initialValue: _street,
-                  validator: (input) =>
-                      input.trim().isEmpty ? 'Entrez une adresse valide' : null,
+                  validator: (input) => !AuthServ.isEmail(input)
+                      ? 'Entrez une adresse valide'
+                      : null,
                   onChanged: (input) => setState(() {
                     _street = input;
                   }),
