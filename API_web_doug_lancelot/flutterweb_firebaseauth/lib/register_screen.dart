@@ -76,7 +76,7 @@ class _SecondRouteState extends State<SecondRoute> {
                   initialValue: _firstName,
                   validator: (input) => input.trim().isEmpty
                        ? 'Entrez un prénom valide'
-                       : AuthService.isPhoneNumber(input) ? "Le prénom ne peut pas comporter de chiffre"
+                       : AuthService.letterOnly(input) ? "Le prénom ne peut comporter que des lettres"
                            : null,
                   onChanged: (input) => setState(() {
                     _firstName = input;
@@ -98,7 +98,7 @@ class _SecondRouteState extends State<SecondRoute> {
                   initialValue: _lastName,
                   validator: (input) => input.trim().isEmpty
                        ? 'Entrez un nom valide'
-                       : AuthService.isPhoneNumber(input) ? "Le nom ne peut pas comporter de chiffre"
+                       : AuthService.letterOnly(input) ? "Le nom ne peut comporter que des lettres"
                            : null,
                   onChanged: (input) => setState(() {
                     _lastName = input;
@@ -179,9 +179,7 @@ class _SecondRouteState extends State<SecondRoute> {
                   keyboardType: TextInputType.phone,
                   validator: (input) => input.trim().isEmpty
                        ? 'Entrez un numéro valide'
-                       : !AuthService.isPhoneNumber(input) ? "Le numéro de téléphone doit d'être compsé de chiffre"
-                       : input.trim().length != 10
-                           ? "Votre numéro de téléphone doit contenir dix chiffres"
+                       :  !AuthService.isREALLYaPhoneNumber(input) ? "Le numéro de téléphone entré n'est pas valide"
                            : null,
                   onChanged: (input) => setState(() {
                     _telephone = input;
@@ -267,7 +265,7 @@ class _SecondRouteState extends State<SecondRoute> {
                   initialValue: _city,
                   validator: (input) =>
                       input.trim().isEmpty ? 'Entrez une ville valide' 
-                      : AuthService.isPhoneNumber(input) ? "Le nom de la ville ne peut pas comporter de chiffre"
+                      : AuthService.letterOnly(input) ? "Le nom de la ville ne peut comporter que des lettres"
                       : null,
                   onChanged: (input) => setState(() {
                     _city = input;
