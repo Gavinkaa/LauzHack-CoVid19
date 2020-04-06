@@ -116,7 +116,13 @@ class _AskHelpPageState extends State<AskHelpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        leading: new IconButton(
+          icon: new Icon(Icons.arrow_back_ios, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        centerTitle: true,
+        title:
+            Text(widget.title, style: TextStyle(fontWeight: FontWeight.w300)),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it

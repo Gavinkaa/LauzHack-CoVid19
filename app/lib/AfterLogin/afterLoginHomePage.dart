@@ -21,7 +21,7 @@ class _AfterLoginHomePageState extends State<AfterLoginHomePage> {
         centerTitle: true,
         title: Text(
           widget.title,
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w200),
+          style: TextStyle(fontWeight: FontWeight.w200, fontSize: 24.0),
         ),
         actions: <Widget>[
           IconButton(
@@ -34,8 +34,9 @@ class _AfterLoginHomePageState extends State<AfterLoginHomePage> {
                       "DECONNEXION",
                       style: TextStyle(fontWeight: FontWeight.w200),
                     ),
-                    content:
-                        Text("Etes-vous sûr de vouloir vous déconnecter ?"),
+                    content: Text(
+                        "Êtes-vous sûr(e) de vouloir vous déconnecter ?",
+                        style: TextStyle(fontWeight: FontWeight.w300)),
                     actions: <Widget>[
                       FlatButton(
                           onPressed: () => Navigator.of(context).pop(),
@@ -105,7 +106,7 @@ class _AfterLoginHomePageState extends State<AfterLoginHomePage> {
                 padding: const EdgeInsets.all(10.0),
                 child: Container(
                   alignment: Alignment.center,
-                  child: const Text("OFFRIR SON AIDE",
+                  child: const Text("OFFRIR MON AIDE",
                       style: TextStyle(
                           fontSize: 35,
                           fontWeight: FontWeight.w200,
