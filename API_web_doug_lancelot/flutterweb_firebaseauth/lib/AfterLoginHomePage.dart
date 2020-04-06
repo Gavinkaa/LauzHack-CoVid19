@@ -3,6 +3,7 @@ import 'package:firewebauth/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class AfterLoginHomePage extends StatefulWidget {
+  static final String id = "after_login_screen";
   AfterLoginHomePage({Key key}) : super(key: key);
 
   @override
@@ -22,10 +23,14 @@ class _AfterLoginHomePageState extends State<AfterLoginHomePage> {
                     RaisedButton(
                       child: Text('log out'),
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => LoginPage()),
-                        );
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginPage()));
+                        //Navigator.push(
+                        //  context,
+                        //  MaterialPageRoute(builder: (context) => LoginPage()),
+                        //);
                       },
                     ),
                   ],
