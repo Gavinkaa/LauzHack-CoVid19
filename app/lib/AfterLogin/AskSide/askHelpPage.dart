@@ -2,6 +2,9 @@ import 'package:app/AfterLogin/AskSide/pictureTakerPage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../API_requests.dart';
+import '../Article.dart';
+import '../Contact.dart';
 import '../Request.dart';
 import 'itemsListPage.dart';
 
@@ -63,20 +66,50 @@ class _AskHelpPageState extends State<AskHelpPage> {
 
   Widget _myRequest() {
     return _myRequests != null
-        ? Padding(
-            padding: EdgeInsets.all(5.0),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ItemsListPage.withInitsaved(
-                            _myRequests.getArticles().toSet())));
-              },
-              child: _myRequests.widgetAsker(),
+        ? Container(
+            child: Padding(
+              padding: EdgeInsets.all(5.0),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ItemsListPage.withInitsaved(
+                              _myRequests.getArticles().toSet())));
+                },
+                child: _myRequests.widgetAsker(false),
+              ),
             ),
           )
         : Container();
+  }
+
+  Future<void> _initRequests() async {
+    Request requests;
+
+    Map<String, dynamic> request = await APIRequests.GET_userOrder();
+
+    Contact contact =
+        Contact.fromJSON(request["contact"].cast<String, String>());
+    List<Article> articles = [];
+
+    Map<String, dynamic> order = request["order"].cast<String, dynamic>();
+
+    Article.jsonToMap(order).forEach((type, list) {
+      articles.addAll(list);
+    });
+
+    requests = Request(articles, contact, request["orderID"]);
+
+    setState(() {
+      _myRequests = requests;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _initRequests();
   }
 
   @override
@@ -100,7 +133,9 @@ class _AskHelpPageState extends State<AskHelpPage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => ItemsListPage()),
-                  );
+                  ).then((value) => setState(() {
+                        _myRequests = Request.from(_myRequests);
+                      }));
                 }
               },
               child: Row(
