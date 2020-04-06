@@ -68,9 +68,10 @@ class _AskHelpPageState extends State<AskHelpPage> {
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.baseline,
           children: <Widget>[
-            FlatButton(
+            RaisedButton(
               onPressed: () {
                 if (!kIsWeb) {
                   _showDialogToSelectShopMode(context);
@@ -83,7 +84,10 @@ class _AskHelpPageState extends State<AskHelpPage> {
               },
               child: Row(
                 children: <Widget>[
-                  Text('CREER UNE LISTE DE COURSES'),
+                  Text(
+                    'CREER UNE LISTE DE COURSES',
+                    textAlign: TextAlign.center,
+                  ),
                   Icon(Icons.add, color: Colors.white, size: 30.0)
                 ],
               ),
