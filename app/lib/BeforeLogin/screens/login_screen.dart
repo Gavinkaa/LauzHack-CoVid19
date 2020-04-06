@@ -22,13 +22,17 @@ class _LoginScreenState extends State<LoginScreen> {
       // Login user
 
       Widget okBut = FlatButton(
-        child: Text("OK"),
+        child: Text(
+          "OK",
+          style: TextStyle(color: Colors.red, fontWeight: FontWeight.w300),
+        ),
         onPressed: () => Navigator.of(context).pop(),
       );
 
       AlertDialog alert = AlertDialog(
-        title: Text("Erreur"),
-        content: Text("Incorrect email or password"),
+        title: Text("ERREUR",
+            style: TextStyle(color: Colors.red, fontWeight: FontWeight.w200)),
+        content: Text("Email ou mot de passe incorrect(s)"),
         actions: [
           okBut,
         ],
@@ -73,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 child: TextFormField(
                   decoration: InputDecoration(
-                      labelText: 'Email',
+                      labelText: 'EMAIL',
                       labelStyle: TextStyle(
                         color: Colors.grey[600],
                       )),
@@ -91,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 child: TextFormField(
                   decoration: InputDecoration(
-                      labelText: 'Mot de passe',
+                      labelText: 'MOT DE PASSE',
                       labelStyle: TextStyle(
                         color: Colors.grey[600],
                       )),
