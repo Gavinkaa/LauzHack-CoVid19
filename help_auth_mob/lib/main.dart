@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:help_auth_mob/screens/ImageUploaderScreen.dart';
 import 'package:help_auth_mob/screens/after_login_screen.dart';
 import 'package:help_auth_mob/screens/signup_screen.dart';
 
@@ -15,9 +16,9 @@ class MyApp extends StatelessWidget {
       stream: FirebaseAuth.instance.onAuthStateChanged,
       builder: (BuildContext context, snapshot) {
         if (snapshot.hasData) {
-          return AfterLogInScreen();
+          return ImageUploaderScreen();
         } else {
-          return LoginScreen();
+          return ImageUploaderScreen();
         }
       },
     );
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
           LoginScreen.id: (context) => LoginScreen(),
           SignupScreen.id: (context) => SignupScreen(),
           AfterLogInScreen.id: (context) => AfterLogInScreen(),
+          ImageUploaderScreen.id: (context) => ImageUploaderScreen(),
         });
   }
 }
