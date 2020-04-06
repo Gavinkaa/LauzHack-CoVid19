@@ -91,10 +91,32 @@ class AuthServ {
     return regExp.hasMatch(em);
   }
 
-  static bool isNumbers(String phone) {
-    String p = r'^[0-9]*[1-9][0-9]*$';
-    RegExp regExp = new RegExp(p);
+  static bool isPhoneNumber(String phone) {
+    String p =
+     r'^[0-9]*[1-9][0-9]*$';
+     RegExp regExp = new RegExp(p);
 
-    return regExp.hasMatch(phone);
+     return regExp.hasMatch(phone);
+
+  }
+
+  static bool letterOnly(String text) {
+    String p = 
+     r'^[a-zA-Z]+$';
+     String q = r'^[0-9]*[1-9][0-9]*$';
+     RegExp regExp = new RegExp(p);
+          RegExp regExp2 = new RegExp(q);
+
+
+     return !(regExp.hasMatch(text) && !regExp2.hasMatch(text));
+  }
+
+  static bool isREALLYaPhoneNumber(String phone) {
+    String p =
+     r'^((?:\+|00)[17](?: |\-)?|(?:\+|00)[1-9]\d{0,2}(?: |\-)?|(?:\+|00)1\-\d{3}(?: |\-)?)?(0\d|\([0-9]{3}\)|[1-9]{0,3})(?:((?: |\-)[0-9]{2}){4}|((?:[0-9]{2}){4})|((?: |\-)[0-9]{3}(?: |\-)[0-9]{4})|([0-9]{7}))';
+     RegExp regExp = new RegExp(p);
+
+     return regExp.hasMatch(phone);
+
   }
 }
