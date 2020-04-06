@@ -8,16 +8,24 @@ import '../Article.dart';
 
 class ItemsListPage extends StatefulWidget {
   ItemsListPage({Key key}) : super(key: key);
+  ItemsListPage.withInitsaved(Set<Article> saved, {Key key}) : super(key: key) {
+    this._saved = Set.from(saved);
+  }
+  Set<Article> _saved = Set<Article>();
 
   @override
-  _ItemsListPageState createState() => _ItemsListPageState();
+  _ItemsListPageState createState() => _ItemsListPageState(_saved);
 }
 
 class _ItemsListPageState extends State<ItemsListPage> {
   Map<ArticleType, List<Article>> _articlesByType;
-  final Set<Article> _saved = Set<Article>();
+  Set<Article> _saved;
   List<Article> _articles = [];
   List<ArticleType> _types = [];
+
+  _ItemsListPageState(Set<Article> saved) {
+    this._saved = saved;
+  }
 
   Future<void> loadArticlesfromJson() async {
     var jsonData = await rootBundle.loadString('assets/articles.json');
