@@ -77,7 +77,8 @@ class _SignupScreenState extends State<SignupScreen> {
                   initialValue: _firstName,
                   validator: (input) => input.trim().isEmpty
                       ? 'Entrez un prénom valide'
-                      : AuthServ.letterOnly(input)? "Le prénom ne peut comporter que des lettres"
+                      : AuthServ.letterOnly(input)
+                          ? "Le prénom ne peut comporter que des lettres"
                           : null,
                   onChanged: (input) => setState(() {
                     _firstName = input;
@@ -99,7 +100,8 @@ class _SignupScreenState extends State<SignupScreen> {
                   initialValue: _lastName,
                   validator: (input) => input.trim().isEmpty
                       ? 'Entrez un nom valide'
-                      : AuthServ.letterOnly(input) ? "Le nom ne peut comporter que des lettres"
+                      : AuthServ.letterOnly(input)
+                          ? "Le nom ne peut comporter que des lettres"
                           : null,
                   onChanged: (input) => setState(() {
                     _lastName = input;
@@ -120,8 +122,9 @@ class _SignupScreenState extends State<SignupScreen> {
                       )),
                   initialValue: _email,
                   keyboardType: TextInputType.emailAddress,
-                  validator: (input) =>
-                      !AuthServ.isEmail(input) ? 'Entrez un email valide' : null,
+                  validator: (input) => !AuthServ.isEmail(input)
+                      ? 'Entrez un email valide'
+                      : null,
                   onChanged: (input) => setState(() {
                     _email = input;
                   }),
@@ -177,8 +180,8 @@ class _SignupScreenState extends State<SignupScreen> {
                   keyboardType: TextInputType.phone,
                   validator: (input) => input.trim().isEmpty
                       ? 'Entrez un numéro valide'
-                      : !AuthServ.isREALLYaPhoneNumber(input) ? "Le numéro de téléphone entré n'est pas valide"
-            
+                      : !AuthServ.isREALLYaPhoneNumber(input)
+                          ? "Le numéro de téléphone entré n'est pas valide"
                           : null,
                   onChanged: (input) => setState(() {
                     _telephone = input;
@@ -198,9 +201,8 @@ class _SignupScreenState extends State<SignupScreen> {
                         color: Colors.grey[600],
                       )),
                   initialValue: _street,
-                  validator: (input) => input.trim().isEmpty
-                      ? 'Entrez une adresse valide'
-                      : null,
+                  validator: (input) =>
+                      input.trim().isEmpty ? 'Entrez une adresse valide' : null,
                   onChanged: (input) => setState(() {
                     _street = input;
                   }),
@@ -219,11 +221,8 @@ class _SignupScreenState extends State<SignupScreen> {
                         color: Colors.grey[600],
                       )),
                   initialValue: _aptfloor,
-                  validator: (input) => input.trim().isEmpty
-                      ? "Entrez un complément d'adresse valide"
-                      : null,
                   onChanged: (input) => setState(() {
-                    _aptfloor = input;
+                    _aptfloor = input.isEmpty ? "\"" : input;
                   }),
                 ),
               ),
@@ -243,7 +242,8 @@ class _SignupScreenState extends State<SignupScreen> {
                   initialValue: _pcode,
                   validator: (input) => input.trim().isEmpty
                       ? 'Entrez un code postal valide'
-                      : !AuthServ.isPhoneNumber(input) ? "Le code postal doit être composer de chiffres"
+                      : !AuthServ.isPhoneNumber(input)
+                          ? "Le code postal doit être composer de chiffres"
                           : null,
                   onChanged: (input) => setState(() {
                     _pcode = input;
@@ -263,10 +263,11 @@ class _SignupScreenState extends State<SignupScreen> {
                         color: Colors.grey[600],
                       )),
                   initialValue: _city,
-                  validator: (input) =>
-                      input.trim().isEmpty ? 'Entrez une ville valide' 
-                      : AuthServ.letterOnly(input) ? "Le nom de la ville ne peut comporter que des lettres"
-                      : null,
+                  validator: (input) => input.trim().isEmpty
+                      ? 'Entrez une ville valide'
+                      : AuthServ.letterOnly(input)
+                          ? "Le nom de la ville ne peut comporter que des lettres"
+                          : null,
                   onChanged: (input) => setState(() {
                     _city = input;
                   }),
@@ -387,5 +388,3 @@ class _SignupScreenState extends State<SignupScreen> {
     });
   }
 }
-
-
