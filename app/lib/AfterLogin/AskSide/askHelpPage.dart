@@ -2,6 +2,7 @@ import 'package:app/AfterLogin/AskSide/pictureTakerPage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../Request.dart';
 import 'itemsListPage.dart';
 
 class AskHelpPage extends StatefulWidget {
@@ -14,6 +15,8 @@ class AskHelpPage extends StatefulWidget {
 }
 
 class _AskHelpPageState extends State<AskHelpPage> {
+  Request _myRequests;
+
   Future<void> _showDialogToSelectShopMode(BuildContext context) {
     return showDialog(
       context: context,
@@ -58,6 +61,10 @@ class _AskHelpPageState extends State<AskHelpPage> {
     );
   }
 
+  Widget _myRequest() {
+    return _myRequests != null ? _myRequests.widgetAsker() : Container();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,6 +77,7 @@ class _AskHelpPageState extends State<AskHelpPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            _myRequest(),
             RaisedButton(
               onPressed: () {
                 if (!kIsWeb) {
