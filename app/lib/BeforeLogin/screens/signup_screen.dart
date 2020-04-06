@@ -199,7 +199,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         color: Colors.grey[600],
                       )),
                   initialValue: _street,
-                  validator: (input) => !AuthServ.isEmail(input)
+                  validator: (input) => input.trim().isEmpty
                       ? 'Entrez une adresse valide'
                       : null,
                   onChanged: (input) => setState(() {
