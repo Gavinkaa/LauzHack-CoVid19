@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async';
 import 'dart:convert';
-
+import 'createArticlePage.dart';
 import '../Article.dart';
 
 class ItemsListPage extends StatefulWidget {
@@ -51,7 +51,8 @@ class _ItemsListPageState extends State<ItemsListPage> {
     super.initState();
   }
 
-  final _fontArticles = const TextStyle(fontSize: 17.0);
+  final _fontArticles =
+      const TextStyle(fontSize: 17.0, fontWeight: FontWeight.w300);
   final _fontTypes = const TextStyle(
     fontSize: 21.0,
     fontWeight: FontWeight.w200,
@@ -118,6 +119,10 @@ class _ItemsListPageState extends State<ItemsListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.green,
+          onPressed: _pushCreateNewArticle,
+          child: new Icon(Icons.add, color: Colors.white)),
       appBar: AppBar(
         leading: new IconButton(
           icon: new Icon(Icons.arrow_back_ios, color: Colors.black),
@@ -167,8 +172,19 @@ class _ItemsListPageState extends State<ItemsListPage> {
         )
         .then((value) => setState(() {}));
   }
+
+  void _pushCreateNewArticle() {
+    Navigator.of(context)
+        .push(
+          MaterialPageRoute<void>(
+            builder: (BuildContext context) => createArticlePage(_saved),
+          ),
+        )
+        .then((value) => setState(() {}));
+  }
 }
 
+// A MODIFIER POUR CORRIGER L'AFFICHAGE !!!
 class ArticleSearch extends SearchDelegate<Article> {
   List<Article> _l;
   final List<Article> recent = [];
@@ -239,25 +255,6 @@ class ArticleSearch extends SearchDelegate<Article> {
     );
   }
 
-/*final bool alreadySaved = _saved.contains(article);
-    return ListTile(
-        title: Text(
-          article.getName(),
-          style: _fontArticles,
-        ),
-        trailing: Icon(
-          alreadySaved ? Icons.check_circle : Icons.add_shopping_cart,
-          color: alreadySaved ? Colors.green : null,
-        ),
-        onTap: () {
-          setState(() {
-            if (alreadySaved) {
-              _saved.remove(article);
-            } else {
-              _saved.add(article);
-            }
-          });
-        }); */
   @override
   Widget buildSuggestions(BuildContext context) {
     // show when someone searches for something

@@ -7,12 +7,15 @@ class Request {
   int _nbOfArticles;
   Contact _asker;
   String _requestID;
+  bool _accepted;
 
-  Request(List<Article> articles, Contact asker, String requestID) {
+  Request(
+      List<Article> articles, Contact asker, String requestID, bool accepted) {
     this._articles = List.from(articles);
     this._asker = Contact.from(asker);
     this._nbOfArticles = _articles.length;
     this._requestID = requestID;
+    this._accepted = accepted;
   }
 
   Request.from(Request r) {
@@ -20,6 +23,7 @@ class Request {
     this._asker = Contact.from(r._asker);
     this._nbOfArticles = _articles.length;
     this._requestID = r._requestID;
+    this._accepted = r._accepted;
   }
 
   List<Article> getArticles() {
@@ -47,14 +51,18 @@ class Request {
     this._asker = Contact.from(asker);
   }
 
-  Widget widgetAsker(bool accepted) {
+  bool isAccepted() {
+    return _accepted;
+  }
+
+  Widget widgetAsker() {
     return Card(
       elevation: 4.0,
       color: Colors.transparent,
       margin: new EdgeInsets.symmetric(horizontal: 5.0, vertical: 2.0),
       child: Container(
         decoration: BoxDecoration(
-          color: Color.fromRGBO(255, 255, 255, 1),
+          color: _accepted ? Colors.green : Color.fromRGBO(255, 255, 255, 1),
           borderRadius: BorderRadius.all(Radius.circular(6.0)),
         ),
         child: Row(
@@ -85,7 +93,8 @@ class Request {
                       (_nbOfArticles == 1
                           ? "1 article"
                           : _nbOfArticles.toString() + " articles") +
-                      ")",
+                      ")" +
+                      (_accepted ? " acceptée" : ""),
                   textAlign: TextAlign.right,
                   style: TextStyle(
                       color: Colors.black,

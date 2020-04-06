@@ -25,14 +25,18 @@ class _AskHelpPageState extends State<AskHelpPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Choisis une méthode :"),
+          title: Text("CHOISISSEZ UNE MÉTHODE :",
+              textAlign: TextAlign.center,
+              style: TextStyle(fontWeight: FontWeight.w300, color: Colors.red)),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
                 GestureDetector(
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
-                    child: Text("Créer une liste de courses"),
+                    child: Text("CRÉER UNE LISTE DE COURSES",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontWeight: FontWeight.w300)),
                   ),
                   onTap: () {
                     Navigator.of(context).pop();
@@ -45,7 +49,9 @@ class _AskHelpPageState extends State<AskHelpPage> {
                 Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: GestureDetector(
-                    child: Text("Prendre une photo de ma liste de course"),
+                    child: Text("PRENDRE UNE PHOTO DE MA LISTE DE COURSES",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontWeight: FontWeight.w300)),
                     onTap: () {
                       Navigator.of(context).pop();
                       Navigator.push(
@@ -71,13 +77,15 @@ class _AskHelpPageState extends State<AskHelpPage> {
               padding: EdgeInsets.all(5.0),
               child: GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ItemsListPage.withInitsaved(
-                              _myRequests.getArticles().toSet())));
+                  if (!_myRequests.isAccepted()) {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ItemsListPage.withInitsaved(
+                                _myRequests.getArticles().toSet())));
+                  }
                 },
-                child: _myRequests.widgetAsker(false),
+                child: _myRequests.widgetAsker(),
               ),
             ),
           )
@@ -86,9 +94,13 @@ class _AskHelpPageState extends State<AskHelpPage> {
 
   Future<void> _initRequests() async {
     Request requests;
-
+    bool accepted = false;
     Map<String, dynamic> request = await APIRequests.GET_userOrder();
 
+    if (request == null) {
+      request = await APIRequests.GET_userAcceptedOrder();
+      accepted = true;
+    }
     Contact contact =
         Contact.fromJSON(request["contact"].cast<String, String>());
     List<Article> articles = [];
@@ -99,7 +111,7 @@ class _AskHelpPageState extends State<AskHelpPage> {
       articles.addAll(list);
     });
 
-    requests = Request(articles, contact, request["orderID"]);
+    requests = Request(articles, contact, request["orderID"], accepted);
 
     setState(() {
       _myRequests = requests;
@@ -133,7 +145,8 @@ class _AskHelpPageState extends State<AskHelpPage> {
             _myRequest(),
             RaisedButton(
               onPressed: () {
-                if (!kIsWeb) {
+                //if (!kIsWeb) {
+                if (false) {
                   _showDialogToSelectShopMode(context);
                 } else {
                   Navigator.push(

@@ -23,17 +23,21 @@ class _OfferHelpPageState extends State<OfferHelpPage> {
     List<Map<String, dynamic>> data =
         await APIRequests.GET_listOfRequestsNotAccepted();
     data.forEach((request) {
-      Contact contact =
-          Contact.fromJSON(request["contact"].cast<String, String>());
-      List<Article> articles = [];
+      print(request.toString());
+      if (request["contact"] != null) {
+        Contact contact =
+            Contact.fromJSON((request["contact"].cast<String, String>()));
 
-      Map<String, dynamic> order = request["order"].cast<String, dynamic>();
+        List<Article> articles = [];
 
-      Article.jsonToMap(order).forEach((type, list) {
-        articles.addAll(list);
-      });
+        Map<String, dynamic> order = request["order"].cast<String, dynamic>();
 
-      requests.add(Request(articles, contact, request["orderID"]));
+        Article.jsonToMap(order).forEach((type, list) {
+          articles.addAll(list);
+        });
+
+        requests.add(Request(articles, contact, request["orderID"], false));
+      }
     });
 
     setState(() {
