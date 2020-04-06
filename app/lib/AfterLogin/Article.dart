@@ -226,11 +226,12 @@ class Article implements Comparable {
 
       List<Article> articles = [];
       for (int i = 0; i < value.length; i++) {
+        String quantity = value[i].cast<String, String>()["quantity"];
         articles.add(Article(
             ArticleType.fromString(key),
             value[i].cast<String, String>()["name"],
             value[i].cast<String, String>()["comment"],
-            value[i].cast<String, int>()["quantity"],
+            int.parse(quantity == "" ? "0" : quantity),
             value[i].cast<String, String>()["icon_url"]));
       }
       elementsByType.putIfAbsent(ArticleType.fromString(key), () => articles);
@@ -247,7 +248,7 @@ class Article implements Comparable {
               .map((i) => {
                     "name": i._name,
                     "comment": i._comment,
-                    "quantity": i._quantity,
+                    "quantity": i._quantity.toString(),
                     "icon-url": i._iconUrl
                   })
               .toList(),
