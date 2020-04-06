@@ -287,10 +287,15 @@ class _SignupScreenState extends State<SignupScreen> {
                               groupValue: radioValue,
                               onChanged: _radioValue,
                             ),
-                            Text(
-                              "Demandeur d'aide",
-                              style: TextStyle(fontSize: 16.0),
-                              textAlign: TextAlign.start,
+                            GestureDetector(
+                              onTap: () {
+                                _radioValue(0);
+                              },
+                              child: Text(
+                                "Demandeur d'aide",
+                                style: TextStyle(fontSize: 16.0),
+                                textAlign: TextAlign.start,
+                              ),
                             ),
                           ],
                         ),
@@ -302,10 +307,15 @@ class _SignupScreenState extends State<SignupScreen> {
                             groupValue: radioValue,
                             onChanged: _radioValue,
                           ),
-                          Text(
-                            "Aideur",
-                            style: TextStyle(
-                              fontSize: 16.0,
+                          GestureDetector(
+                            onTap: () {
+                              _radioValue(1);
+                            },
+                            child: Text(
+                              "Aideur",
+                              style: TextStyle(
+                                fontSize: 16.0,
+                              ),
                             ),
                           ),
                         ]),
