@@ -268,12 +268,12 @@ class Article implements Comparable {
     return this._quantity;
   }
 
-  bool setQuantity(int quantity){
-    if(quantity < 0){
+  bool setQuantity(int quantity) {
+    if (quantity < 0) {
       return false;
-    }else{
+    } else {
       this._quantity = quantity;
-      return true
+      return true;
     }
   }
 
