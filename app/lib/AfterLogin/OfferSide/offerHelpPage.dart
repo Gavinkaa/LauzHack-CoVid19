@@ -1,5 +1,6 @@
 import 'package:app/AfterLogin/Contact.dart';
 import 'package:flutter/material.dart';
+import '../API_requests.dart';
 import '../Article.dart';
 import '../Request.dart';
 import '../RequestPage.dart';
@@ -15,49 +16,35 @@ class OfferHelpPage extends StatefulWidget {
 
 class _OfferHelpPageState extends State<OfferHelpPage> {
   List<Request> _requests;
+
+  Future<void> initRequestList() async {
+    List<Request> requests = [];
+
+    List<Map<String, dynamic>> data =
+        await APIRequests.GET_listOfRequestsNotAccepted();
+    data.forEach((request) {
+      Contact contact =
+          Contact.fromJSON(request["contact"].cast<String, String>());
+      List<Article> articles = [];
+
+      Map<String, dynamic> order = request["order"].cast<String, dynamic>();
+
+      Article.jsonToMap(order).forEach((type, list) {
+        articles.addAll(list);
+      });
+
+      requests.add(Request(articles, contact, request["orderID"]));
+    });
+
+    setState(() {
+      _requests = requests;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
-    _requests = [
-      // API calls to database
-      Request(
-          [
-            Article(
-                ArticleType.fromString("Viande"), "beauf", "douglas", 2, ""),
-            Article(ArticleType.fromString("Viande"), "bacon", "luke", 3, "")
-          ],
-          Contact(1055, "Froideville", "Rue du village", "c2", "lancelot",
-              "scheid", "+41 77564", "blabla@gmail.com")),
-      Request(
-          [
-            Article(
-                ArticleType.fromString("Viande"), "beauf", "douglas", 2, ""),
-            Article(ArticleType.fromString("Viande"), "bacon", "luke", 3, "")
-          ],
-          Contact(1055, "Froideville", "Rue du village", "c2", "francois",
-              "scheid", "+41 77564", "blabla@gmail.com"))
-    ];
-    // Request(user name, location, List<Article> articles)
-    // Request("Clément", "Saint-Sulpice", 1),
-    // Request("Lancelot", "Saint-Sulpice", 20),
-    // Request("Douglas", "Morges", 30),
-    // Request("Ludovic", "Lausanne", 10),
-    // Request("Mohamed", "Le Caire", 5),
-    // Request("Clément", "Saint-Sulpice", 1),
-    // Request("Lancelot", "Saint-Sulpice", 20),
-    // Request("Douglas", "Morges", 30),
-    // Request("Ludovic", "Lausanne", 10),
-    // Request("Mohamed", "Le Caire", 5),
-    // Request("Clément", "Saint-Sulpice", 1),
-    // Request("Lancelot", "Saint-Sulpice", 20),
-    // Request("Douglas", "Morges", 30),
-    // Request("Ludovic", "Lausanne", 10),
-    // Request("Mohamed", "Le Caire", 5),
-    // Request("Clément", "Saint-Sulpice", 1),
-    // Request("Lancelot", "Saint-Sulpice", 20),
-    // Request("Douglas", "Morges", 30),
-    // Request("Ludovic", "Lausanne", 10),
-    // Request("Mohamed", "Le Caire", 5)
+    initRequestList();
   }
 
   @override
@@ -66,22 +53,25 @@ class _OfferHelpPageState extends State<OfferHelpPage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: ListView.builder(
-        physics: BouncingScrollPhysics(),
-        itemCount: _requests.length,
-        itemBuilder: (BuildContext context, int index) => Padding(
-          padding: EdgeInsets.all(5.0),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => RequestPage(_requests[index])));
-            },
-            child: _requests[index].widget(),
-          ),
-        ),
-      ),
+      body: _requests == null || _requests.length < 1
+          ? Center(child: CircularProgressIndicator())
+          : ListView.builder(
+              physics: BouncingScrollPhysics(),
+              itemCount: _requests.length,
+              itemBuilder: (BuildContext context, int index) => Padding(
+                padding: EdgeInsets.all(5.0),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                RequestPage(_requests[index])));
+                  },
+                  child: _requests[index].widget(),
+                ),
+              ),
+            ),
     );
   }
 }

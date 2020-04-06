@@ -15,12 +15,25 @@ class ItemsListPage extends StatefulWidget {
 
 class _ItemsListPageState extends State<ItemsListPage> {
   Map<ArticleType, List<Article>> _articlesByType;
+  final Set<Article> _saved = Set<Article>();
+  List<Article> _articles = [];
+  List<ArticleType> _types = [];
 
   Future<void> loadArticlesfromJson() async {
     var jsonData = await rootBundle.loadString('assets/articles.json');
+    Map<ArticleType, List<Article>> a =
+        Article.jsonToMap(json.decode(jsonData));
+    List<Article> articles = [];
+    List<ArticleType> t = a.keys.toList();
+    for (int i = 0; i < t.length; i++) {
+      for (int j = 0; j < a[t[i]].length; j++) {
+        articles.add(a[t[i]][j]);
+      }
+    }
     setState(() {
-      _articlesByType = Article.jsonToMap(json.decode(jsonData));
-      // Map<String, List<Map<String, String>>>
+      _articlesByType = a;
+      _types = t;
+      _articles = articles;
     });
   }
 
@@ -35,7 +48,6 @@ class _ItemsListPageState extends State<ItemsListPage> {
     fontSize: 21.0,
     fontWeight: FontWeight.w200,
   );
-  final Set<Article> _saved = Set<Article>();
 
   Widget _buildTypes() {
     if (_articlesByType != null) {
@@ -43,12 +55,11 @@ class _ItemsListPageState extends State<ItemsListPage> {
         padding: const EdgeInsets.all(16.0),
         itemCount: _articlesByType.length,
         itemBuilder: (context, i) {
-          List<ArticleType> types = _articlesByType.keys.toList();
           return ExpansionTile(
-            title: Text(types[i].toString(), style: _fontTypes),
+            title: Text(_types[i].toString(), style: _fontTypes),
             children: <Widget>[
               Column(
-                children: _buildArticles(_articlesByType[types[i]]),
+                children: _buildArticles(_articlesByType[_types[i]]),
               )
             ],
           );
@@ -106,11 +117,17 @@ class _ItemsListPageState extends State<ItemsListPage> {
         ),
         actions: <Widget>[
           IconButton(
-              icon: Icon(
-            Icons.search,
-            color: Colors.black,
-            size: 30.0,
-          )),
+            icon: Icon(
+              Icons.search,
+              color: Colors.black,
+              size: 30.0,
+            ),
+            onPressed: () {
+              showSearch(
+                  context: context,
+                  delegate: ArticleSearch(_articles, _saved, this));
+            },
+          ),
           IconButton(
               icon: Icon(
                 Icons.shopping_cart,
@@ -135,5 +152,141 @@ class _ItemsListPageState extends State<ItemsListPage> {
           ),
         )
         .then((value) => setState(() {}));
+  }
+}
+
+class ArticleSearch extends SearchDelegate<Article> {
+  List<Article> _l;
+  final List<Article> recent = [];
+  Set<Article> _s;
+  _ItemsListPageState _iLPS;
+
+  ArticleSearch(this._l, this._s, this._iLPS);
+
+  @override
+  List<Widget> buildActions(BuildContext context) {
+    // actions for app bar
+    return [
+      IconButton(
+          icon: Icon(Icons.clear),
+          onPressed: () {
+            query = "";
+          })
+    ];
+  }
+
+  @override
+  Widget buildLeading(BuildContext context) {
+    // leading icon on the left of the app bar
+    return IconButton(
+        icon: AnimatedIcon(
+            icon: AnimatedIcons.menu_arrow, progress: transitionAnimation),
+        onPressed: () {
+          close(context, null);
+        });
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    // show some results based on the selection
+    return ListView.builder(
+      itemBuilder: (context, index) {
+        final bool _alreadySaved = _s.contains(_l[index]);
+        return ListTile(
+          onTap: () {
+            _iLPS.setState(() {
+              if (_alreadySaved) {
+                _s.remove(_l[index]);
+              } else {
+                _s.add(_l[index]);
+              }
+            });
+            showResults(context);
+          },
+          title: RichText(
+              text: TextSpan(
+                  text: _l[index].getName().substring(0, query.length),
+                  style: TextStyle(color: Colors.black),
+                  children: [
+                TextSpan(
+                    text: _l[index].getName().substring(query.length),
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.w300,
+                        fontSize: 17.0))
+              ])),
+          trailing: Icon(
+            _alreadySaved ? Icons.check_circle : Icons.add_shopping_cart,
+            color: _alreadySaved ? Colors.green : null,
+          ),
+        );
+      },
+      itemCount: _l.length,
+    );
+  }
+
+/*final bool alreadySaved = _saved.contains(article);
+    return ListTile(
+        title: Text(
+          article.getName(),
+          style: _fontArticles,
+        ),
+        trailing: Icon(
+          alreadySaved ? Icons.check_circle : Icons.add_shopping_cart,
+          color: alreadySaved ? Colors.green : null,
+        ),
+        onTap: () {
+          setState(() {
+            if (alreadySaved) {
+              _saved.remove(article);
+            } else {
+              _saved.add(article);
+            }
+          });
+        }); */
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    // show when someone searches for something
+    final suggestionList = query.isEmpty
+        ? recent
+        : _l
+            .where((a) =>
+                a.getName().toLowerCase().startsWith(query.toLowerCase()))
+            .toList();
+    return ListView.builder(
+      itemBuilder: (context, index) {
+        final bool _alreadySaved = _s.contains(_l[index]);
+        return ListTile(
+          onTap: () {
+            _iLPS.setState(() {
+              if (_alreadySaved) {
+                _s.remove(_l[index]);
+              } else {
+                _s.add(_l[index]);
+              }
+            });
+            showResults(context);
+          },
+          title: RichText(
+              text: TextSpan(
+                  text: suggestionList[index]
+                      .getName()
+                      .substring(0, query.length),
+                  style: TextStyle(color: Colors.black),
+                  children: [
+                TextSpan(
+                    text:
+                        suggestionList[index].getName().substring(query.length),
+                    style: TextStyle(
+                        color: Colors.grey, fontWeight: FontWeight.w300))
+              ])),
+          trailing: Icon(
+            _alreadySaved ? Icons.check_circle : Icons.add_shopping_cart,
+            color: _alreadySaved ? Colors.green : null,
+          ),
+        );
+      },
+      itemCount: suggestionList.length,
+    );
   }
 }

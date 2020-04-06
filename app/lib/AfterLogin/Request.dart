@@ -6,11 +6,13 @@ class Request {
   List<Article> _articles;
   int _nbOfArticles;
   Contact _asker;
+  String _requestID;
 
-  Request(List<Article> articles, Contact asker) {
+  Request(List<Article> articles, Contact asker, String requestID) {
     this._articles = List.from(articles);
     this._asker = Contact.from(asker);
     this._nbOfArticles = _articles.length;
+    this._requestID = requestID;
   }
 
   List<Article> getArticles() {
@@ -23,6 +25,10 @@ class Request {
 
   Contact getAsker() {
     return Contact.from(_asker);
+  }
+
+  String getRequestID() {
+    return _requestID;
   }
 
   void setArticles(List<Article> articles) {
