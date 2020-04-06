@@ -33,7 +33,7 @@ class _OfferHelpPageState extends State<OfferHelpPage> {
         articles.addAll(list);
       });
 
-      requests.add(Request(articles, contact, request["orderID"]));
+      requests.add(Request(articles, contact, request["orderID"], false));
     });
 
     setState(() {
