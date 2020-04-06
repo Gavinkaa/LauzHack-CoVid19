@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
-enum _Type {
+enum ArticleTypeEnum {
   Viande,
   Legumes,
   Fruits,
@@ -18,83 +18,83 @@ enum _Type {
 }
 
 class ArticleType {
-  _Type _type;
+  ArticleTypeEnum _type;
   String _str;
 
   ArticleType.fromString(String s) {
     switch (s) {
       case "Viande":
-        _type = _Type.Viande;
+        _type = ArticleTypeEnum.Viande;
         break;
       case "Legumes":
-        _type = _Type.Legumes;
+        _type = ArticleTypeEnum.Legumes;
         break;
       case "Fruits":
-        _type = _Type.Fruits;
+        _type = ArticleTypeEnum.Fruits;
         break;
       case "Poisson":
-        _type = _Type.Poisson;
+        _type = ArticleTypeEnum.Poisson;
         break;
       case "Epicerie":
-        _type = _Type.Epicerie;
+        _type = ArticleTypeEnum.Epicerie;
         break;
       case "Produits_laitiers":
-        _type = _Type.ProdLait;
+        _type = ArticleTypeEnum.ProdLait;
         break;
       case "Cosmetiques":
-        _type = _Type.Cosmetiques;
+        _type = ArticleTypeEnum.Cosmetiques;
         break;
       case "Boissons":
-        _type = _Type.Boissons;
+        _type = ArticleTypeEnum.Boissons;
         break;
       case "Papeterie":
-        _type = _Type.Papeterie;
+        _type = ArticleTypeEnum.Papeterie;
         break;
       case "Petit_dejeuner":
-        _type = _Type.PetitDej;
+        _type = ArticleTypeEnum.PetitDej;
         break;
       case "Produits_menagers":
-        _type = _Type.ProdMen;
+        _type = ArticleTypeEnum.ProdMen;
         break;
       default:
-        _type = _Type.Autre;
+        _type = ArticleTypeEnum.Autre;
     }
     _str = s;
   }
 
-  ArticleType.fromType(_Type type) {
+  ArticleType.fromType(ArticleTypeEnum type) {
     switch (type) {
-      case _Type.Viande:
+      case ArticleTypeEnum.Viande:
         _str = "Viande";
         break;
-      case _Type.Legumes:
+      case ArticleTypeEnum.Legumes:
         _str = "Legumes";
         break;
-      case _Type.Fruits:
+      case ArticleTypeEnum.Fruits:
         _str = "Fruits";
         break;
-      case _Type.Poisson:
+      case ArticleTypeEnum.Poisson:
         _str = "Poisson";
         break;
-      case _Type.Epicerie:
+      case ArticleTypeEnum.Epicerie:
         _str = "Epicerie";
         break;
-      case _Type.ProdLait:
+      case ArticleTypeEnum.ProdLait:
         _str = "Produits_laitiers";
         break;
-      case _Type.Cosmetiques:
+      case ArticleTypeEnum.Cosmetiques:
         _str = "Cosmetiques";
         break;
-      case _Type.Boissons:
+      case ArticleTypeEnum.Boissons:
         _str = "Boissons";
         break;
-      case _Type.Papeterie:
+      case ArticleTypeEnum.Papeterie:
         _str = "Papeterie";
         break;
-      case _Type.PetitDej:
+      case ArticleTypeEnum.PetitDej:
         _str = "Petit_dejeuner";
         break;
-      case _Type.ProdMen:
+      case ArticleTypeEnum.ProdMen:
         _str = "Produits_menagers";
         break;
       default:
@@ -108,7 +108,7 @@ class ArticleType {
     this._str = articleType._str;
   }
 
-  _Type getType() {
+  ArticleTypeEnum getType() {
     return this._type;
   }
 
@@ -116,40 +116,80 @@ class ArticleType {
     return this._str;
   }
 
+  static String getStringFromType(ArticleTypeEnum type) {
+    switch (type) {
+      case ArticleTypeEnum.Viande:
+        return "Viande";
+        break;
+      case ArticleTypeEnum.Legumes:
+        return "Legumes";
+        break;
+      case ArticleTypeEnum.Fruits:
+        return "Fruits";
+        break;
+      case ArticleTypeEnum.Poisson:
+        return "Poisson";
+        break;
+      case ArticleTypeEnum.Epicerie:
+        return "Epicerie";
+        break;
+      case ArticleTypeEnum.ProdLait:
+        return "Produits_laitiers";
+        break;
+      case ArticleTypeEnum.Cosmetiques:
+        return "Cosmetiques";
+        break;
+      case ArticleTypeEnum.Boissons:
+        return "Boissons";
+        break;
+      case ArticleTypeEnum.Papeterie:
+        return "Papeterie";
+        break;
+      case ArticleTypeEnum.PetitDej:
+        return "Petit_dejeuner";
+        break;
+      case ArticleTypeEnum.ProdMen:
+        return "Produits_menagers";
+        break;
+      default:
+        return "Autre";
+    }
+  }
+
   @override
   String toString() {
     switch (this._type) {
-      case _Type.Viande:
+      case ArticleTypeEnum.Viande:
         return "Viande";
         break;
-      case _Type.Legumes:
+      case ArticleTypeEnum.Legumes:
         return "Légumes";
         break;
-      case _Type.Fruits:
+      case ArticleTypeEnum.Fruits:
         return "Fruits";
         break;
-      case _Type.Poisson:
+      case ArticleTypeEnum.Poisson:
         return "Poisson";
         break;
-      case _Type.Epicerie:
+      case ArticleTypeEnum.Epicerie:
         return "Epicerie";
         break;
-      case _Type.ProdLait:
+      case ArticleTypeEnum.ProdLait:
         return "Produits laitiers";
         break;
-      case _Type.Cosmetiques:
+      case ArticleTypeEnum.Cosmetiques:
         return "Cosmétiques";
         break;
-      case _Type.Boissons:
+      case ArticleTypeEnum.Boissons:
         return "Boissons";
         break;
-      case _Type.Papeterie:
+      case ArticleTypeEnum.Papeterie:
         return "Papeterie";
         break;
-      case _Type.PetitDej:
+      case ArticleTypeEnum.PetitDej:
         return "Petit déjeuner";
         break;
-      case _Type.ProdMen:
+      case ArticleTypeEnum.ProdMen:
         return "Produits ménagers";
         break;
       default:
@@ -181,36 +221,40 @@ class Article implements Comparable {
   // Map<String, List<Map<String, String>>>
   static Map<ArticleType, List<Article>> jsonToMap(Map<String, dynamic> data) {
     Map<ArticleType, List<Article>> elementsByType = {};
-    data.forEach((key, value) {
+    data.cast<String, List<dynamic>>().forEach((key, v) {
+      List<Map> value = List<Map>.from(v);
+
       List<Article> articles = [];
       for (int i = 0; i < value.length; i++) {
+        String quantity = value[i].cast<String, String>()["quantity"];
         articles.add(Article(
             ArticleType.fromString(key),
-            value[i]["name"],
-            value[i]["comment"],
-            value[i]["quantity"] == "" ? 0 : int.parse(value[i]["quantity"]),
-            value[i]["icon_url"]));
+            value[i].cast<String, String>()["name"],
+            value[i].cast<String, String>()["comment"],
+            int.parse(quantity == "" ? "0" : quantity),
+            value[i].cast<String, String>()["icon_url"]));
       }
       elementsByType.putIfAbsent(ArticleType.fromString(key), () => articles);
     });
     return elementsByType;
   }
 
-  static String toJSON(Map<ArticleType, List<Article>> mapToConvert) {
-    Map<String, List<Map<String, String>>> articles = {};
+  static Map<String, dynamic> toJSON(
+      Map<ArticleType, List<Article>> mapToConvert) {
+    Map<String, dynamic> articles = {};
     mapToConvert.forEach((k, v) => articles.putIfAbsent(
-          k.toString(),
+          k.getStr(),
           () => v
               .map((i) => {
                     "name": i._name,
                     "comment": i._comment,
-                    "quantity": i._quantity,
+                    "quantity": i._quantity.toString(),
                     "icon-url": i._iconUrl
                   })
               .toList(),
         ));
 
-    return jsonEncode(articles);
+    return articles;
   }
 
   String getName() {
@@ -223,6 +267,15 @@ class Article implements Comparable {
 
   int getQuantity() {
     return this._quantity;
+  }
+
+  bool setQuantity(int quantity) {
+    if (quantity < 0) {
+      return false;
+    } else {
+      this._quantity = quantity;
+      return true;
+    }
   }
 
   ArticleType getArticleType() {

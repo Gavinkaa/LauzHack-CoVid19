@@ -71,17 +71,28 @@ class _AskHelpPageState extends State<AskHelpPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             RaisedButton(
-                onPressed: () {
-                  if (!kIsWeb) {
-                    _showDialogToSelectShopMode(context);
-                  } else {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ItemsListPage()),
-                    );
-                  }
-                },
-                child: Text('Créer une liste de courses')),
+              onPressed: () {
+                if (!kIsWeb) {
+                  _showDialogToSelectShopMode(context);
+                } else {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ItemsListPage()),
+                  );
+                }
+              },
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    'CREER UNE LISTE DE COURSES',
+                    textAlign: TextAlign.center,
+                  ),
+                  Icon(Icons.add, color: Colors.white, size: 30.0)
+                ],
+              ),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0)),
+            ),
           ],
         ),
       ),

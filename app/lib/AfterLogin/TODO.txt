@@ -4,6 +4,12 @@
 - Button accepter request
 - store picture file
 - boutton valider la liste
+- update le JSON en y ajoutant les articles manquants
+
+
+A AMELIORER :
+
+- implémenter un search dans la list d'aliments, avec possibilité d'ajouts dans le JSON d'articles
 
 
 

@@ -1,3 +1,5 @@
+import 'package:app/AfterLogin/Article.dart';
+
 class Contact {
   int _pcode;
   String _city, _street, _aptFloor;
@@ -26,6 +28,18 @@ class Contact {
     this._lastName = contact._lastName;
     this._phone = contact._phone;
     this._email = contact._email;
+  }
+
+  Contact.fromJSON(Map<String, String> contact) {
+    String pcode = contact["pcode"];
+    this._pcode = int.parse(pcode);
+    this._city = contact["city"];
+    this._street = contact["street"];
+    this._aptFloor = contact["aptFloor"];
+    this._firstName = contact["firstName"];
+    this._lastName = contact["lastName"];
+    this._phone = contact["phone"];
+    this._email = contact["email"];
   }
 
   int getPCode() {

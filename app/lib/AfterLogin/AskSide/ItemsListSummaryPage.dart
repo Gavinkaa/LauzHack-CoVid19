@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../API_requests.dart';
 import '../Article.dart';
 
 class ItemsListSummaryPage extends StatefulWidget {
@@ -47,6 +48,51 @@ class _ItemsListSummaryPageState extends State<ItemsListSummaryPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Articles enregistrés :'),
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text("Valider la commande ?"),
+                    content:
+                        Text("Êtes vous sûr de voulour valider la commande ?"),
+                    actions: <Widget>[
+                      FlatButton(
+                          onPressed: () => Navigator.of(context).pop(),
+                          child: Text("Annuler")),
+                      FlatButton(
+                          onPressed: () {
+                            //return to "askHelpPage"
+                            Navigator.of(context).pop();
+                            Navigator.of(context).pop();
+                            Navigator.of(context).pop();
+
+                            Map<ArticleType, List<Article>> articles = {};
+
+                            _articles.forEach((a) {
+                              articles.putIfAbsent(
+                                  a.getArticleType(), () => []);
+                              articles[a.getArticleType()].add(a);
+                            });
+
+                            APIRequests.POST_NewRequest(
+                                {"order": Article.toJSON(articles)});
+                          },
+                          child: Text("Accepter")),
+                    ],
+                  );
+                },
+              );
+            },
+            icon: Icon(
+              Icons.assignment_turned_in,
+              color: Colors.green,
+              size: 30.0,
+            ),
+          ),
+        ],
       ),
       body: ListView(
         children: ListTile.divideTiles(

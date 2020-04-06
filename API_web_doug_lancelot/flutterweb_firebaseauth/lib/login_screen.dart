@@ -1,4 +1,4 @@
-import 'package:firewebauth/after_login_HomePage.dart';
+import 'package:firewebauth/AfterLoginHomePage.dart';
 import 'package:firewebauth/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'register_screen.dart';
@@ -9,18 +9,56 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  String email, password;
+  final _formKey = GlobalKey<FormState>();
+  String _email, _password;
+  bool logInSucc = false;
 
-  final formKey = new GlobalKey<FormState>();
+  _submit() async {
+    if (_formKey.currentState.validate()) {
+      _formKey.currentState.save();
+      // Login user
 
-  checkFields() {
-    final form = formKey.currentState;
-    if (form.validate()) {
-      return true;
-    } else {
-      return false;
+      Widget okBut = FlatButton(
+        child: Text("OK"),
+        onPressed: () => Navigator.of(context).pop(),
+      );
+
+      AlertDialog alert = AlertDialog(
+        title: Text("Erreur"),
+        content: Text("Incorrect email or password"),
+        actions: [
+          okBut,
+        ],
+      );
+
+      await AuthService.login(_email, _password)
+          .then((value) => logInSucc = value);
+      if (logInSucc) {
+        //Navigator.push(
+        //  context,
+        //  MaterialPageRoute(builder: (context) => AfterLoginHomePage()),
+        //);
+        //Navigator.pushReplacementNamed(context, AfterLoginHomePage.id);
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => AfterLoginHomePage()));
+      } else {
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return alert;
+            });
+      }
     }
   }
+
+  //checkFields() {
+  //  final form = formKey.currentState;
+  //  if (form.validate()) {
+  //    return true;
+  //  } else {
+  //    return false;
+  //  }
+  //}
 
   bool hasMatch(String input) {
     return false;
@@ -39,94 +77,106 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-        //end modifies
-        body: Center(
-            child: Container(
-                height: 400.0,
-                width: 300.0,
-                child: Column(
-                  children: <Widget>[
-                    Form(
-                        key: formKey,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Padding(
-                                padding: EdgeInsets.only(
-                                    left: 25.0,
-                                    right: 25.0,
-                                    top: 20.0,
-                                    bottom: 5.0),
-                                child: Container(
-                                  height: 50.0,
-                                  child: TextFormField(
-                                    decoration:
-                                        InputDecoration(hintText: 'Email'),
-                                    validator: (value) => value.isEmpty
-                                        ? 'Email is required'
-                                        : validateEmail(value.trim()),
-                                    onChanged: (value) {
-                                      email = value;
-                                    },
-                                  ),
-                                )),
-                            Padding(
-                                padding: EdgeInsets.only(
-                                    left: 25.0,
-                                    right: 25.0,
-                                    top: 20.0,
-                                    bottom: 5.0),
-                                child: Container(
-                                  height: 32.0,
-                                  child: TextFormField(
-                                    initialValue: password,
-                                    //to think about
-                                    obscureText: true,
-                                    decoration: InputDecoration(
-                                        contentPadding: EdgeInsets.all(10.0),
-                                        labelText: 'password',
-                                        labelStyle: TextStyle(
-                                          color: Colors.grey[600],
-                                        )),
-                                    validator: (value) =>
-                                        //check condition for password
-                                        value.isEmpty && value.length > 6
-                                            ? 'password is required'
-                                            : null,
-                                    onChanged: (value) => setState(() {
-                                      password = value;
-                                    }),
-                                  ),
-                                )),
-                            InkWell(
-                                onTap: () {
-                                  if (checkFields()) {
-                                    AuthService().sign_in_with_error(
-                                        email, password, context);
-                                  }
-                                },
-                                child: Container(
-                                    height: 40.0,
-                                    width: 100.0,
-                                    decoration: BoxDecoration(
-                                      color: Colors.green.withOpacity(0.2),
-                                    ),
-                                    child: Center(child: Text('Sign in'))))
-                          ],
-                          //navigator.push -> pas de go cack
-                        )),
-                    RaisedButton(
-                      child: Text('I want to register'),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SecondRoute()),
-                        );
-                      },
-                    ),
-                  ],
-                ))));
+      body: Center(
+        child: Form(
+          autovalidate: true,
+          key: _formKey,
+          child: ListView(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(40.0),
+                child: Text(
+                  "HYNeighbor",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 50.0, fontWeight: FontWeight.w200),
+                ),
+              ),
+              SizedBox(height: 40.0),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30.0,
+                  vertical: 10.0,
+                ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      labelText: 'Email',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (input) => !AuthService.isEmail(input)
+                      ? 'Entrez une adresse e-mail valide'
+                      : null,
+                  onSaved: (input) => _email = input,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 30.0,
+                  vertical: 10.0,
+                ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      labelText: 'Mot de passe',
+                      labelStyle: TextStyle(
+                        color: Colors.grey[600],
+                      )),
+                  validator: (input) => input.length < 6
+                      ? 'Doit faire au moins 6 caractères'
+                      : null,
+                  onSaved: (input) => _password = input,
+                  obscureText: true,
+                ),
+              ),
+              SizedBox(
+                height: 80.0,
+              ),
+              Center(
+                child: FlatButton(
+                  onPressed: _submit,
+                  color: Colors.red,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(8.0),
+                  ),
+                  child: Text(
+                    'SE CONNECTER',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w300),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 15.0,
+              ),
+              Center(
+                child: FlatButton(
+                  onPressed: () {
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => SecondRoute()));
+                    //Navigator.push(
+                    //  context,
+                    //  MaterialPageRoute(builder: (context) => SecondRoute()),
+                    //);
+                  },
+                  color: Colors.red,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(8.0),
+                  ),
+                  child: Text(
+                    "S'INSCRIRE",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w300),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
