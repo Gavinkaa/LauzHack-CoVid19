@@ -177,7 +177,7 @@ class _ItemsListPageState extends State<ItemsListPage> {
     Navigator.of(context)
         .push(
           MaterialPageRoute<void>(
-            builder: (BuildContext context) => createArticlePage(),
+            builder: (BuildContext context) => createArticlePage(_saved),
           ),
         )
         .then((value) => setState(() {}));
