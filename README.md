@@ -8,7 +8,7 @@ We have created a platform which allows people to have their shopping done for t
 
 ## **Overview:**
 
-We have created both a mobile app and a web app to make this possible. We coded the graphical interface, using Flutter. We are using FireBase as our backend and we have created an API using flutter to connect it to the frontend.
+We have created both a mobile app and a web app to make this possible. We coded the graphical interface using Flutter. We are using FireBase as our backend and we have created an API using flutter to connect it to the frontend.
 
 ## **Graphical Interface:**
 Both the web app and mobile application (Android and iOS), show a sign up/sign in page the first time they are opened. Once signed in, the application remains so until one chooses to sign out. On the first page shown of the application (once signed in), two buttons are displayed: one that reads "request help" and another that reads "offer help", below it.</p>
